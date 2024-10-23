@@ -30,7 +30,7 @@ const CoursesPage = () => {
               </div>
             </div>
             <div className="row g-4 justify-content-center row-cols-lg-2 row-cols-1">
-              {/* {renderedCourses} */}
+              {renderedCourses}
             </div>
           </div>
         </div>
