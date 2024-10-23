@@ -1,6 +1,11 @@
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "/node_modules/@icon/icofont/icofont.css";
+import Header from "@/components/common/Header/Header";
+import BootstrapClient from "@/components/BootstrapClient";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Header />
         {children}
+        <BootstrapClient />
       </body>
     </html>
   );
