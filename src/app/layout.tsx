@@ -6,6 +6,7 @@ import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "/node_modules/@icon/icofont/icofont.css";
 import Header from "@/components/common/Header/Header";
 import BootstrapClient from "@/components/BootstrapClient";
+import Footer from "@/components/common/Footer/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         {children}
+        <Footer/>
         <BootstrapClient />
       </body>
     </html>

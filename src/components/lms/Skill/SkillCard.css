@@ -1,0 +1,48 @@
+.skill-item .skill-inner,
+.skill-section .section-header .lab-btn {
+  background-color: #fff;
+}
+.skill-item .skill-inner,
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skill-item .skill-inner {
+  align-items: center;
+}
+.skill-item .skill-inner {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.skill-item .skill-inner {
+  padding: 15px;
+}
+.skill-item .skill-inner .skill-content h5 {
+  margin-bottom: 5px;
+}
+
+.date li,
+.event-item .event-inner .event-content .event-content-info ul li,
+.pageheader-section.style-2 .pageheader-content .phs-thumb span,
+.skill-item .skill-inner .skill-thumb,
+footer .footer-bottom .section-wrapper .footer-bottom-list a {
+  margin-right: 15px;
+}
+
+.event-section:after,
+.feature-section:after,
+.instructor-section:after,
+.map-area .maps iframe,
+.newsletters-section .newsletter-area:after,
+.newsletters-section:after,
+.skill-section:before,
+.widget.widget-post ul.widget-wrapper li .post-thumb a,
+.workshop-join .section-wrapper .workshop-title h5:after {
+  height: 100%;
+}
+
+@media (min-width: 992px) {
+  .skill-section:before {
+    width: 50%;
+  }
+}

@@ -1,0 +1,113 @@
+.instructor-item {
+    border-radius: 4px;
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    transition: all .3s ease;
+}
+.instructor-item:hover {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+.instructor-item{
+    background-color: #fff;
+}
+.instructor-item .instructor-inner {
+    padding: 30px 15px 20px;
+}
+.instructor-item .instructor-inner,
+.instructor-section .section-wrapper .count-item .count-inner{
+    text-align: center;
+}
+.instructor-item .instructor-footer {
+    border-top: 1px solid #ecf0f3;
+}
+
+
+.achieve-item .achieve-inner .achieve-thumb,
+.authors .author-content p,
+.blog-single .section-wrapper .post-item .post-inner .post-content iframe,
+.blog-single .section-wrapper .post-item .post-inner .post-content img,
+.blog-single .section-wrapper .post-item .post-inner .post-content p,
+.course-showing-part,
+.event-item .event-inner .event-content ul,
+.event-item .event-inner .event-content>span,
+.feature-item .feature-inner .feature-thumb,
+.instructor-item .instructor-inner .instructor-thumb,
+.register-section .section-wrapper .register-form input {
+    margin-bottom: 20px;
+}
+.account-form .form-group a:hover,
+.category-item .category-inner .category-content h4:hover,
+.category-item .category-inner .category-content h6:hover,
+.category-item .category-inner:hover .category-content h6,
+.course-item .course-inner .course-content .course-footer .course-author .ca-name:hover,
+.course-item .course-inner:hover .course-content h4,
+.course-showing-part .course-showing-part-right .select-item .select-icon,
+.course-showing-part .course-showing-part-right .select-item select,
+.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-left a,
+.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-right,
+.date li .count-title, .date li p,
+.event-item .event-inner:hover .event-content .event-content-info h3,
+.event-item .event-inner:hover .event-content .event-content-info h5,
+.feature-item .feature-inner:hover .feature-content a h5,
+.form-message.error,
+.instructor-item:hover .instructor-inner .instructor-content h4,
+.instructor-section .section-wrapper .footer-btn p a,
+.pageheader-section .pageheader-content .phs-thumb .course-reiew .ratting,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .cart-checkout input[type=submit]:hover,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li .pull-right,
+.shop-cart .section-wrapper .cart-top table tbody tr td.product-item .p-content a:hover,
+.shop-page .modal .modal-dialog .modal-content button.close,
+.shop-page .section-header h4 span,
+.shop-page .shop-product-wrap .product-item .product-content h5 a:hover,
+.shop-page .shop-product-wrap .product-list-item .product-content h5 a:hover,
+.shop-page .shop-title .product-view-mode a.active,
+.shop-single .review .review-content .review-showing .content li .post-content .entry-meta .posted-on a:hover,
+.stu-feed-item .stu-feed-inner .stu-feed-top .sft-left .sftl-content h6:hover,
+.theme-color,
+.video-button i,
+.widget.letest-product .widget-wrapper ul li:hover .product-content h6 a,
+.widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a.active,
+.widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a:hover,
+.widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li.open>a,
+.widget.shop-widget .widget-wrapper .shop-menu li.open>a,
+.widget.widget-archive .widget-wrapper li a.active,
+.widget.widget-archive .widget-wrapper li a:hover,
+.widget.widget-category .widget-wrapper li a.active,
+.widget.widget-category .widget-wrapper li a:hover,
+.widget.widget-post ul.widget-wrapper li .post-content a h6:hover,
+footer .footer-bottom .section-wrapper .footer-bottom-list a:hover,
+footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .content ul li p a,
+.instructor-item .instructor-inner .instructor-content .ratting i {
+    color: #f16126;
+}
+.contact-item .contact-content .title,
+.course-video .course-video-content .accordion-item .accordion-header button,
+.instructor-item .instructor-inner .instructor-content h4,
+.instructor-item .instructor-inner .instructor-content p,
+.instructor-item .instructor-inner .instructor-content h4,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content p.ins-dege,
+.shop-single .product-details .post-content h4,
+.widget.widget-post ul.widget-wrapper li .post-content a h6 {
+    margin-bottom: 5px;
+}
+.clients-section .section-wrapper .clients .client-list .client-content,
+.comment-respond .add-comment .comment-form textarea,
+.course-item .course-inner .course-content,
+.course-side-cetagory .csc-content,
+.course-video .course-video-content .accordion-item .accordion-collapse .video-item-list li,
+.course-video .course-video-content .accordion-item .accordion-header button,
+.instructor-item .instructor-footer,
+.menu-search-form form input{
+    padding: 15px;
+}
+
+.choose-section .section-header ul li i,
+.event-item .event-inner .event-content .event-content-info ul li i,
+.header-top-area .left li i,
+.instructor-item .instructor-footer ul li i,
+.instructor-item.style-2 .instructor-inner .instructor-content .ins-info li i,
+.instructor-section.style-2 .section-wrapper .count-item .count-inner .count-content span,
+.pageheader-section.style-2 .pageheader-content .phs-thumb .course-reiew .ratting,
+.social-icons li {
+    margin-right: 5px;
+}

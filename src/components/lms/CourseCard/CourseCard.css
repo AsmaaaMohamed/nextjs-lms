@@ -1,0 +1,347 @@
+.course-item .course-inner {
+    border-radius: 4px;
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    padding: 15px;
+    background-color: #fff;
+    align-items: center;
+}
+.course-item .course-inner .course-thumb {
+    position: relative;
+    overflow: hidden;
+}
+.course-item .course-inner .course-thumb .course-price {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: auto;
+    top: 10px;
+    border-radius: 100%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    height: 60px;
+    line-height: 60px;
+    width: 60px;
+    text-align: center;
+}
+.course-item .course-inner .course-content {
+    padding: 15px;
+    position: relative;
+}
+
+.course-item .course-inner .course-content .course-category .course-cate {
+    margin-right: 10px;
+}
+.course-item .course-inner .course-content .course-category .course-cate a {
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 3px 15px 3px 25px;
+}
+.course-item .course-inner .course-content .course-category .course-cate a:before {
+    background: hsla(0,0%,100%,.5);
+    border-radius: 100%;
+    height: 6px;
+    left: 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 6px;
+}
+.course-item .course-inner .course-content .course-category .course-reiew .ratting-count,
+.feature-item .feature-inner .feature-content .lab-btn-text:hover span {
+    margin-left: 10px;
+}
+.course-item .course-inner .course-content .course-details {
+    margin: 0 0 15px;
+}
+.course-item .course-inner .course-content .course-details .couse-count i,
+.course-item .course-inner .course-content .course-details .couse-topic i,
+.course-item .course-inner .course-content .course-footer .course-author img{
+    margin-right: 5px;
+}
+.course-item .course-inner .course-content .course-details .couse-count,
+.course-item .course-inner .course-content .course-details .couse-topic {
+    font-size: 1.125rem;
+}
+.course-item .course-inner .course-content .course-footer {
+    border-top: 1px solid #ecf0f3;
+    padding-top: 15px;
+    justify-content: center;
+}
+.course-item .course-inner .course-content .course-footer .course-author .ca-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.course-item .course-inner:hover .course-thumb img {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.banner-section .cbs-content-list ul li.ccl-shape a,
+.banner-section .cbs-content-list ul li.ccl-shape a:after,
+.cart-plus-minus .qtybutton:hover,
+.clients-section .section-wrapper .clients .client-list .client-thumb:after,
+.clients-section .section-wrapper .clients .client-list .client-thumb:before,
+.course-item .course-inner .course-content .course-category .course-cate a,
+.course-item .course-inner .course-price,
+.course-navi,
+.feature-item .feature-inner .feature-content .lab-btn-text span:after, .feature-item .feature-inner .feature-content .lab-btn-text span:before,
+.group-select-section, .header-bar span,
+.header-wrapper .menu-area .signup,
+.menu-search-form form button,
+.newsletters-section .newsletter-area .news-mass,
+.newsletters-section .newsletter-area .news-mass:after,
+.newsletters-section .newsletter-area .news-mass:before,
+.pageheader-section .pageheader-content .course-category .course-offer,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .coupon input[type=submit],
+.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .outline-select .select-icon,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping button,
+.shop-cart .section-wrapper .cart-top table thead tr,
+.shop-single .product-details .post-content form .lab-btn,
+.shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:before,
+.shop-single .review .review-content .review-showing .client-review .review-form form button,
+.shop-single .review .review-nav li.active,
+.social-icons li a,
+.workshop-join .section-wrapper .workshop-title h5 {
+    background: #f16126;
+}
+.achieve-part .col:last-child .achieve-item .achieve-inner .achieve-content .lab-btn span,
+.banner-section .cbs-content-list ul li.ccl-shape a,
+.course-item .course-inner .course-content .course-category .course-cate a,
+.course-item .course-inner .course-price,
+.course-navi,
+.course-video .course-video-content .accordion-item .accordion-header button,
+.instructor-section .section-wrapper .count-item .count-inner .count-content p,
+.instructor-section .section-wrapper .count-item .count-inner .count-content span,
+.instructor-section .section-wrapper .instructor-content .subtitle,
+.instructor-section .section-wrapper .instructor-content .title,
+.menu-search-form form button,
+.pageheader-section .pageheader-content .course-category .course-cate,
+.pageheader-section .pageheader-content .course-category .course-offer,
+.register-section .section-header .title,
+.register-section .section-header p,
+.shop-single .product-details .product-thumb .pro-single-next,
+.shop-single .product-details .product-thumb .pro-single-prev,
+.social-icons li a,
+.video-section .section-wrapper h3,
+.widget.widget-tags ul.widget-wrapper li a.active,
+.widget.widget-tags ul.widget-wrapper li a:hover,
+.workshop-join .section-wrapper .workshop-title h5 {
+    color: #fff;
+}
+.about-section,
+.about-section .about-left,
+.about-section .about-right,
+.achieve-item .achieve-inner,
+.banner-section, .banner-section .cbs-content-list ul li.ccl-shape a,
+.banner-section .section-wrapper .banner-content form,
+.banner-section .section-wrapper .banner-thumb,
+.banner-section,
+.banner-section .section-wrapper .thumb-part,
+.cart-plus-minus,
+.choose-section,
+.clients-section .section-wrapper .clients,
+.clients-section
+.section-wrapper .clients .client-list .client-thumb,
+.clients-section .section-wrapper .clients .client-list .client-thumb img,
+.contact-info-section .section-wrapper,
+.contact-info-section .section-wrapper .cinfo-item .cinfo-inner .cinfo-thumb, .contact-info-section .section-wrapper .cinfo-or span,
+.count-item .count-inner .count-icon,
+.count-item .count-inner .count-icon i, .course-item .course-inner .course-content,
+.course-item .course-inner .course-content .course-category .course-cate a,
+.course-item .course-inner .course-thumb,
+.course-section .section-header,
+.course-select-area .csa-body ul li .card .card-body .course-lists .csa-left,
+.course-select-area .csa-body ul li .card .card-header h5 button,
+.course-view-section .course-view .video-part .content-wrapper,
+.event-item .event-inner .event-content .event-date-info .edi-box h4,
+.event-section,
+.event-section *,
+.event-section .section-wrapper,
+.feature-item .feature-inner .feature-content .lab-btn-text span,
+.feature-section, .feature-section *,
+.header-bar, .instructor-section,
+.instructor-section .section-wrapper,
+.instructor-single-section .instructor-wrapper .instructor-single-top,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li .list-attr,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li span,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-thumb img,
+.menu-item-has-children>a,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left, .overview-announce-section .course-view-bottom ul li a,
+.pageheader-section .pageheader-content .course-category .course-cate,
+.pageheader-section .pageheader-thumb,
+.register-section .section-wrapper,
+.register-section .section-wrapper *,
+.select-item,
+.shop-single .product-details .post-content form .select-product,
+.shop-single .product-details .post-content form .select-product select,
+.shop-single .product-details .product-thumb,
+.shop-single .review .review-content .description .post-item .post-content ul li,
+.workshop-join .section-wrapper .workshop-title h5 {
+    position: relative;
+}
+.about-section:before,
+.blog-single .section-wrapper .post-item .post-inner .post-content blockquote:before,
+.cart-plus-minus .qtybutton,
+.choose-section:after,
+.clients-section .section-wrapper .clients .client-list,
+.clients-section .section-wrapper .clients .client-list .client-content,
+.clients-section .section-wrapper .clients .client-list .client-thumb:after,
+.clients-section .section-wrapper .clients .client-list .client-thumb:before,
+.contact-info-section .section-wrapper .cinfo-or,
+.contact-info-section .section-wrapper:after,
+.course-item .course-inner .course-content .course-category .course-cate a:before,
+.course-item .course-inner .course-price,
+.course-section .section-header .course-navigations,
+.course-select-area .csa-body ul li .card .card-body .course-lists .csa-left>i,
+.course-select-area .csa-body ul li .card .card-header h5 button .icon,
+.course-view-section .course-view .video-part .content-wrapper .content-icon,
+.event-item .event-inner .event-content .event-date-info .edi-box h4:after,
+.event-section .section-wrapper .event-navi-item,
+.event-section:after,
+.feature-item .feature-inner .feature-content .lab-btn-text span:after,
+.feature-item .feature-inner .feature-content .lab-btn-text span:before,
+.feature-section:after,
+.header-bar span, .header-section, .instructor-section:after,
+.instructor-single-section .instructor-wrapper .instructor-single-bottom .skill-item .skill-thumb .circles .circle strong,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li .list-attr:after,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li .list-attr:before,
+.instructor-single-section .instructor-wrapper .instructor-single-top:before,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span:after,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span:after,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left:after,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .view-details,
+.overview-announce-section .course-view-bottom ul li a:after,
+.pageheader-section .pageheader-content .course-category .course-cate:before,
+.pageheader-section .pageheader-thumb .video-button,
+.register-section .section-wrapper:after, .select-item .select-icon,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .outline-select .select-icon,
+.shop-single .product-details .post-content form .select-product i,
+.shop-single .product-details .product-thumb .pro-single-next,
+.shop-single .product-details .product-thumb .pro-single-prev,
+.shop-single .review .review-content .description .post-item .post-content ul li:before,
+.shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:after, 
+.shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:before,
+.student-feedbak-section .section-wrapper .sf-left .sfl-thumb .video-button,
+.student-feedbak-section:before,
+.video-button:after,
+.video-button:before, 
+.workshop-join .section-wrapper .workshop-title h5:after {
+    content: "";
+    position: absolute;
+}
+.about-section .about-right .section-wrapper ul li,
+.account-form .form-group .checkgroup,
+.achieve-item .achieve-inner,
+.app-section .section-wrapper ul,
+.banner-section .section-wrapper .banner-content form,
+.contact-info-section .section-wrapper,
+.contact-item, .course-item .course-inner .course-content .course-category,
+.course-item .course-inner .course-content .course-details,
+.course-item .course-inner .course-content .course-footer,
+.course-item .course-inner,
+.course-item .course-inner .course-thumb .course-info,
+.course-item .course-inner .course-thumb .course-category,
+.course-section .section-header .course-navigations,
+.csdc-lists ul li,
+.date, .date li,
+.default-pagination,
+.event-item .event-inner .event-content,
+.event-item .event-inner .event-content .event-content-info ul,
+.feature-item .feature-inner,
+.header-section .logo-search-acte, .header-top-area,
+.header-top-area .left,
+.header-wrapper,
+.header-wrapper .menu-area,
+.menu-search-form form, .menu>ul,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .cart-checkout,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li,
+.shop-cart .section-wrapper .cart-top table tbody tr td.product-item,
+.shop-single .product-details .post-content form,
+.shop-single .review .review-content .description .post-item,
+.shop-single .review .review-content .review-showing .client-review .review-form form .rating,
+.shop-single .review .review-content .review-showing .client-review .review-form form .rating ul,
+.shop-single .review .review-content .review-showing .content li .post-content .entry-meta,
+.shop-single .review .review-content .review-showing .content li .post-content .entry-meta .posted-on,
+.shop-single .review .review-nav,
+.widget.letest-product .widget-wrapper ul li,
+.workshop-join .workshop-join-form form,
+.workshop-join .workshop-join-form form .input-area {
+    display: flex;
+    flex-wrap: wrap;
+}
+.authors .author-content span,
+.clients-section .section-wrapper .clients .client-list .client-thumb:after,
+.clients-section .section-wrapper .clients .client-list .client-thumb:before,
+.count-item .count-inner .count-icon i,
+.course-video .course-video-content .accordion-item .accordion-header span,
+.feature-item .feature-inner .feature-content .lab-btn-text span, .header-bar span,
+.header-top-area .social-icons li a,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li span,
+.pageheader-section .pageheader-content .phs-thumb .course-reiew,
+.pageheader-section .pageheader-content .phs-thumb span,
+.scrollToTop i,
+.section-header .subtitle,
+.workshop-join .section-wrapper .workshop-title h5{
+    display: inline-block;
+}
+.achieve-item .achieve-inner,
+.contact-info-section .section-wrapper,
+.course-item .course-inner .course-content .course-details,
+.course-item .course-inner .course-content .course-footer,
+.csdc-lists ul li,
+.event-item .event-inner .event-content,
+.header-top-area,
+.header-wrapper,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .cart-checkout,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li,
+.shop-single .product-details .post-content form,
+.shop-single .review .review-content .review-showing .content li .post-content .entry-meta,
+.stu-feed-item .stu-feed-inner .stu-feed-top,
+.workshop-join .workshop-join-form form,
+.workshop-join .workshop-join-form form .input-area {
+    justify-content: space-between;
+}
+.about-section .about-right .section-wrapper ul li,
+.contact-item,
+.course-item .course-inner .course-content .course-footer,
+.course-item .course-inner,
+.feature-item .feature-inner,
+.header-section .logo-search-acte,
+.header-top-area,
+.header-wrapper,
+.header-wrapper .menu-area,
+.instructor-item .instructor-inner,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li,
+.shop-single .product-details .post-content form,
+.shop-single .product-details .post-content p.rating,
+.shop-single .review .review-content .description .post-item,
+.shop-single .review .review-content .review-showing .client-review .review-form form .rating,
+.shop-single .review .review-content .review-showing .content li .post-content .entry-meta{
+    align-items: center;
+}
+.course-item .course-inner .course-content .course-details .couse-count i,
+.course-item .course-inner .course-content .course-category .course-reiew .ratting i,
+.course-item .course-inner .course-content .course-details .couse-topic i{
+    color: #f16126;
+}
+.course-item .course-inner .course-content .course-details .couse-topic i{
+    margin-right: 5px;
+}
+@media (min-width: 576px){
+    .course-item .course-inner .course-thumb {
+        width: 40%;
+    }
+    .course-item .course-inner .course-content {
+        width: 60%;
+    }
+    .course-item .course-inner .course-content .course-category {
+        margin-bottom: 15px;
+    }
+}

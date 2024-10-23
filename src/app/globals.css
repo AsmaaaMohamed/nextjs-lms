@@ -2,7 +2,13 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-
+a {
+  text-decoration: inherit;
+  color: #101115 ;
+}
+a:hover {
+  color: #f16126;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,32 +25,32 @@ body {
 /* === CUSTOM FONTS ===*/
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-Regular.ttf");
+  src: url("/fonts/Barlow-Regular.ttf");
   font-weight: normal;
 }
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-Light.ttf");
+  src: url("/fonts/Barlow-Light.ttf");
   font-weight: 300;
 }
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-Medium.ttf");
+  src: url("/fonts/Barlow-Medium.ttf");
   font-weight: 500;
 }
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-SemiBold.ttf");
+  src: url("/fonts/Barlow-SemiBold.ttf");
   font-weight: 600;
 }
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-Bold.ttf");
+  src: url("/fonts/Barlow-Bold.ttf");
   font-weight: 700;
 }
 @font-face {
   font-family: Barlow;
-  src: url("/public/fonts/Barlow-Black.ttf");
+  src: url("/fonts/Barlow-Black.ttf");
   font-weight: 900;
 }
 /* Global Styles */

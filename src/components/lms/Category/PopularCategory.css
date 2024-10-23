@@ -1,0 +1,101 @@
+.category-item .category-inner {
+    border-radius: 4px;
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    padding: 40px 30px;
+    transition: all .3s ease;
+}
+.category-section .section-wrapper .col .category-item .category-inner .category-thumb {
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+.category-section .section-wrapper .col .category-item .category-inner .category-content h6,
+.category-section .section-wrapper .col .category-item .category-inner .category-content span {
+    color: #fff!important;
+}
+.category-item .category-inner .category-content h6 {
+    font-weight: 500 !important;
+}
+.category-item .category-inner .category-content span {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+.category-item .category-inner .category-thumb img {
+    border-radius: 100%;
+}
+.category-item .category-inner:hover {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.achieve-item .achieve-inner,
+.blog-single .section-wrapper .post-item .post-inner .post-content,
+.category-item .category-inner,
+.client-item .client-inner,
+.clients-section.style-2 .section-wrapper .clients .client-list .client-content,
+.clients-slider-nav,
+.comment-respond,
+.comments,
+.contact-info-section .section-wrapper .cinfo-item .cinfo-inner .cinfo-thumb,
+.contact-item,
+.course-item .course-inner,
+.course-side-cetagory,
+.date li, .event-item,
+.event-section.style-2 .section-wrapper .event-navi-item,
+.feature-item .feature-inner,
+.header-section .logo-search-acte .header-search form,
+.header-wrapper .menu-area .login,
+.instructor-section .section-wrapper .instructor-content .lab-btn,
+.instructor-single-section .instructor-wrapper .instructor-single-bottom,
+.instructor-single-section .instructor-wrapper .instructor-single-top, .menu-search-form form input,
+.offer-section .section-wrapper,
+.register-section .section-wrapper,
+.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .cart-checkout input,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .outline-select,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li,
+.shop-single .product-details,
+.shop-single .product-details .post-content form .select-product,
+.shop-single .review,
+.shop-single .sidebar-widget .widget-search form input {
+    background-color: #fff;
+}
+.account-form .form-group,
+.category-item .category-inner .category-thumb,
+.choose-section .section-header .title,
+.course-video .course-video-title,
+.four-zero-section .four-zero-content .title,
+.four-zero-section .four-zero-content img,
+.instructor-section .section-wrapper .instructor-content .title,
+.instructor-single-section .instructor-wrapper .instructor-single-bottom .skill-item .skill-thumb,
+.newsletter-form input, .offer-section .section-header .title,
+.shop-cart .section-wrapper .cart-bottom,
+.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li,
+.shop-single .review,
+.shop-single .review .review-content .review-showing .content li .post-thumb,
+.widget .widget-header .title,
+.workshop-join .workshop-join-form form .input-area input,
+footer .footer-top .footer-item.our-address .footer-inner .footer-content .content ul.office-address, p {
+    margin-bottom: 15px;
+}
+
+.category-item .category-inner .category-content span,
+.course-video .course-video-content .accordion-item .accordion-header button,
+.event-item .event-inner .event-content,
+.event-item .event-inner .event-content>span,
+.feature-item .feature-inner .feature-content a,
+.feature-section .section-wrapper .feature-item .feature-inner .feature-content a,
+.header-wrapper .logo a,
+.instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content .ratting,
+.stu-feed-item .stu-feed-inner .stu-feed-top .sft-left .sftl-content span,
+.widget.shop-widget .widget-wrapper .shop-menu li a {
+    display: block;
+}
+@media (min-width: 1440px){
+    .category-item .category-inner {
+        padding: 40px;
+    }
+}
+@media (min-width: 576px){
+    h6 {
+        font-size: 1.125rem;
+    }
+}

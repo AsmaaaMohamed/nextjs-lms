@@ -8,11 +8,49 @@ import Icon2 from "/public/assets/images/about/icon/02.jpg";
 import StudentFeedbackLeftImg from "/public/assets/images/feedback/01.jpg";
 import StudentFeedbackRightImg1 from "/public/assets/images/feedback/student/01.jpg";
 import StudentFeedbackRightImg2 from "/public/assets/images/feedback/student/02.jpg";
-import AchieveGoalsBg from "../../public/assets/images/media/02.ba699cd616f691881513.png";
+// import AchieveGoalsBg from "../../public/assets/images/media/02.ba699cd616f691881513.png";
 import Image from "next/image";
 import { Button, Form } from "react-bootstrap";
 import "./page.css"
+import { courses, coursesCategories, instructors, posts, skills } from "@/components/utils/data";
+import SkillCard from "@/components/lms/Skill/SkillCard";
+import InstructorCard from "@/components/lms/Instructor/InstructorCard";
+import PopularCategory from "@/components/lms/Category/PopularCategory";
+import CourseCard from "@/components/lms/CourseCard/CourseCard";
+import PostCard from "@/components/blog/PostCard/PostCard";
+
 export default function Home() {
+    const renderedSkills = skills.map((s) => {
+      return (
+        <div key={s.id} className="col">
+          <SkillCard {...s} />
+        </div>
+      );
+    });
+    const renderedInstructors = instructors.map((i) => {
+      return (
+        <div key={i.id} className="col">
+          <InstructorCard {...i} />
+        </div>
+      );
+    });
+    const mappedCategories = coursesCategories.map((record) => {
+      return <PopularCategory key={record.id} {...record} />;
+    });
+    const renderedCourses = courses.slice(0, 6).map((c) => {
+      return (
+        <div key={c.id} className="col">
+          <CourseCard {...c} />
+        </div>
+      );
+    });
+    const renderedPosts = posts.slice(0, 3).map((p) => {
+      return (
+        <div key={p.id} className="col">
+          <PostCard {...p} />
+        </div>
+      );
+    });
   return (
     <>
       <section className="banner-section">
@@ -151,7 +189,7 @@ export default function Home() {
           </div>
           <div className="section-wrapper">
             <div className="row g-4 justify-content-center row-cols-lg-2 row-cols-1">
-              {/* {renderedCourses} */}
+              {renderedCourses}
             </div>
           </div>
         </div>
@@ -164,7 +202,7 @@ export default function Home() {
           </div>
           <div className="section-wrapper">
             <div className="row g-4 justify-content-center row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1">
-              {/* {mappedCategories} */}
+              {mappedCategories}
             </div>
           </div>
         </div>
@@ -283,7 +321,7 @@ export default function Home() {
           </div>
           <div className="section-wrapper">
             <div className="row g-4 justify-content-center row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
-              {/* {renderedInstructors} */}
+              {renderedInstructors}
             </div>
             <div className="text-center footer-btn">
               <p>
@@ -310,7 +348,7 @@ export default function Home() {
             <div className="col-lg-7 col-12">
               <div className="section-wrpper">
                 <div className="row g-4 justify-content-center row-cols-sm-2 row-cols-1">
-                  {/* {renderedSkills} */}
+                  {renderedSkills}
                 </div>
               </div>
             </div>
@@ -404,7 +442,7 @@ export default function Home() {
           </div>
           <div className="section-wrapper">
             <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center g-4">
-              {/* {renderedPosts} */}
+              {renderedPosts}
             </div>
           </div>
         </div>

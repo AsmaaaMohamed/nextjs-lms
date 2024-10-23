@@ -1,0 +1,128 @@
+.post-item .post-inner {
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(16,17,21,.1);
+    transition: all .3s ease;
+}
+.post-item .post-inner:hover {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+.post-item .post-inner,
+.post-item .post-inner .post-content {
+    padding: 15px;
+}
+.post-item .post-inner{
+    background-color: #fff;
+}
+.post-item .post-inner .post-thumb a{
+    display: block;
+}
+.post-item .post-inner .post-content {
+    padding-top: 20px;
+}
+
+.post-item .post-inner .post-content .meta-post{
+    margin-bottom: 15px;
+}
+.post-item .post-inner .post-content .meta-post ul li{
+    margin-right: 15px;
+}
+.post-item .post-inner .post-content .meta-post ul li i{
+    margin-right: 5px;
+}
+.post-item .post-inner .post-footer .pf-right i {
+    font-size: 1.5rem;
+}
+.post-item .post-inner .post-content p{
+    margin-bottom: 5px;
+}
+.post-item .post-inner .post-footer{
+    justify-content: space-between;
+}
+.post-item .post-inner .post-footer {
+    border-top: 1px solid #ecf0f3;
+    margin: 0 15px;
+    padding-top: 15px;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count {
+    border-radius: 100%;
+    box-shadow: 0 3px 10px rgba(16,17,21,.1);
+    font-size: 12px;
+    height: 16px;
+    left: 5px;
+    line-height: 16px;
+    top: 2px;
+    width: 16px;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count{
+    display: inline-block;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count{
+    background: #f16126;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count {
+    font-weight: 700;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count,
+.post-item.qute-post .post-inner .post-thumb .qute-content h4{
+    color: #fff;
+}
+.post-item .post-inner .post-footer .pf-right .comment-count,
+.post-item.slider-post .post-inner .post-thumb.post-thumb-slider .post-thumb-slider-next,
+.post-item.slider-post .post-inner .post-thumb.post-thumb-slider .post-thumb-slider-prev{
+    content: "";
+    position: absolute;
+}
+.post-item .post-inner .post-footer .pf-right,
+.post-item.qute-post .post-inner .post-thumb,
+.post-item.slider-post .post-inner .post-thumb.post-thumb-slider,
+.post-item.video-post .post-thumb{
+    position: relative;
+}
+.post-item .post-inner .post-content .meta-post ul,
+.post-item .post-inner .post-footer,
+.post-item.slider-post .post-inner .post-thumb.post-thumb-slider{
+    display: flex;
+    flex-wrap: wrap;
+}
+.post-item .post-inner .post-content .meta-post ul,
+.post-item .post-inner .post-footer{
+    align-items: center;
+}
+.post-item .post-inner .post-content .meta-post ul li a:hover,
+.post-item .post-inner .post-content .meta-post ul li i,
+.post-item .post-inner:hover .post-content h4,
+.post-item .post-inner .post-content h2.opps,
+.post-item .post-inner:hover .post-content a>h2,
+.post-item .post-inner:hover .post-content h3{
+    color: #f16126;
+}
+.achieve-item .achieve-inner,
+.banner-section, .banner-section.style-4 .banner-content form,
+.cart-plus-minus, .client-item .client-inner .client-thumb,
+.clients-section,
+.course-item .course-inner .course-content h4,
+.course-item .course-inner .course-thumb,
+.course-section .section-wrapper .course-slider,
+.event-item .event-inner .event-thumb, 
+.instructor-section,
+.post-item .post-inner .post-content h4,
+.post-item .post-inner .post-content a>h2,
+.post-item .post-inner .post-content h3,
+.post-item .post-inner .post-thumb,
+.preloader, .shop-cart .section-wrapper .cart-bottom,
+.shop-single .product-details,
+.sponsor-section .section-wrapper, 
+.widget.widget-post ul.widget-wrapper li .post-content a h6,
+.yellow-color-section .post-item.style-3 .post-inner .post-thumb {
+    overflow: hidden;
+}
+.comments .comment-list .comment .comment-list,
+.course-section .section-header .course-navigations .course-navi:last-child,
+.event-item .event-inner .event-content .event-content-info ul li:last-child,
+.post-item .post-inner .post-content .meta-post ul li:last-child,
+.widget.shop-widget .widget-wrapper .shop-menu li.menu-item-has-children,
+footer .footer-bottom .section-wrapper .footer-bottom-list a:last-child,
+footer .footer-top .footer-item.our-address .footer-inner .footer-content .content ul li i {
+    margin-right: 0;
+}
