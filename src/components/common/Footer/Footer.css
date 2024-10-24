@@ -1,4 +1,35 @@
+/* Newsletter Section */
+.news-footer-wrap {
+    background: #1f1f33;
+}
+.news-letter {
+    padding: 60px 0;
+}
+.news-letter .section-wrapper {
+    border-bottom: 1px solid #363648;
+    padding-bottom: 40px;
+    z-index: 1;
+}
+.news-letter .section-wrapper .news-title {
+    margin-bottom: 30px;
+}
+.news-footer-wrap .fs-shape img.fst-1 {
+    left: -60px;
+    top: 0;
+}
+.news-footer-wrap .fs-shape img.fst-2 {
+    bottom: 104px;
+    right: 0;
+}
+.news-letter .section-wrapper {
+    align-items: center;
+}
+.news-letter .section-wrapper .news-title h3{
+    margin: 0;
+}
 /* Footer Section */
+.news-letter .section-wrapper .news-form form .nf-list input[type=submit],
+.news-letter .section-wrapper .news-title h3,
 .footer-top .footer-item .footer-inner .footer-content .content ul li a,
 .footer-top .footer-item .footer-inner .footer-content .title h4,
 .footer-top .footer-item.our-address .footer-inner .footer-content .content p,
@@ -32,16 +63,21 @@ footer .footer-bottom .section-wrapper{
 .footer-top .footer-item .footer-inner .footer-content .title h4::after{
     background: #26c976;
 }
+.news-footer-wrap .fs-shape img,
 .footer-top .footer-item .footer-inner .footer-content .title h4::after{
     content: "";
     position: absolute;
 }
+.news-letter .section-wrapper,
+.news-letter .section-wrapper .news-form form .nf-list,
+.news-footer-wrap,
 .footer-top .footer-item .footer-inner .footer-content .title h4{
     position: relative;
 }
 footer .footer-bottom .section-wrapper {
     align-items: center;
 }
+.news-letter .section-wrapper,
 footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .content ul li{
     display: flex;
     flex-wrap: wrap;
@@ -157,6 +193,12 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
         top: 58%;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
+    }
+}
+@media (min-width: 992px){
+    .news-letter .section-wrapper {
+        margin-bottom: 40px;
+        padding-bottom: 60px;
     }
 }
 @media (min-width: 1200px){

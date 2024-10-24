@@ -1,0 +1,27 @@
+.widget.shop-widget .widget-wrapper .shop-menu li a {
+    font-weight: 500;
+}
+.shop-menu li:hover>a {
+    color: #f16126 !important;
+}
+.shop-menu li a:after,
+.shop-menu li a:before {
+    background: #101115;
+    right: 0;
+}
+.shop-menu li a:before {
+    right: 4px;
+}
+.shop-menu li.open>a:after,
+.shop-menu li:hover>a:hover:after,
+.shop-menu li:hover>a:hover:before {
+    background: #f16126;
+}
+.shop-menu li:hover>a:before {
+    opacity: 1;
+    -webkit-transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) rotate(0deg);
+}
+.widget.shop-widget .widget-wrapper li {
+    padding: 15px 25px;
+}

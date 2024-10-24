@@ -1,0 +1,7 @@
+.course-showing-part{
+    margin-bottom: 20px;
+}
+.course-showing-part .course-showing-part-right .select-item .select-icon,
+.course-showing-part .course-showing-part-right .select-item select{
+    color: #f16126;
+}

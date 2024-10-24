@@ -1,0 +1,29 @@
+.widget .widget-header,
+.widget.letest-product .widget-wrapper ul li .product-thumb,
+.widget.recipe-categori{
+    overflow: hidden;
+}
+.widget.widget-post,
+.widget.widget-post ul.widget-wrapper{
+    padding: 0;
+}
+.widget.widget-post ul.widget-wrapper li .post-content a h6 {
+    font-weight: 500 !important;
+    line-height: 1.2;
+    transition: all .3s ease;
+}
+.widget.widget-post ul.widget-wrapper li .post-thumb {
+    height: 80px;
+    width: 90px;
+}
+.widget.widget-post ul.widget-wrapper li .post-content {
+    width: calc(100% - 110px);
+}
+.widget-post .widget-wrapper li {
+    border-bottom: 1px solid #ecf0f3;
+    list-style: none;
+    padding: 15px 25px;
+}
+.widget-post .widget-wrapper li img{
+    height: 100%;
+}

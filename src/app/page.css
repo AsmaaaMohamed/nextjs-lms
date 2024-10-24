@@ -1,7 +1,4 @@
-/* Global */
-.padding-tb {
-    padding: 70px 0;
-}
+
 /* Banner styles */
 .banner-section{
     background-image: url('/assets/images/banner/background.jpg');
@@ -45,14 +42,6 @@
 .banner-section .section-wrapper .banner-content .desc {
     margin-bottom: 25px;
 }
-p{
-    color: #555;
-}
-h1, h2, h3, h4, h5, h6 {
-    color: #101115;
-    font-weight: 700 !important;
-}
-
 .srchcourse button, .srchcourse input {
     border-radius: unset !important;
     border: unset !important;
@@ -107,22 +96,6 @@ form.srchcourse{
     margin-bottom: 0;
     max-width: 80%;
 }
-
-/* Featured Section */
-
-.section-header .subtitle {
-    color: #f16126;
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-}
-.section-header {
-    margin-bottom: 50px;
-}
-
 /* Student feedback Section */
 .student-feedbak-section:before {
     border-bottom: 786px solid #26c976;
@@ -132,7 +105,8 @@ form.srchcourse{
     width: 50%;
 }
 .student-feedbak-section:before,
-.student-feedbak-section .section-wrapper .sf-left .sfl-thumb .video-button{
+.student-feedbak-section .section-wrapper .sf-left .sfl-thumb .video-button
+{
     content: "";
     position: absolute;
 }
@@ -237,35 +211,8 @@ form.srchcourse{
 .count-item .count-inner {
     padding: 5px 30px;
 }
-/* Newsletter Section */
-.news-footer-wrap {
-    background: #1f1f33;
-}
-.news-letter {
-    padding: 60px 0;
-}
-.news-letter .section-wrapper {
-    border-bottom: 1px solid #363648;
-    padding-bottom: 40px;
-    z-index: 1;
-}
-.news-letter .section-wrapper .news-title {
-    margin-bottom: 30px;
-}
-.news-footer-wrap .fs-shape img.fst-1 {
-    left: -60px;
-    top: 0;
-}
-.news-footer-wrap .fs-shape img.fst-2 {
-    bottom: 104px;
-    right: 0;
-}
-
 
 /* Grouped styles */
-.news-letter .section-wrapper {
-    align-items: center;
-}
 .achieve-part .col:last-child .achieve-item .achieve-inner .achieve-content .lab-btn,
 .banner-section .cbs-content-list ul li.shape-1 a::after,
 .course-navi.active,
@@ -279,19 +226,16 @@ form.srchcourse{
     background: #26c976;
 }
 .stu-feed-item .stu-feed-inner .stu-feed-top,
-.stu-feed-item .stu-feed-inner .stu-feed-top .sft-left,
-.news-letter .section-wrapper{
+.stu-feed-item .stu-feed-inner .stu-feed-top .sft-left{
     display: flex;
     flex-wrap: wrap;
 }
-.news-footer-wrap .fs-shape img,
 .shape-img::after,
 .skill-section:before{
     content: "";
     position: absolute;
 }
-.news-letter .section-wrapper .news-form form .nf-list input[type=submit],
-.news-letter .section-wrapper .news-title h3,
+
 .newsletters-section .newsletter-area .news-mass,
 .skill-section .section-header .title,
 .lab-btn span{
@@ -299,7 +243,6 @@ form.srchcourse{
 }
 .thumb-part,
 .skill-section, .skill-section .container,
-.news-footer-wrap, .news-letter .section-wrapper, .news-letter .section-wrapper .news-form form .nf-list,
 .newsletters-section, .newsletters-section .newsletter-area, .newsletters-section .newsletter-area .news-mass i{
     position: relative;
 }
@@ -348,8 +291,6 @@ form.srchcourse{
 .header-top-area .social-icons li p,
 .instructor-section .section-wrapper .footer-btn p,
 .post-item.qute-post .post-inner .post-thumb .qute-content h4,
-.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .coupon input,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul li .pull-right,
 .shop-single .product-details .post-content form .discount-code input,
 .shop-single .review .review-content .review-showing .content li .post-content .entry-content p,
 .shop-single .review .review-content .review-showing .content li .post-content .entry-meta .posted-on p,
@@ -399,8 +340,6 @@ form.srchcourse{
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-thumb,
 .map-area, .offer-section .section-wrapper .date,
 .register-section .section-wrapper h4,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping h3,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview h3,
 .shop-single .review .review-content .review-showing .client-review .review-form form input,
 .skill-section .section-header .title {
     margin-bottom: 30px;
@@ -427,11 +366,6 @@ form.srchcourse{
 .map-area .maps, .map-area .maps iframe, .menu-search-form,
 .post-item .post-inner .post-thumb a img,
 .post-item.qute-post .post-inner .post-thumb .qute-content,  
-.shop-cart .section-wrapper .cart-bottom .cart-checkout-box .cart-checkout,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .cart-page-input-text,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .outline-select select,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping .outline-select.shipping-select,
-.shop-cart .section-wrapper .cart-top table,
 .shop-single .product-details .post-content form .discount-code,
 .shop-single .product-details .post-content form .select-product,
 .shop-single .product-details .post-content form .select-product select,
@@ -449,17 +383,12 @@ input,
 select, textarea {
     width: 100%;
 }
-
-.cart-plus-minus .cart-plus-minus-box,
-.cart-plus-minus .qtybutton,
 .comments .comment-list,
 .comments .comment-list .comment .com-content .com-title .com-title-meta h6,
 .course-item .course-inner .course-content .course-footer .course-author,
 .header-top-area .social-icons,
 .instructor-section .section-wrapper .count-item .count-inner .count-icon,
 .instructor-single-section .instructor-wrapper .instructor-single-bottom .skill-item p,
-.news-letter .section-wrapper .news-title h3,
-.shop-cart .section-wrapper .cart-bottom .shiping-box .cart-overview ul,
 .shop-single .review .review-content .description .post-item .post-content ul,
 .shop-single .review .review-content .review-showing .client-review .review-form form .rating ul,
 .shop-single .review .review-content .review-showing .content,
@@ -495,10 +424,7 @@ select, textarea {
     .padding-tb {
         padding: 110px 0;
     }
-    .news-letter .section-wrapper {
-        margin-bottom: 40px;
-        padding-bottom: 60px;
-    }
+    
 }
 @media (min-width: 576px){
     .video-button {

@@ -1,0 +1,23 @@
+.shop-page .shop-title p{
+    margin-bottom: 0;
+}
+.shop-page .shop-title {
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    padding: 16px 20px;
+}
+.shop-page .shop-title .product-view-mode a:last-child {
+    margin-left: 5px;
+}
+.shop-page .shop-title .product-view-mode a {
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.gridActive .grid i {
+    fill: #f16126 !important;
+}
+.listActive .list {
+    color: #f16126 !important;
+}
+.gridActive .grid, .listActive .list {
+    color: #f16126 !important;
+}

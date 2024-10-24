@@ -1,0 +1,65 @@
+.map-area .maps {
+    border: 10px solid #fff;
+    border-radius: 4px;
+    height: 398px;
+}
+.contact-item {
+    border-radius: 4px;
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    padding: 20px 30px;
+}
+.contact-item .contact-content {
+    width: calc(100% - 50px);
+}
+.banner-section.style-5 .section-wrapper .banner-content,
+.contact-item .contact-content,
+.widget.letest-product .widget-wrapper ul li .product-content {
+    padding-left: 15px;
+}
+.contact-form .form-group {
+    margin-bottom: 30px;
+    width: 100%;
+}
+.contact-form .form-group input, .contact-form .form-group textarea {
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.06);
+}
+.contact-form .form-group input {
+    height: 57px;
+    padding: 0 25px;
+}
+.contact-form {
+    justify-content: space-between;
+    margin-bottom: -30px;
+}
+.contact-form .form-group textarea {
+    color: #391965;
+    display: flex;
+    padding: 25px;
+}
+.contact-form .form-group input, .contact-form .form-group textarea {
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.06);
+}
+ .contact-section form .btn, .contact-section form .btn:active {
+    background-color: #f16126;
+    border-color: #f16126;
+}
+@media (min-width: 1200px){
+    .contact-section .contact-form, .contact-section .section-header {
+        margin: 0 auto;
+        max-width: 60%;
+    }
+    .contact-section .section-header {
+        margin: 0 auto 40px;
+    }
+}
+@media (min-width: 576px){
+    .contact-form .form-group {
+        width: calc(50% - 15px);
+    }
+}

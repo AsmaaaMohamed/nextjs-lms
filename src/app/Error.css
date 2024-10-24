@@ -1,0 +1,19 @@
+.four-zero-section .four-zero-content .title {
+    font-size: 42px;
+}
+.comment-respond .add-comment .comment-form .lab-btn,
+.four-zero-section .four-zero-content .title, .or {
+    text-transform: uppercase;
+}
+@media (min-width: 1200px) {
+    .four-zero-section .four-zero-content .title {
+        font-size: 100px;
+        line-height: 1;
+    }
+}
+@media (min-width: 576px) {
+    .four-zero-section .four-zero-content p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+}

@@ -133,7 +133,7 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
           <Nav className="btns-container d-none d-md-flex">
-            <Button className="login" onClick={() => console.log("login")}>
+            <Button className="login" onClick={() => router.push('/login')}>
               <i className="icofont-user icofont"></i>Log in
             </Button>
             <Button className="signup" onClick={() => console.log("sign up")}>

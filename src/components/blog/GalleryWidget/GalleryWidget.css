@@ -1,0 +1,14 @@
+.widget.widget-instagram,
+.widget.widget-instagram ul.widget-wrapper li{
+    padding: 0;
+}
+.widget.widget-instagram ul.widget-wrapper li a {
+    margin: 5px;
+}
+.widget.widget-instagram ul.widget-wrapper li {
+    border: none;
+    width: 33.33333%;
+}
+.widget.widget-instagram ul.widget-wrapper {
+    padding: 25px 20px;
+}

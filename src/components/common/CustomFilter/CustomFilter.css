@@ -1,0 +1,22 @@
+.group-select-section {
+    padding: 26px 0;
+}
+.select-item select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 11px;
+    padding-right: 43px;
+}
+.group-select-section .group-select-left i{
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-right: 5px;
+}
+.group-select-section .group-select-left span {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #fff;
+}

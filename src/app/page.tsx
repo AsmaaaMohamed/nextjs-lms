@@ -53,7 +53,7 @@ export default function Home() {
     });
   return (
     <>
-      <section className="banner-section">
+      <section className="banner-section pt-">
         <div className="container">
           <div className="section-wrapper">
             <div className="row align-items-center flex-row-reverse">

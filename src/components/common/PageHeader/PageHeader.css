@@ -1,0 +1,10 @@
+.pageheader-section {
+  background-image: url(/assets/images/banner/download.jpeg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 250px 0 100px;
+}
+.pageheader-section .pageheader-content h2 {
+  margin-bottom: 10px;
+}

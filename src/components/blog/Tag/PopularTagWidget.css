@@ -1,0 +1,29 @@
+.widget.widget-tags ul.widget-wrapper li a {
+  border: 1px solid #ecf0f3;
+  font-size: 14px;
+  margin: 5px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+.widget.widget-tags ul.widget-wrapper li {
+  border: none;
+}
+.widget.widget-tags ul.widget-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.widget.widget-tags ul.widget-wrapper li a.active,
+.widget.widget-tags ul.widget-wrapper li a:hover {
+  background: #f16126;
+}
+.app-section .section-wrapper ul,
+.banner-section.style-4 .banner-content ul,
+.course-item.style-3 .course-inner .course-content .course-details,
+.course-item.style-3 .course-inner .course-thumb .course-info,
+.default-pagination,
+.news-letter .section-wrapper,
+.offer-section .section-wrapper .date,
+.widget.widget-tags ul.widget-wrapper {
+  justify-content: center;
+}

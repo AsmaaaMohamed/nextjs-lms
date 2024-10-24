@@ -99,7 +99,6 @@
 }
 .achieve-item .achieve-inner,
 .banner-section, .banner-section.style-4 .banner-content form,
-.cart-plus-minus, .client-item .client-inner .client-thumb,
 .clients-section,
 .course-item .course-inner .course-content h4,
 .course-item .course-inner .course-thumb,
@@ -110,7 +109,7 @@
 .post-item .post-inner .post-content a>h2,
 .post-item .post-inner .post-content h3,
 .post-item .post-inner .post-thumb,
-.preloader, .shop-cart .section-wrapper .cart-bottom,
+.preloader, 
 .shop-single .product-details,
 .sponsor-section .section-wrapper, 
 .widget.widget-post ul.widget-wrapper li .post-content a h6,
