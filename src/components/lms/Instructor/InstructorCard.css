@@ -74,7 +74,6 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 .instructor-item .instructor-inner .instructor-content .ratting i {
     color: #f16126;
 }
-.contact-item .contact-content .title,
 .course-video .course-video-content .accordion-item .accordion-header button,
 .instructor-item .instructor-inner .instructor-content h4,
 .instructor-item .instructor-inner .instructor-content p,
@@ -97,11 +96,9 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 
 .choose-section .section-header ul li i,
 .event-item .event-inner .event-content .event-content-info ul li i,
-.header-top-area .left li i,
 .instructor-item .instructor-footer ul li i,
 .instructor-item.style-2 .instructor-inner .instructor-content .ins-info li i,
 .instructor-section.style-2 .section-wrapper .count-item .count-inner .count-content span,
-.pageheader-section.style-2 .pageheader-content .phs-thumb .course-reiew .ratting,
-.social-icons li {
+.pageheader-section.style-2 .pageheader-content .phs-thumb .course-reiew .ratting {
     margin-right: 5px;
 }

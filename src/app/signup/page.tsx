@@ -1,59 +1,35 @@
-import { Button, Form, Spinner } from "react-bootstrap";
-import { PageHeader } from "@components/common";
-import { Fragment, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actAuthRegister, resetErrorMessages } from "@store/auth/authSlice";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { signUpSchema, type signUpType } from "@validations/signUpSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@components/forms";
-import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
-import { useNavigate } from "react-router-dom";
+"use client";
+
+import PageHeader from "@/components/common/PageHeader/PageHeader";
+import { useFormik } from "formik";
+import { Fragment } from "react";
+import { Button, Form } from "react-bootstrap";
+import * as yup from "yup";
 
 const SignupPage = () => {
-  const disparch = useAppDispatch();
-  const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    getFieldState,
-    trigger,
-    formState: { errors },
-  } = useForm<signUpType>({
-    resolver: zodResolver(signUpSchema),
-    mode: "onBlur",
+  const loginSchema = yup.object({
+    username: yup.string().required("User Name is required"),
+    email: yup
+      .string()
+      .email("Enter a valid email")
+      .required("Email is required"),
+    password: yup.string().required("Password is required"),
+    confirmPassword: yup.string().required("Please confirm password"),
   });
-  const { loading, error } = useAppSelector((state) => state.auth);
-  const {
-    checkEmailAvailability,
-    prevEnteredEmail,
-    emailAvailabilityStatus,
-    resetCheckEmailAvailability,
-  } = useCheckEmailAvailability();
-  const emailOnBlurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
-    await trigger("email");
-    const inputValue = e.target.value;
-    const { isDirty, invalid } = getFieldState("email");
-    if (isDirty && !invalid && prevEnteredEmail !== inputValue) {
-      checkEmailAvailability(inputValue);
-    }
-    if (isDirty && invalid && prevEnteredEmail) {
-      resetCheckEmailAvailability();
-    }
-  };
-  const submitForm: SubmitHandler<signUpType> = async (data) => {
-    const { username, email, password } = data;
-    disparch(actAuthRegister({ username, email, password }))
-      .unwrap()
-      .then(() => {
-        navigate("/login?message=account_created");
-      });
-  };
-  useEffect(() => {
-    return () => {
-      disparch(resetErrorMessages());
-    };
-  }, [disparch]);
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validateOnChange: true,
+    validateOnBlur: true,
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
   return (
     <Fragment>
       <PageHeader />
@@ -61,80 +37,87 @@ const SignupPage = () => {
         <div className="container">
           <div className="account-wrapper">
             <h3 className="title">Register Now</h3>
-            <Form className="account-form" onSubmit={handleSubmit(submitForm)}>
-              <Input
-                placeHolder="User Name *"
-                register={register}
-                error={errors.username?.message}
-                name="username"
-              />
-              <Input
-                placeHolder="Email *"
-                register={register}
-                name="email"
-                type="email"
-                onBlur={emailOnBlurHandler}
-                error={
-                  errors.email?.message
-                    ? errors.email?.message
-                    : emailAvailabilityStatus === "notAvailable"
-                    ? "This email is already in use."
-                    : emailAvailabilityStatus === "failed"
-                    ? "Error from the server."
-                    : ""
-                }
-                formText={
-                  emailAvailabilityStatus === "checking"
-                    ? "We're currently checking the availability of this email address. Please wait a moment."
-                    : ""
-                }
-                success={
-                  emailAvailabilityStatus === "available"
-                    ? "This email is available for use."
-                    : ""
-                }
-                disabled={emailAvailabilityStatus === "checking"}
-              />
-              <Input
-                placeHolder="Password *"
-                register={register}
-                error={errors.password?.message}
-                name="password"
-                type="password"
-              />
-              <Input
-                placeHolder="Confirm Password *"
-                register={register}
-                error={errors.confirmPassword?.message}
-                name="confirmPassword"
-                type="password"
-              />
+            <Form className="account-form" onSubmit={formik.handleSubmit}>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="User Name *"
+                  value={formik.values.username}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={!formik.errors.username && formik.touched.username}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.username && formik.touched.username ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.username}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="text"
+                  name="email"
+                  placeholder="Email *"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={!formik.errors.email && formik.touched.email}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.email && formik.touched.email ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.email}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password *"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={!formik.errors.password && formik.touched.password}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.password && formik.touched.password ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.password}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password *"
+                  value={formik.values.confirmPassword}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={
+                    !formik.errors.confirmPassword &&
+                    formik.touched.confirmPassword
+                  }
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.confirmPassword &&
+                formik.touched.confirmPassword ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.confirmPassword}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Button
                   variant="primary"
                   type="submit"
                   className="lab-btn d-block"
-                  disabled={
-                    emailAvailabilityStatus === "checking" ||
-                    loading === "pending"
-                  }
                 >
-                  <>
-                    {loading === "pending" ? (
-                      <Spinner
-                        animation="border"
-                        size="sm"
-                        style={{ marginRight: "4px" }}
-                      ></Spinner>
-                    ) : (
-                      ""
-                    )}
-                    Get Started Now
-                  </>
+                  <>Get Started Now</>
                 </Button>
-                {error && (
-                  <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
-                )}
               </Form.Group>
             </Form>
             <div className="account-bottom">

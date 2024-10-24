@@ -221,6 +221,7 @@ export default function Home() {
                     <Image
                       src={StudentFeedbackLeftImg}
                       alt="student feedback"
+                      style={{maxHeight:'426px'}}
                     />
                     <a
                       href="https://www.youtube.com/embed/MU3qrgR2Kkc"

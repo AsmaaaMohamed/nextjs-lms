@@ -7,9 +7,34 @@
     border-radius: 4px;
     box-shadow: 0 0 10px hsla(0,0%,53%,.1);
     padding: 20px 30px;
+    background-color: #fff;
+    align-items: center;
+}
+.contact-info-section .section-wrapper,
+.contact-item, .course-item .course-inner .course-content .course-category{
+    display: flex;
+    flex-wrap: wrap;
+}
+.contact-item, .course-single-section .course-item .course-inner .course-content ul{
+    margin-bottom: 10px;
+}
+.contact-item .contact-content .title{
+    margin-bottom: 5px;
 }
 .contact-item .contact-content {
     width: calc(100% - 50px);
+}
+.contact-item .contact-content p{
+    margin-bottom: 0;
+}
+.map-area{
+    margin-bottom: 30px;
+}
+.map-area .maps, .map-area .maps iframe{
+    width: 100%;
+}
+.map-area .maps iframe{
+    height: 100%;
 }
 .banner-section.style-5 .section-wrapper .banner-content,
 .contact-item .contact-content,

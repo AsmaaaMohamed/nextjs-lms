@@ -2,8 +2,7 @@
 .skill-section .section-header .lab-btn {
   background-color: #fff;
 }
-.skill-item .skill-inner,
-.social-icons {
+.skill-item .skill-inner {
   display: flex;
   flex-wrap: wrap;
 }
@@ -32,7 +31,6 @@ footer .footer-bottom .section-wrapper .footer-bottom-list a {
 .event-section:after,
 .feature-section:after,
 .instructor-section:after,
-.map-area .maps iframe,
 .newsletters-section .newsletter-area:after,
 .newsletters-section:after,
 .skill-section:before,

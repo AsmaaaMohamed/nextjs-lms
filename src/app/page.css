@@ -193,13 +193,7 @@ form.srchcourse{
     top: 0;
 }
 
-.lab-btn {
-    background: #f16126;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 10px 30px;
-}
+
 
 .skill-section .section-header .lab-btn:hover,
 .skill-item .skill-inner:hover {
@@ -237,8 +231,7 @@ form.srchcourse{
 }
 
 .newsletters-section .newsletter-area .news-mass,
-.skill-section .section-header .title,
-.lab-btn span{
+.skill-section .section-header .title{
     color: #fff;
 }
 .thumb-part,
@@ -281,14 +274,12 @@ form.srchcourse{
 .comment-respond .add-comment .comment-form p.comment-form-cookies-consent input,
 .comment-respond .add-comment .comment-form p.comment-form-cookies-consent label,
 .comments .comment-list .comment .com-content p,
-.contact-item .contact-content p,
 .contact-section .contact-form .form-group:last-child,
 .count-item .count-inner .count-content p,
 .course-showing-part .course-showing-part-left p,
 .date li .count-title, .date li p,
 .event-item .event-inner .event-content .event-date-info .edi-box p,
 .form-message,
-.header-top-area .social-icons li p,
 .instructor-section .section-wrapper .footer-btn p,
 .post-item.qute-post .post-inner .post-thumb .qute-content h4,
 .shop-single .product-details .post-content form .discount-code input,
@@ -338,7 +329,7 @@ form.srchcourse{
 .four-zero-section .four-zero-content p,
 .instructor-section .section-wrapper .instructor-content p,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-thumb,
-.map-area, .offer-section .section-wrapper .date,
+.offer-section .section-wrapper .date,
 .register-section .section-wrapper h4,
 .shop-single .review .review-content .review-showing .client-review .review-form form input,
 .skill-section .section-header .title {
@@ -363,7 +354,7 @@ form.srchcourse{
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-thumb,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-thumb img,
-.map-area .maps, .map-area .maps iframe, .menu-search-form,
+.menu-search-form,
 .post-item .post-inner .post-thumb a img,
 .post-item.qute-post .post-inner .post-thumb .qute-content,  
 .shop-single .product-details .post-content form .discount-code,
@@ -386,7 +377,6 @@ select, textarea {
 .comments .comment-list,
 .comments .comment-list .comment .com-content .com-title .com-title-meta h6,
 .course-item .course-inner .course-content .course-footer .course-author,
-.header-top-area .social-icons,
 .instructor-section .section-wrapper .count-item .count-inner .count-icon,
 .instructor-single-section .instructor-wrapper .instructor-single-bottom .skill-item p,
 .shop-single .review .review-content .description .post-item .post-content ul,

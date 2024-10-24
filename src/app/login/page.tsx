@@ -1,25 +1,32 @@
+'use client';
+
 import PageHeader from '@/components/common/PageHeader/PageHeader';
+import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 import { Button, Form } from 'react-bootstrap';
-import { Input } from "@components/forms";
+import * as yup from "yup";
+import './Login.css';
 
 const LoginPage = () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<signInType>({
-      mode: "onBlur",
-      resolver: zodResolver(signInSchema),
-    });
-    const submitForm: SubmitHandler<signInType> = async (data) => {
-      if (searchParams.get("message")) setSearchParams("");
-      dispatch(actAuthLogin(data))
-        .unwrap()
-        .then(() => {
-          navigate("/");
-        });
-    };
+  const loginSchema = yup.object({
+    email: yup
+      .string()
+      .email("Enter a valid email")
+      .required("Email is required"),
+    password: yup.string().required("Password is required"),
+  });
+   const formik = useFormik({
+     initialValues: {
+       email: "",
+       password: "",
+     },
+     validateOnChange: true,
+     validateOnBlur: true,
+     validationSchema: loginSchema,
+     onSubmit: (values) => {
+       console.log(values);
+     },
+   });
   return (
     <Fragment>
       <PageHeader />
@@ -36,21 +43,41 @@ const LoginPage = () => {
               <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
             )} */}
             <h3 className="title">Login</h3>
-            <Form className="account-form" >
-              <Input
-                placeHolder="Email *"
-                register={register}
-                error={errors.email?.message}
-                name="email"
-                type="email"
-              />
-              <Input
-                placeHolder="Password *"
-                register={register}
-                error={errors.password?.message}
-                name="password"
-                type="password"
-              />
+            <Form className="account-form" onSubmit={formik.handleSubmit}>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="text"
+                  name="email"
+                  placeholder="Email *"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={!formik.errors.email && formik.touched.email}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.email && formik.touched.email ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.email}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
+              <Form.Group className="form-group mb-3">
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password *"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  isValid={!formik.errors.password && formik.touched.password}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {formik.errors.password && formik.touched.password ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.password}
+                  </Form.Control.Feedback>
+                ) : null}
+              </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
                   type="checkbox"
@@ -64,7 +91,6 @@ const LoginPage = () => {
                   variant="primary"
                   type="submit"
                   className="lab-btn d-block"
-                  disabled
                 >
                   {/* <>
                     {loading === "pending" ? (

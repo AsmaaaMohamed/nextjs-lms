@@ -69,7 +69,7 @@ const Header = () => {
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Navbar.Brand href="/">
-          <Image src={Logo} height="52" alt="image"/>
+          <Image src={Logo} height="52" alt="image" />
         </Navbar.Brand>
         <Nav className="left-nav d-none d-xxl-flex">
           <Form.Select
@@ -133,10 +133,10 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
           <Nav className="btns-container d-none d-md-flex">
-            <Button className="login" onClick={() => router.push('/login')}>
+            <Button className="login" onClick={() => router.push("/login")}>
               <i className="icofont-user icofont"></i>Log in
             </Button>
-            <Button className="signup" onClick={() => console.log("sign up")}>
+            <Button className="signup" onClick={() => router.push("/signup")}>
               <i className="icofont-users icofont"></i>Sign up
             </Button>
           </Nav>

@@ -95,7 +95,6 @@
 .shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:before,
 .shop-single .review .review-content .review-showing .client-review .review-form form button,
 .shop-single .review .review-nav li.active,
-.social-icons li a,
 .workshop-join .section-wrapper .workshop-title h5 {
     background: #f16126;
 }
@@ -116,7 +115,6 @@
 .register-section .section-header p,
 .shop-single .product-details .product-thumb .pro-single-next,
 .shop-single .product-details .product-thumb .pro-single-prev,
-.social-icons li a,
 .video-section .section-wrapper h3,
 .widget.widget-tags ul.widget-wrapper li a.active,
 .widget.widget-tags ul.widget-wrapper li a:hover,
@@ -227,8 +225,6 @@
 .achieve-item .achieve-inner,
 .app-section .section-wrapper ul,
 .banner-section .section-wrapper .banner-content form,
-.contact-info-section .section-wrapper,
-.contact-item, .course-item .course-inner .course-content .course-category,
 .course-item .course-inner .course-content .course-details,
 .course-item .course-inner .course-content .course-footer,
 .course-item .course-inner,
@@ -241,8 +237,7 @@
 .event-item .event-inner .event-content,
 .event-item .event-inner .event-content .event-content-info ul,
 .feature-item .feature-inner,
-.header-section .logo-search-acte, .header-top-area,
-.header-top-area .left,
+.header-section .logo-search-acte,
 .header-wrapper,
 .header-wrapper .menu-area,
 .menu-search-form form, .menu>ul,
@@ -265,7 +260,6 @@
 .count-item .count-inner .count-icon i,
 .course-video .course-video-content .accordion-item .accordion-header span,
 .feature-item .feature-inner .feature-content .lab-btn-text span, .header-bar span,
-.header-top-area .social-icons li a,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li span,
 .pageheader-section .pageheader-content .phs-thumb .course-reiew,
 .pageheader-section .pageheader-content .phs-thumb span,
@@ -280,7 +274,6 @@
 .course-item .course-inner .course-content .course-footer,
 .csdc-lists ul li,
 .event-item .event-inner .event-content,
-.header-top-area,
 .header-wrapper,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item,
 .shop-single .product-details .post-content form,
@@ -291,12 +284,10 @@
     justify-content: space-between;
 }
 .about-section .about-right .section-wrapper ul li,
-.contact-item,
 .course-item .course-inner .course-content .course-footer,
 .course-item .course-inner,
 .feature-item .feature-inner,
 .header-section .logo-search-acte,
-.header-top-area,
 .header-wrapper,
 .header-wrapper .menu-area,
 .instructor-item .instructor-inner,

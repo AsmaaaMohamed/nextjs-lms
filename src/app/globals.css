@@ -121,11 +121,20 @@ textarea {
 }
 .social-icons li a {
   text-align: center;
+  color: #fff;
+}
+.social-icons li {
+    margin-right: 5px;
 }
 .social-icons li a:hover {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .widget {
   box-shadow: 0 0 10px hsla(0, 0%, 53%, 0.1);
   background-color: #fff;
@@ -227,10 +236,6 @@ textarea {
 .stu-feed-item .stu-feed-inner .stu-feed-top .sft-right .ratting i {
   color: #f16126;
 }
-.lab-btn-text i {
-  color: #f16126;
-  margin-left: 5px;
-}
 .account-wrapper {
   background-color: #fff;
   border-radius: 4px;
@@ -301,6 +306,51 @@ textarea {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
 }
+button {
+  border: none;
+  outline: none;
+  padding: 13px 15px;
+  transition: all .3s ease !important;
+}
+.login-section form div:first-child,
+.login-section form div div
+{
+    text-align: left !important;
+}
+.login-section form div:nth-child(3){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+.login-section form .btn,
+.login-section form .btn:active{
+    background-color: #f16126;
+    border-color: #f16126;
+}
+.account-form  .checkgroup input[type=checkbox]{
+    margin: 0;
+    border-color:#7c7c7c
+}
+.account-form  input[type=checkbox] {
+    height: 18px;
+    width: 18px;
+    margin-right: 15px !important;
+}
+.account-form input {
+    border-radius: 2px !important;
+}
+.account-form .form-check,
+.account-form .form-check input{
+    padding: 0;
+}
+.account-form .checkgroup{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.account-form .checkgroup label{
+    color:#555
+}
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -353,18 +403,29 @@ textarea {
 .read-the-docs {
   color: #888;
 }
+.lab-btn span{
+    color: #fff;
+}
+.lab-btn-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
 .lab-btn-text i {
+  color: #f16126;
   margin-left: 5px;
 }
-.lab-btn-text {
-  font-size: 1.125rem;
-  font-weight: 500;
-  text-transform: capitalize;
+.lab-btn {
+    background: #f16126;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px 30px;
 }
-.lab-btn-text {
-  font-size: 1.125rem;
-  font-weight: 500;
-  text-transform: capitalize;
+.lab-btn:hover {
+    box-shadow: 0 5px 10px rgba(241,97,38,.5);
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 /* Grouped styles */
 .lab-btn,
@@ -410,6 +471,7 @@ ul.lab-ul li {
 .section-header {
     margin-bottom: 50px;
 }
+
 
 /* Animation */
 @keyframes logo-spin {
