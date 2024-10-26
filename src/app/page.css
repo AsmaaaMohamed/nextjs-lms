@@ -212,9 +212,7 @@ form.srchcourse{
 .course-navi.active,
 .course-navi:hover,
 .course-side-detail .csd-content .course-enroll .lab-btn,
-.course-video .course-video-content .accordion-item .accordion-header button,
 .instructor-section .section-wrapper .count-item:nth-child(3n+2) .count-inner .count-icon i,
-.pageheader-section .pageheader-content .course-category .course-cate,
 .post-item.qute-post .post-inner .post-thumb,
 .skill-section:before {
     background: #26c976;
@@ -341,7 +339,6 @@ form.srchcourse{
 .comment-respond .add-comment .comment-form p.comment-form-cookies-consent,
 .course-item .course-inner .course-thumb img,
 .course-item .course-inner .course-thumb,
-.course-video .course-video-content .accordion-item .accordion-header button,
 .date li .count-title,
 .date li p,
 .event-item .event-inner .event-content .event-content-info,

@@ -57,7 +57,6 @@
 .account-form .form-group,
 .category-item .category-inner .category-thumb,
 .choose-section .section-header .title,
-.course-video .course-video-title,
 .four-zero-section .four-zero-content .title,
 .four-zero-section .four-zero-content img,
 .instructor-section .section-wrapper .instructor-content .title,
@@ -72,7 +71,6 @@ footer .footer-top .footer-item.our-address .footer-inner .footer-content .conte
 }
 
 .category-item .category-inner .category-content span,
-.course-video .course-video-content .accordion-item .accordion-header button,
 .event-item .event-inner .event-content,
 .event-item .event-inner .event-content>span,
 .feature-item .feature-inner .feature-content a,

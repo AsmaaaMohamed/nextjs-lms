@@ -74,7 +74,6 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 .instructor-item .instructor-inner .instructor-content .ratting i {
     color: #f16126;
 }
-.course-video .course-video-content .accordion-item .accordion-header button,
 .instructor-item .instructor-inner .instructor-content h4,
 .instructor-item .instructor-inner .instructor-content p,
 .instructor-item .instructor-inner .instructor-content h4,
@@ -87,8 +86,6 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 .comment-respond .add-comment .comment-form textarea,
 .course-item .course-inner .course-content,
 .course-side-cetagory .csc-content,
-.course-video .course-video-content .accordion-item .accordion-collapse .video-item-list li,
-.course-video .course-video-content .accordion-item .accordion-header button,
 .instructor-item .instructor-footer,
 .menu-search-form form input{
     padding: 15px;

@@ -456,7 +456,29 @@ ul.lab-ul li {
 .course-section .section-wrapper .col:nth-of-type(6n+6) .course-item .course-inner .course-content .course-category .course-cate a {
   background: #f79a3d;
 }
-
+.pageheader-section .pageheader-content .course-category .course-cate{
+  background: #26c976;
+}
+.course-item .course-inner .course-content .course-category{
+  display: flex;
+  flex-wrap: wrap;
+}
+.pageheader-section .pageheader-content .course-category .course-offer{
+  background: #f16126;
+}
+.pageheader-section .pageheader-content .course-category .course-cate,
+.pageheader-section .pageheader-content .course-category .course-offer{
+  color: #fff;
+}
+.pageheader-section .pageheader-content .course-category .course-cate,
+.pageheader-section .pageheader-thumb{
+  position: relative;
+}
+.pageheader-section .pageheader-content .course-category .course-cate:before,
+.pageheader-section .pageheader-thumb .video-button{
+  content: "";
+  position: absolute;
+}
 /* Featured Section */
 
 .section-header .subtitle {

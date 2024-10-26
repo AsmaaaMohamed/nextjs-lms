@@ -11,7 +11,7 @@
     align-items: center;
 }
 .contact-info-section .section-wrapper,
-.contact-item, .course-item .course-inner .course-content .course-category{
+.contact-item{
     display: flex;
     flex-wrap: wrap;
 }

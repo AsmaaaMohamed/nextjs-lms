@@ -2,12 +2,17 @@ import Image from "next/image";
 import "./CourseCard.css";
 import Link from "next/link";
 
-const CourseCard = ({ title, instructorId, price, img }) => {
+const CourseCard = ({ id,title, instructorId, price, img }) => {
   return (
     <div className="course-item">
       <div className="course-inner">
         <div className="course-thumb">
-          <Image src={img} alt="course rajibraj91 rajibraj" width={242} height={242}/>
+          <Image
+            src={img}
+            alt="course rajibraj91 rajibraj"
+            width={242}
+            height={242}
+          />
           <div className="course-price">${price}</div>
         </div>
         <div className="course-content">
@@ -26,7 +31,7 @@ const CourseCard = ({ title, instructorId, price, img }) => {
               <span className="ratting-count">03 reviews</span>
             </div>
           </div>
-          <Link href="/course-details">
+          <Link href={`/courses/${id}`}>
             <h4>{title}</h4>
           </Link>
           <div className="course-details">
@@ -50,7 +55,7 @@ const CourseCard = ({ title, instructorId, price, img }) => {
               </a>
             </div>
             <div className="course-btn">
-              <Link className="lab-btn-text" href="/course-details">
+              <Link className="lab-btn-text" href={`/courses/${id}`}>
                 Read More
                 <i className="icofont-external-link icofont"></i>
               </Link>
