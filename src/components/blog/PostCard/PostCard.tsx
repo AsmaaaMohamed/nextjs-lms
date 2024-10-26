@@ -14,7 +14,7 @@ const PostCard = ({
     <div className="post-item">
       <div className="post-inner">
         <div className="post-thumb">
-          <a href="/blog-single">
+          <a href={url}>
             <Image src={img} alt="blog thumb rajibraj91 rajibraj" width={386} height={260}/>
           </a>
         </div>

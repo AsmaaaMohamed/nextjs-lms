@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import BannerImg from "/public/assets/images/banner/02.png";
 import BannerImg2 from "/public/assets/images/banner/03.png";
@@ -11,46 +11,73 @@ import StudentFeedbackRightImg2 from "/public/assets/images/feedback/student/02.
 // import AchieveGoalsBg from "../../public/assets/images/media/02.ba699cd616f691881513.png";
 import Image from "next/image";
 import { Button, Form } from "react-bootstrap";
-import "./page.css"
-import { courses, coursesCategories, instructors, posts, skills } from "@/components/utils/data";
+import "./page.css";
+import {
+  courses,
+  coursesCategories,
+  instructors,
+  posts,
+  skills,
+} from "@/utils/data";
 import SkillCard from "@/components/lms/Skill/SkillCard";
 import InstructorCard from "@/components/lms/Instructor/InstructorCard";
 import PopularCategory from "@/components/lms/Category/PopularCategory";
 import CourseCard from "@/components/lms/CourseCard/CourseCard";
 import PostCard from "@/components/blog/PostCard/PostCard";
+import Link from "next/link";
+import { useAppDispatch } from "@/store/hooks";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { setSearchText } from "@/store/lms/search/searchSlice";
 
 export default function Home() {
-    const renderedSkills = skills.map((s) => {
-      return (
-        <div key={s.id} className="col">
-          <SkillCard {...s} />
-        </div>
-      );
-    });
-    const renderedInstructors = instructors.map((i) => {
-      return (
-        <div key={i.id} className="col">
-          <InstructorCard {...i} />
-        </div>
-      );
-    });
-    const mappedCategories = coursesCategories.map((record) => {
-      return <PopularCategory key={record.id} {...record} />;
-    });
-    const renderedCourses = courses.slice(0, 6).map((c) => {
-      return (
-        <div key={c.id} className="col">
-          <CourseCard {...c} />
-        </div>
-      );
-    });
-    const renderedPosts = posts.slice(0, 3).map((p) => {
-      return (
-        <div key={p.id} className="col">
-          <PostCard {...p} />
-        </div>
-      );
-    });
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const [searchCourseName, setSearchCourseName] = useState("");
+    const handleSearchCourseEnter = (e) => {
+      if (e.key === "Enter" && e.target.value !== "") {
+        e.preventDefault();
+        handleClickSearchBtn();
+      }
+    };
+    const handleClickSearchBtn = () => {
+      dispatch(setSearchText(searchCourseName));
+      router.push("/courses");
+    };
+    const handleChangeSearch = (e) => {
+      setSearchCourseName(e.target.value);
+    };
+  const renderedSkills = skills.map((s) => {
+    return (
+      <div key={s.id} className="col">
+        <SkillCard {...s} />
+      </div>
+    );
+  });
+  const renderedInstructors = instructors.map((i) => {
+    return (
+      <div key={i.id} className="col">
+        <InstructorCard {...i} />
+      </div>
+    );
+  });
+  const mappedCategories = coursesCategories.map((record) => {
+    return <PopularCategory key={record.id} {...record} />;
+  });
+  const renderedCourses = courses.slice(0, 6).map((c) => {
+    return (
+      <div key={c.id} className="col">
+        <CourseCard {...c} />
+      </div>
+    );
+  });
+  const renderedPosts = posts.slice(0, 3).map((p) => {
+    return (
+      <div key={p.id} className="col">
+        <PostCard {...p} />
+      </div>
+    );
+  });
   return (
     <>
       <section className="banner-section pt-">
@@ -79,23 +106,28 @@ export default function Home() {
                       placeholder="Keywords of your course"
                       className=""
                       aria-label="Search"
+                      onKeyDown={handleSearchCourseEnter}
+                      onChange={handleChangeSearch}
+                      value={searchCourseName}
                     />
-                    <Button>Search Course</Button>
+                    <Button onClick={handleClickSearchBtn}>
+                      Search Course
+                    </Button>
                   </Form>
                   <div className="banner-catagory d-flex flex-wrap">
                     <p>Most Popular : </p>
                     <ul className="lab-ul d-flex flex-wrap">
                       <li>
-                        <a href="#">Figma</a>
+                        <Link href="/">Figma</Link>
                       </li>
                       <li>
-                        <a href="#">Adobe XD</a>
+                        <Link href="/">Adobe XD</Link>
                       </li>
                       <li>
-                        <a href="#">illustration</a>
+                        <Link href="/">illustration</Link>
                       </li>
                       <li>
-                        <a href="#">Photoshop</a>
+                        <Link href="/">Photoshop</Link>
                       </li>
                     </ul>
                   </div>
@@ -221,7 +253,7 @@ export default function Home() {
                     <Image
                       src={StudentFeedbackLeftImg}
                       alt="student feedback"
-                      style={{maxHeight:'426px'}}
+                      style={{ maxHeight: "426px" }}
                     />
                     <a
                       href="https://www.youtube.com/embed/MU3qrgR2Kkc"

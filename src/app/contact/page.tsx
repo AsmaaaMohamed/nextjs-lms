@@ -2,6 +2,7 @@ import PageHeader from "@/components/common/PageHeader/PageHeader";
 import "./Contact.css";
 import { Fragment } from "react";
 import ContactForm from "@/components/forms/ContactForm/ContactForm";
+import Image from "next/image";
 
 const ContactPage = () => {
   return (
@@ -19,7 +20,12 @@ const ContactPage = () => {
                 <div className="contact-wrapper">
                   <div className="contact-item">
                     <div className="contact-thumb">
-                      <img src="assets/images/icon/01.png" alt="contact icon" />
+                      <Image
+                        src="/assets/images/icon/01.png"
+                        alt="contact icon"
+                        width="36"
+                        height={36}
+                      />
                     </div>
                     <div className="contact-content">
                       <h6 className="title">Office Address</h6>
@@ -28,7 +34,12 @@ const ContactPage = () => {
                   </div>
                   <div className="contact-item">
                     <div className="contact-thumb">
-                      <img src="assets/images/icon/02.png" alt="contact icon" />
+                      <Image
+                        src="/assets/images/icon/02.png"
+                        alt="contact icon"
+                        width="36"
+                        height={36}
+                      />
                     </div>
                     <div className="contact-content">
                       <h6 className="title">Phone number</h6>
@@ -37,7 +48,12 @@ const ContactPage = () => {
                   </div>
                   <div className="contact-item">
                     <div className="contact-thumb">
-                      <img src="assets/images/icon/03.png" alt="contact icon" />
+                      <Image
+                        src="/assets/images/icon/03.png"
+                        alt="contact icon"
+                        width="36"
+                        height={36}
+                      />
                     </div>
                     <div className="contact-content">
                       <h6 className="title">Send email</h6>
@@ -46,7 +62,12 @@ const ContactPage = () => {
                   </div>
                   <div className="contact-item">
                     <div className="contact-thumb">
-                      <img src="assets/images/icon/04.png" alt="contact icon" />
+                      <Image
+                        src="/assets/images/icon/04.png"
+                        alt="contact icon"
+                        width="36"
+                        height={36}
+                      />
                     </div>
                     <div className="contact-content">
                       <h6 className="title">Our website</h6>

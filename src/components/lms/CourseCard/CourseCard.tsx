@@ -46,7 +46,7 @@ const CourseCard = ({ title, instructorId, price, img }) => {
                 height={40}
               />
               <a className="ca-name" href="/team-single">
-                {/* {instructor} */}
+                {instructorId}
               </a>
             </div>
             <div className="course-btn">

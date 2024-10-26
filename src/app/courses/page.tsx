@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import CustomFilter from '@/components/common/CustomFilter/CustomFilter';
-import PageHeader from '@/components/common/PageHeader/PageHeader';
-import CourseCard from '@/components/lms/CourseCard/CourseCard';
-import { courses, coursesCategories } from '@/components/utils/data';
-import React, { Fragment } from 'react'
-import { Form } from 'react-bootstrap';
-import './Courses.css';
+import CustomFilter from "@/components/common/CustomFilter/CustomFilter";
+import PageHeader from "@/components/common/PageHeader/PageHeader";
+import CourseCard from "@/components/lms/CourseCard/CourseCard";
+import { courses, coursesCategories } from "@/utils/data";
+import React, { Fragment } from "react";
+import { Form } from "react-bootstrap";
+import "./Courses.css";
 
 const CoursesPage = () => {
   const mappedOptions = coursesCategories.map((record) => {
     return (
-      <option key={record.id} value={record.prefix}>
+      <option key={record.id} value={record.id}>
         {record.title}
       </option>
     );
   });
-    const renderedCourses = courses.map((c) => {
-      return (
-        <div key={c.id} className="col">
-          <CourseCard {...c} />
-        </div>
-      );
-    });
+  const renderedCourses = courses.map((c) => {
+    return (
+      <div key={c.id} className="col">
+        <CourseCard {...c} />
+      </div>
+    );
+  });
   return (
     <Fragment>
       <PageHeader />
@@ -61,6 +61,6 @@ const CoursesPage = () => {
       </div>
     </Fragment>
   );
-}
+};
 
-export default CoursesPage
+export default CoursesPage;

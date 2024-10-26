@@ -1,22 +1,22 @@
-import ArchiveWidget from '@/components/blog/ArchiveWidget/ArchiveWidget';
-import GalleryWidget from '@/components/blog/GalleryWidget/GalleryWidget';
-import PostCard from '@/components/blog/PostCard/PostCard';
-import PostCategorWidget from '@/components/blog/PostCategoryWidget/PostCategoryWidget';
-import PostPopularWidget from '@/components/blog/PostPopularWidget/PostPopularWidget';
-import PopularTagWidget from '@/components/blog/Tag/PopularTagWidget';
-import PageHeader from '@/components/common/PageHeader/PageHeader';
-import SearchWidget from '@/components/common/SearchWidget/SearchWidget';
-import { posts } from '@/components/utils/data';
-import React, { Fragment } from 'react'
+import ArchiveWidget from "@/components/blog/ArchiveWidget/ArchiveWidget";
+import GalleryWidget from "@/components/blog/GalleryWidget/GalleryWidget";
+import PostCard from "@/components/blog/PostCard/PostCard";
+import PostCategorWidget from "@/components/blog/PostCategoryWidget/PostCategoryWidget";
+import PostPopularWidget from "@/components/blog/PostPopularWidget/PostPopularWidget";
+import PopularTagWidget from "@/components/blog/Tag/PopularTagWidget";
+import PageHeader from "@/components/common/PageHeader/PageHeader";
+import SearchWidget from "@/components/common/SearchWidget/SearchWidget";
+import { posts } from "@/utils/data";
+import React, { Fragment } from "react";
 
 const BlogPage = () => {
-    const renderedPosts = posts.slice(0, 8).map((p) => {
-        return (
-        <div key={p.id} className="col">
-            <PostCard {...p} />
-        </div>
-        );
-    });
+  const renderedPosts = posts.slice(0, 8).map((p) => {
+    return (
+      <div key={p.id} className="col">
+        <PostCard {...p} />
+      </div>
+    );
+  });
   return (
     <Fragment>
       <PageHeader />
@@ -54,6 +54,6 @@ const BlogPage = () => {
       </div>
     </Fragment>
   );
-}
+};
 
 export default BlogPage;

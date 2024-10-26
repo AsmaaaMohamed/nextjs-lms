@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./ProductCard.css";
 
 const ProductCard = () => {
@@ -5,7 +6,7 @@ const ProductCard = () => {
     <div className="product-item">
       <div className="product-thumb">
         <div className="pro-thumb">
-          <img src="assets/images/shop/06.jpg" alt="Product Thumb" />
+          <Image src="assets/images/shop/06.jpg" alt="Product Thumb" />
         </div>
         <div className="product-action-link">
           <a href="#">

@@ -7,20 +7,22 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-// import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useEffect, useContext, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useState } from "react";
 // import actGetCoursesCategories from "@store/lms/categories/act/actGetCategories";
 // import { SearchContext } from "@store/context/searchContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-
+import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
+import { coursesCategories } from "@/utils/data";
+console.log('header')
 const Header = () => {
-//   const dispatch = useAppDispatch();
-//   const { records } = useAppSelector((state) => state.coursesCategories);
+  const dispatch = useAppDispatch();
+  const { category } = useAppSelector((state) => state.search);
+  
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
 //   const {
@@ -29,30 +31,27 @@ const Header = () => {
 //     setSearchCourse,
 //     searchCourse,
 //   } = useContext(SearchContext);
-//   const handleSearchCourseEnter = (e) => {
-//     if (e.key === "Enter") {
-//       e.preventDefault();
-//       navigate("/courses");
-//     }
-//   };
-//   const handleClickSearchBtn = () => {
-//     setSearchCourse(searchCourseName);
-//     navigate("/courses");
-//   };
-  // const handleChangeSearch = (e) => {
-  //   setSearchCourseName(e.target.value);
-  // };
+  const handleSearchCourseEnter = (e) => {
+    if (e.key === "Enter" && e.target.value !== '') {
+      e.preventDefault();
+      handleClickSearchBtn();
+    }
+  };
+  const handleClickSearchBtn = () => {
+    dispatch(setSearchText(searchCourseName));
+    router.push("/courses");
+  };
+  const handleChangeSearch = (e) => {
+    setSearchCourseName(e.target.value);
+  };
 
-//   useEffect(() => {
-//     dispatch(actGetCoursesCategories());
-//   }, [dispatch]);
-//   const mappedOptions = records.map((record) => {
-//     return (
-//       <option key={record.id} value={record.prefix}>
-//         {record.title}
-//       </option>
-//     );
-//   });
+  const mappedOptions = coursesCategories.map((record) => {
+    return (
+      <option key={record.id} value={record.title}>
+        {record.title}
+      </option>
+    );
+  });
   const navClass = "";
 
 //   const loginClickHandle = () => {
@@ -61,26 +60,26 @@ const Header = () => {
 //   const signupClickHandle = () => {
 //     navigate("/signup");
 //   };
-//   const handleCategorySelect = (e) => {
-//     setSelectedCategory(e.target.value);
-//     navigate("/courses");
-//   };
+  const handleCategorySelect = (e) => {
+    dispatch(setCategory(e.target.value));
+    router.push("/courses");
+  };
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} href="/">
           <Image src={Logo} height="52" alt="image" />
         </Navbar.Brand>
         <Nav className="left-nav d-none d-xxl-flex">
           <Form.Select
             aria-label="Default select example"
             className="select-cat"
-            // value={selectedCategory}
-            // onChange={(e) => handleCategorySelect(e)}
+            value={category}
+            onChange={(e) => handleCategorySelect(e)}
           >
             <option>All Categories</option>
             <option>Uncategorized</option>
-            {/* {mappedOptions} */}
+            {mappedOptions}
           </Form.Select>
           <Form className="d-flex">
             <InputGroup>
@@ -89,14 +88,14 @@ const Header = () => {
                 placeholder="Search Here ..."
                 className=""
                 aria-label="Search"
-                // onKeyDown={handleSearchCourseEnter}
-                // onChange={handleChangeSearch}
-                // value={searchCourse}
+                onKeyDown={handleSearchCourseEnter}
+                onChange={handleChangeSearch}
+                value={searchCourseName}
               />
               <Button
                 variant="outline-secondary"
                 id="button-addon1"
-                // onClick={handleClickSearchBtn}
+                onClick={handleClickSearchBtn}
               >
                 <i className="icofont-search icofont"></i>
               </Button>
@@ -116,17 +115,6 @@ const Header = () => {
               <Nav.Link as={Link} href="/courses">
                 Courses
               </Nav.Link>
-              <Nav.Link as={Link} href="/blog">
-                Blog
-              </Nav.Link>
-              <NavDropdown title="Pages" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} href="/shop">
-                  Shop
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/cart">
-                  Cart
-                </NavDropdown.Item>
-              </NavDropdown>
               <Nav.Link as={Link} href="/contact">
                 Contact
               </Nav.Link>

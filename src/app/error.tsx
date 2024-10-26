@@ -31,7 +31,7 @@ const Error = () => {
           <div className="col-lg-8 col-sm-6 col-12">
             <div className="foue-zero-thumb">
               <Image
-                src="assets/images/404.png"
+                src="/assets/images/404.png"
                 alt="CodexCoder"
                 width={200}
                 height={200}

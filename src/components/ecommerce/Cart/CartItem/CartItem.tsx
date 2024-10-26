@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./CartItem.css";
 
 const CartItem = () => {
@@ -6,7 +7,7 @@ const CartItem = () => {
       <td className="product-item cat-product">
         <div className="p-thumb">
           <a href="/shop-single">
-            <img src="assets/images/shop/01.jpg" alt="Product Thumb" />
+            <Image src="assets/images/shop/01.jpg" alt="Product Thumb" />
           </a>
         </div>
         <div className="p-content">
@@ -29,7 +30,7 @@ const CartItem = () => {
       <td className="cat-toprice">$750</td>
       <td className="cat-edit">
         <a href="#">
-          <img src="assets/images/shop/del.png" alt="Remove Thumb" />
+          <Image src="assets/images/shop/del.png" alt="Remove Thumb" />
         </a>
       </td>
     </tr>

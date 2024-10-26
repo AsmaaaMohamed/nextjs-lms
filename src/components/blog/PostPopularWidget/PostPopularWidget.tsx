@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./PostPopularWidget.css";
 const PostPopularWidget = () => {
   return (
@@ -9,7 +10,7 @@ const PostPopularWidget = () => {
         <li className="d-flex flex-wrap justify-content-between">
           <div className="post-thumb">
             <a href="/blog-single">
-              <img src="assets/images/blog/01.jpg" alt="rajibraj91" />
+              <Image src="/assets/images/blog/01.jpg" alt="rajibraj91" />
             </a>
           </div>
           <div className="post-content">
@@ -22,7 +23,7 @@ const PostPopularWidget = () => {
         <li className="d-flex flex-wrap justify-content-between">
           <div className="post-thumb">
             <a href="/blog-single">
-              <img src="assets/images/blog/02.jpg" alt="rajibraj91" />
+              <Image src="assets/images/blog/02.jpg" alt="rajibraj91" />
             </a>
           </div>
           <div className="post-content">
@@ -35,7 +36,7 @@ const PostPopularWidget = () => {
         <li className="d-flex flex-wrap justify-content-between">
           <div className="post-thumb">
             <a href="/blog-single">
-              <img src="assets/images/blog/03.jpg" alt="rajibraj91" />
+              <Image src="assets/images/blog/03.jpg" alt="rajibraj91" />
             </a>
           </div>
           <div className="post-content">
@@ -48,7 +49,7 @@ const PostPopularWidget = () => {
         <li className="d-flex flex-wrap justify-content-between">
           <div className="post-thumb">
             <a href="/blog-single">
-              <img src="assets/images/blog/04.jpg" alt="rajibraj91" />
+              <Image src="assets/images/blog/04.jpg" alt="rajibraj91" />
             </a>
           </div>
           <div className="post-content">
