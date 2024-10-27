@@ -9,20 +9,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useState } from "react";
 // import actGetCoursesCategories from "@store/lms/categories/act/actGetCategories";
 // import { SearchContext } from "@store/context/searchContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
+// import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
 import { coursesCategories } from "@/utils/data";
 console.log('header')
 const Header = () => {
-  const dispatch = useAppDispatch();
-  const { category } = useAppSelector((state) => state.search);
-  
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
 //   const {
@@ -31,19 +27,19 @@ const Header = () => {
 //     setSearchCourse,
 //     searchCourse,
 //   } = useContext(SearchContext);
-  const handleSearchCourseEnter = (e) => {
-    if (e.key === "Enter" && e.target.value !== '') {
-      e.preventDefault();
-      handleClickSearchBtn();
-    }
-  };
-  const handleClickSearchBtn = () => {
-    dispatch(setSearchText(searchCourseName));
-    router.push("/courses");
-  };
-  const handleChangeSearch = (e) => {
-    setSearchCourseName(e.target.value);
-  };
+  // const handleSearchCourseEnter = (e) => {
+  //   if (e.key === "Enter" && e.target.value !== '') {
+  //     e.preventDefault();
+  //     handleClickSearchBtn();
+  //   }
+  // };
+  // const handleClickSearchBtn = () => {
+  //   dispatch(setSearchText(searchCourseName));
+  //   router.push("/courses");
+  // };
+  // const handleChangeSearch = (e) => {
+  //   setSearchCourseName(e.target.value);
+  // };
 
   const mappedOptions = coursesCategories.map((record) => {
     return (
@@ -60,10 +56,10 @@ const Header = () => {
 //   const signupClickHandle = () => {
 //     navigate("/signup");
 //   };
-  const handleCategorySelect = (e) => {
-    dispatch(setCategory(e.target.value));
-    router.push("/courses");
-  };
+  // const handleCategorySelect = (e) => {
+  //   dispatch(setCategory(e.target.value));
+  //   router.push("/courses");
+  // };
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -74,8 +70,8 @@ const Header = () => {
           <Form.Select
             aria-label="Default select example"
             className="select-cat"
-            value={category}
-            onChange={(e) => handleCategorySelect(e)}
+            // value={category}
+            // onChange={(e) => handleCategorySelect(e)}
           >
             <option>All Categories</option>
             <option>Uncategorized</option>
@@ -88,14 +84,14 @@ const Header = () => {
                 placeholder="Search Here ..."
                 className=""
                 aria-label="Search"
-                onKeyDown={handleSearchCourseEnter}
-                onChange={handleChangeSearch}
+                // onKeyDown={handleSearchCourseEnter}
+                // onChange={handleChangeSearch}
                 value={searchCourseName}
               />
               <Button
                 variant="outline-secondary"
                 id="button-addon1"
-                onClick={handleClickSearchBtn}
+                // onClick={handleClickSearchBtn}
               >
                 <i className="icofont-search icofont"></i>
               </Button>
