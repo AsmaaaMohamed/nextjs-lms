@@ -25,13 +25,10 @@ import PopularCategory from "@/components/lms/Category/PopularCategory";
 import CourseCard from "@/components/lms/CourseCard/CourseCard";
 import PostCard from "@/components/blog/PostCard/PostCard";
 import Link from "next/link";
-import { useAppDispatch } from "@/store/hooks";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { setSearchText } from "@/store/lms/search/searchSlice";
 
 export default function Home() {
-    const dispatch = useAppDispatch();
     const router = useRouter();
     const [searchCourseName, setSearchCourseName] = useState("");
     const handleSearchCourseEnter = (e) => {
@@ -41,7 +38,6 @@ export default function Home() {
       }
     };
     const handleClickSearchBtn = () => {
-      dispatch(setSearchText(searchCourseName));
       router.push("/courses");
     };
     const handleChangeSearch = (e) => {
