@@ -1,0 +1,27 @@
+.authors .author-content span{
+    margin-bottom: 10px;
+}
+.authors {
+    align-items: center;
+    box-shadow: 0 0 10px hsla(0,0%,53%,.1);
+    justify-content: space-between;
+    margin: 30px 0;
+    padding: 30px 25px;
+    background-color: #fff;
+}
+.authors .author-thumb {
+    height: 150px;
+    width: 150px;
+}
+.authors{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 576px){
+    .authors .author-content {
+        margin-top: 0;
+        text-align: left;
+        width: calc(100% - 180px);
+    }
+}

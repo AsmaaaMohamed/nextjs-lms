@@ -1,0 +1,98 @@
+.course-side-detail .csd-title {
+    padding: 15px;
+}
+.course-side-detail .csd-title .csdt-left sup {
+    top: -5px;
+}
+.course-side-detail .csd-title{
+    background: #f16126;
+}
+.course-side-detail .csd-content .sidebar-social .ss-content ul li a,
+.course-side-detail .csd-title h4,
+.course-side-detail .csd-title p{
+    color: #fff;
+}
+.course-side-detail .csd-content .sidebar-social .ss-content ul,
+.course-side-detail .csd-title{
+    display: flex;
+    flex-wrap: wrap;
+}
+.course-side-detail .csd-title{
+    justify-content: space-between;
+}
+.course-side-detail .csd-title .csdt-right p i,
+.csdc-lists ul li .csdc-left i{
+    margin-right: 5px;
+}
+.csdc-lists ul li{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.banner-section.style-7 .section-wrapper .banner-bottom,
+.course-side-detail .csd-content {
+    padding: 10px;
+}
+.course-side-detail .csd-content{
+    background-color: #fff;
+}
+.csdc-lists ul li {
+    font-size: 1.125rem;
+    padding: 15px 20px;
+}
+.csdc-lists ul li:nth-child(2n) {
+    background: #f9f9f9;
+}
+.course-side-detail .csd-content .sidebar-payment,
+.course-side-detail .csd-content .sidebar-social {
+    padding: 15px 20px 5px;
+}
+.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-left a,
+.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-right{
+    color: #f16126;
+}
+.course-side-cetagory .csc-content{
+    padding: 15px;
+}
+.course-side-detail .csd-content .course-enroll .lab-btn{
+    background: #26c976;
+}
+.course-side-detail{
+    margin-bottom: 30px;
+}
+.course-side-detail .csd-content .sidebar-social .ss-content ul li a.vimeo,
+.social-icons li a.vimeo {
+    background: #3b5998;
+}
+.course-side-detail .csd-content .sidebar-social .ss-content ul li a {
+    border-radius: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 3px;
+    width: 40px;
+}
+.course-side-detail .csd-content .sidebar-social .ss-content ul li a{
+    text-align: center;
+}
+.course-side-detail .csd-content .course-enroll {
+    padding: 15px 20px;
+}
+
+.app-section .section-header .lab-btn:hover,
+.contact-info-section .section-wrapper .cinfo-or,
+.course-side-detail .csd-content .sidebar-social .ss-content ul li a.rss,
+.event-item .event-inner .event-content .lab-btn,
+.event-item .event-inner .event-content h5,
+.event-section .section-wrapper .event-navi-item.active,
+.event-section .section-wrapper .event-navi-item:hover,
+.feature-section .section-wrapper .feature-item .feature-inner:hover .feature-icon,
+.instructor-section .section-wrapper .count-item:nth-child(3n+3) .count-inner .count-icon i,
+.instructor-section:after,
+.newsletters-section .newsletter-area .section-wrapper .newsletter-form button,
+.offer-section .section-wrapper .lab-btn,
+.register-section .section-wrapper .register-form .lab-btn,
+.scrollToTop.yellow-color i,
+.yellow-color-section .section-header .course-navi
+{
+    background: #ffdf40;
+}

@@ -1,8 +1,18 @@
+
 import { Fragment } from "react";
 import "./CourseDetails.css";
 import Image from "next/image";
+import CourseSideDetails from "@/components/lms/CourseSideDetails/CourseSideDetails";
+import CourseSideCategories from "@/components/lms/CourseSideCategories/CourseSideCategories";
+import Comment from "@/components/Comment/Comment";
+import Author from "@/components/common/Author/Author";
+import Link from "next/link";
 
-const CourseDetails = () => {
+const CourseDetails = async({ params }) => {
+  const {id} = await params
+  console.log('id params' , id)
+  // const {id} = useParams()
+  // console.log(id)
   return (
     <Fragment>
       <div className="pageheader-section style-2">
@@ -17,25 +27,25 @@ const CourseDetails = () => {
                   width={726}
                   height={434}
                 />
-                <a
+                <Link
                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                   className="video-button popup"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="icofont-ui-play icofont"></i>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-lg-5 col-12">
               <div className="pageheader-content">
                 <div className="course-category">
-                  <a href="#" className="course-cate">
+                  <Link href="#" className="course-cate">
                     Adobe XD
-                  </a>
-                  <a href="#" className="course-offer">
+                  </Link>
+                  <Link href="#" className="course-offer">
                     30% Off
-                  </a>
+                  </Link>
                 </div>
                 <h2 className="phs-title">
                   Advanced Adobe Photoshop For Everyone
@@ -159,14 +169,14 @@ const CourseDetails = () => {
                                 1.1 Welcome to the course 02:30 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -175,14 +185,14 @@ const CourseDetails = () => {
                                 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -190,14 +200,14 @@ const CourseDetails = () => {
                                 1.3 Essential Photoshop Tools 03:38 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -205,14 +215,14 @@ const CourseDetails = () => {
                                 1.4 Finding inspiration 02:30 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -220,14 +230,14 @@ const CourseDetails = () => {
                                 1.5 Choosing Your Format 03:48 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                           </ul>
@@ -260,14 +270,14 @@ const CourseDetails = () => {
                                 2.1 Using Adjustment Layers 06:20 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -275,14 +285,14 @@ const CourseDetails = () => {
                                 2.2 Building the composition 07:33 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -290,14 +300,14 @@ const CourseDetails = () => {
                                 2.3 Photoshop Lighting effects 06:30 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -306,14 +316,14 @@ const CourseDetails = () => {
                                 08:34 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                             <li className=" d-flex flex-wrap justify-content-between">
@@ -321,14 +331,14 @@ const CourseDetails = () => {
                                 2.5 Finalizing the details 10:30 minutes
                               </div>
                               <div className="video-item-icon">
-                                <a
+                                <Link
                                   href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg"
                                   className="popup"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   <i className="icofont-play-alt-2 icofont"></i>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                           </ul>
@@ -337,14 +347,14 @@ const CourseDetails = () => {
                     </div>
                   </div>
                 </div>
-                {/* <Author />
-                <Comment /> */}
+                <Author />
+                <Comment /> 
               </div>
             </div>
             <div className="col-lg-4">
               <div className="sidebar-part">
-                {/* <CourseSideDetails />
-                <CourseSideCategories /> */}
+                <CourseSideDetails />
+                <CourseSideCategories />
               </div>
             </div>
           </div>

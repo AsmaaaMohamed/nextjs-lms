@@ -205,9 +205,7 @@
 .shop-single .product-details .product-thumb .pro-single-prev,
 .shop-single .review .review-content .description .post-item .post-content ul li:before,
 .shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:after, 
-.shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:before,
-.video-button:after,
-.video-button:before, 
+.shop-single .review .review-content .review-showing .client-review .review-form .review-title h5:before, 
 .workshop-join .section-wrapper .workshop-title h5:after {
     content: "";
     position: absolute;
@@ -223,7 +221,6 @@
 .course-item .course-inner .course-thumb .course-info,
 .course-item .course-inner .course-thumb .course-category,
 .course-section .section-header .course-navigations,
-.csdc-lists ul li,
 .date, .date li,
 .default-pagination,
 .event-item .event-inner .event-content,
@@ -252,8 +249,6 @@
 .count-item .count-inner .count-icon i,
 .feature-item .feature-inner .feature-content .lab-btn-text span, .header-bar span,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item .instructor-single-content ul li span,
-.pageheader-section .pageheader-content .phs-thumb .course-reiew,
-.pageheader-section .pageheader-content .phs-thumb span,
 .scrollToTop i,
 .section-header .subtitle,
 .workshop-join .section-wrapper .workshop-title h5{
@@ -263,7 +258,6 @@
 .contact-info-section .section-wrapper,
 .course-item .course-inner .course-content .course-details,
 .course-item .course-inner .course-content .course-footer,
-.csdc-lists ul li,
 .event-item .event-inner .event-content,
 .header-wrapper,
 .instructor-single-section .instructor-wrapper .instructor-single-top .instructor-single-item,

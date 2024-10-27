@@ -40,8 +40,6 @@
 .category-item .category-inner:hover .category-content h6,
 .course-item .course-inner .course-content .course-footer .course-author .ca-name:hover,
 .course-item .course-inner:hover .course-content h4,
-.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-left a,
-.course-side-cetagory .csc-content .csdc-lists ul li:hover .csdc-right,
 .date li .count-title, .date li p,
 .event-item .event-inner:hover .event-content .event-content-info h3,
 .event-item .event-inner:hover .event-content .event-content-info h5,
@@ -49,7 +47,6 @@
 .form-message.error,
 .instructor-item:hover .instructor-inner .instructor-content h4,
 .instructor-section .section-wrapper .footer-btn p a,
-.pageheader-section .pageheader-content .phs-thumb .course-reiew .ratting,
 .shop-page .modal .modal-dialog .modal-content button.close,
 .shop-page .section-header h4 span,
 .shop-page .shop-product-wrap .product-item .product-content h5 a:hover,
@@ -58,7 +55,6 @@
 .shop-single .review .review-content .review-showing .content li .post-content .entry-meta .posted-on a:hover,
 .stu-feed-item .stu-feed-inner .stu-feed-top .sft-left .sftl-content h6:hover,
 .theme-color,
-.video-button i,
 .widget.letest-product .widget-wrapper ul li:hover .product-content h6 a,
 .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a.active,
 .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a:hover,
@@ -85,7 +81,6 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 .clients-section .section-wrapper .clients .client-list .client-content,
 .comment-respond .add-comment .comment-form textarea,
 .course-item .course-inner .course-content,
-.course-side-cetagory .csc-content,
 .instructor-item .instructor-footer,
 .menu-search-form form input{
     padding: 15px;
@@ -95,7 +90,6 @@ footer .footer-top .footer-item.twitter-post .footer-inner .footer-content .cont
 .event-item .event-inner .event-content .event-content-info ul li i,
 .instructor-item .instructor-footer ul li i,
 .instructor-item.style-2 .instructor-inner .instructor-content .ins-info li i,
-.instructor-section.style-2 .section-wrapper .count-item .count-inner .count-content span,
-.pageheader-section.style-2 .pageheader-content .phs-thumb .course-reiew .ratting {
+.instructor-section.style-2 .section-wrapper .count-item .count-inner .count-content span{
     margin-right: 5px;
 }

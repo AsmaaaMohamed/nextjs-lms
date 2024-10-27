@@ -33,11 +33,8 @@
 .client-item .client-inner,
 .clients-section.style-2 .section-wrapper .clients .client-list .client-content,
 .clients-slider-nav,
-.comment-respond,
-.comments,
 .contact-info-section .section-wrapper .cinfo-item .cinfo-inner .cinfo-thumb,
 .course-item .course-inner,
-.course-side-cetagory,
 .date li, .event-item,
 .event-section.style-2 .section-wrapper .event-navi-item,
 .feature-item .feature-inner,
@@ -66,7 +63,7 @@
 .shop-single .review .review-content .review-showing .content li .post-thumb,
 .widget .widget-header .title,
 .workshop-join .workshop-join-form form .input-area input,
-footer .footer-top .footer-item.our-address .footer-inner .footer-content .content ul.office-address, p {
+footer .footer-top .footer-item.our-address .footer-inner .footer-content .content ul.office-address {
     margin-bottom: 15px;
 }
 

@@ -1,0 +1,16 @@
+.course-side-cetagory .csc-title {
+  padding: 19px 30px;
+}
+.course-side-cetagory .csc-title,
+.feature-item .feature-inner .feature-content .lab-btn-text span {
+  background: #f16126;
+}
+.course-side-cetagory .csc-title h5 {
+  font-weight: 600 !important;
+}
+.course-side-cetagory .csc-title h5 {
+  color: #fff;
+}
+.course-side-cetagory{
+    background-color: #fff;
+}

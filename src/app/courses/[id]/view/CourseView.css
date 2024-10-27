@@ -1,0 +1,310 @@
+.course-view-section .course-view .video-part .vp-video video {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.course-view-section .course-view .video-part .vp-author .vpa-item .vpa-inner .vpa-thumb {
+    margin-bottom: 20px;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area {
+    padding: 30px 15px;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area .csa-body {
+    height: 100vh;
+    overflow-y: auto;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area .csa-body ul {
+    margin-right: 5px;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area .csa-body::-webkit-scrollbar {
+    background: #29303b;
+    width: 5px;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area .csa-body::-webkit-scrollbar-thumb {
+    background: #f16126;
+    border-radius: 12px;
+}
+.course-view-section .course-view .video-list-area .video-body .course-select-area .csa-body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+.course-select-area .accordion-item h2 button {
+    color: #101115;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: left;
+}
+.course-select-area .accordion-item h2 button span {
+    font-size: small;
+}
+.accordion-body {
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+.course-select-area .csa-body ul li  .accordion-body .course-lists {
+    border-top: 1px solid #ecf0f3;
+    margin: 0 -1.25rem;
+    padding: 10px 1.25rem;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left {
+    padding-left: 20px;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left>i{
+    color: #555;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left>i.complite {
+    color: #f16126;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left>i {
+    font-size: 16px;
+    height: 16px;
+    left: 0;
+    top: 1px;
+    width: 16px;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left h6 {
+    font-size: 16px;
+    font-weight: 600 !important;
+    line-height: 22px;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left p {
+    color: rgba(60,59,55,.62);
+    font-size: 15px;
+    line-height: 26px;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left p i {
+    margin-right: 5px;
+}
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+}
+.accordion-button:focus {
+    z-index: 3;
+    border:none;
+    outline: 0;
+    box-shadow: none;
+}
+.overview-announce-section {
+    background: #1c222d;
+    padding-top: 50px;
+}
+.overview-announce-section .course-view-bottom ul {
+    border: none!important;
+    margin-bottom: 30px;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    color: #495057;
+}
+.overview-announce-section .course-view-bottom ul li button.active,
+.overview-announce-section .course-view-bottom ul li button:hover {
+    background: transparent;
+    color: #fff;
+}
+.overview-announce-section .course-view-bottom ul li button {
+    border: none;
+    color: #fff;
+    color: rgba(183,198,210,.62);
+    font-size: 24px;
+    padding: 0 20px 0 0;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-head h6 {
+    color: #fff;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .view-details span.less {
+    display: none;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .view-details span {
+    color: #fff;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right ul li {
+    border: none;
+    color: rgba(183,198,210,.62);
+    list-style: disc;
+    overflow: visible;
+    padding: 5px 0;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-left,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top{
+    width: 100%;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left {
+    width: 100px;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li.fullview .view-details span.less {
+    display: block;
+}
+
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-head p,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-left p,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-right,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right h6,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right p,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-bottom p {
+    color: rgba(183,198,210,.62);
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li {
+    border-top: 1px solid #29303b;
+    padding: 15px 0;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span:after,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span:after,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left:after,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .view-details,
+.overview-announce-section .course-view-bottom ul li button:after{
+    content: "";
+    position: absolute;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left,
+.overview-announce-section .course-view-bottom ul li button{
+    position: relative;
+}
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right .or-items .or-left:after {
+    content: ":";
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.overview-announce-section .course-view-bottom ul li button:after {
+    background: #f16126;
+    height: 2px;
+    left: 0;
+    top: -50px;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+    width: 100%;
+}
+.overview-announce-section .course-view-bottom ul li button.active:after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left h6,
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left p {
+    margin-bottom: 0;
+}
+.course-select-area .csa-body ul li .accordion-body .course-lists .csa-left>i,
+.course-select-area .csa-body ul li .accordion-header h5 button .icon{
+    content: "";
+    position: absolute;
+}
+.course-select-area .csa-body ul li  .accordion-body .course-lists .csa-left,
+.course-select-area .csa-body ul li .accordion-body h5 button{
+    position: relative;
+}
+.clients-section .section-wrapper .clients .client-list .client-thumb,
+.course-select-area .csa-body ul li .accordion-body .course-lists,
+.course-video .course-video-content .accordion-item .accordion-header button,
+.header-bar,
+.header-wrapper .menu-area .ellepsis-bar i,
+.news-letter .section-wrapper .news-form form .nf-list input[type=submit],
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .view-details,
+.search-icon, .shop-single .product-details .post-content form .lab-btn {
+    cursor: pointer;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-thumb {
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-thumb,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-thumb,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li,
+.overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right.overview-description{
+    overflow: hidden;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content h5 {
+    color: #b7c6d2;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-bottom h4 {
+    color: #b7c6d2;
+    margin-bottom: 10px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 {
+    color: #b7c6d2;
+    margin-bottom: 0;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 15px;
+    padding-left: 15px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content p {
+    color: rgba(183,198,210,.62);
+    margin-bottom: 0;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-thumb {
+    border-radius: 100%;
+    height: 52px;
+    width: 52px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content form textarea {
+    background: #29303b;
+    border-color: transparent;
+    border-radius: 6px;
+    color: rgba(183,198,210,.62);
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content {
+    width: calc(100% - 70px);
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items {
+    justify-content: space-between;
+}
+textarea {
+    padding: 10px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .administer-post .ap-top .ap-items .ap-content p span:after ,
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists .student-reviwe .student-content h6 span:after{
+    background: rgba(60,59,55,.62);
+    border-radius: 100%;
+    height: 4px;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 4px;
+}
+.overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists ul li {
+    padding: 15px 0;
+}
+@media (min-width: 576px){
+    .course-view-section .course-view .video-part .vp-author .vpa-item .vpa-inner .vpa-thumb {
+        height: 80px;
+        margin-bottom: 0;
+        width: 80px;
+    }
+    .course-view-section .course-view .video-part .vp-author .vpa-item .vpa-inner .vpa-contnet {
+        width: calc(100% - 100px);
+    }
+}
+@media (min-width: 576px){
+    .overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-left {
+        width: 200px;
+    }
+}
+@media (min-width: 576px){
+    .overview-announce-section .course-view-bottom .tab-content .overview-area .overview-body ul li .overview-right {
+        width: calc(100% - 200px);
+    }
+}
+@media (min-width: 992px){
+    .overview-announce-section .course-view-bottom .tab-content .announcement-area .announcement-lists {
+        width: 75%;
+    }
+}
