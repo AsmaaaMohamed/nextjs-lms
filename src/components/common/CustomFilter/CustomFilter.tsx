@@ -1,6 +1,7 @@
 // import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import "./CustomFilter.css";
+import useSearchStore from "@/store/lms/search/search";
 // import { useContext } from "react";
 // import { SearchContext } from "@store/context/searchContext";
 
@@ -15,12 +16,8 @@ const CustomFilter = ({ categoriesOptions }) => {
   //         {name:'Bum' , age:'30' , prof:'Bow'},
   //     ]
   // },[]);
-//   const {
-//     selectedCategory,
-//     setSelectedCategory,
-//     selectedPrice,
-//     setSelectedPrice,
-//   } = useContext(SearchContext);
+   const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } = useSearchStore();
+   console.log(searchCategory)
   return (
     <div className="group-select-section">
       <div className="container">
@@ -39,9 +36,7 @@ const CustomFilter = ({ categoriesOptions }) => {
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        value={
-                           "All Categories"
-                        }
+                        value={ searchCategory }
                         // onChange={(e) => setSelectedCategory(e.target.value)}
                       >
                         <option>All Categories</option>

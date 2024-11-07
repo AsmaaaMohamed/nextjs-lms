@@ -9,5 +9,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 };
-
+module.exports = {
+  reactStrictMode: false, // Disables Strict Mode in React
+};
 export default nextConfig;

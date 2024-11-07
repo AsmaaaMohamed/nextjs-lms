@@ -17,29 +17,30 @@ import Link from "next/link";
 import Image from "next/image";
 // import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
 import { coursesCategories } from "@/utils/data";
+import useSearchStore from "@/store/lms/search/search";
 console.log('header')
 const Header = () => {
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
-//   const {
-//     selectedCategory,
-//     setSelectedCategory,
-//     setSearchCourse,
-//     searchCourse,
-//   } = useContext(SearchContext);
-  // const handleSearchCourseEnter = (e) => {
-  //   if (e.key === "Enter" && e.target.value !== '') {
-  //     e.preventDefault();
-  //     handleClickSearchBtn();
-  //   }
-  // };
-  // const handleClickSearchBtn = () => {
-  //   dispatch(setSearchText(searchCourseName));
-  //   router.push("/courses");
-  // };
-  // const handleChangeSearch = (e) => {
-  //   setSearchCourseName(e.target.value);
-  // };
+  const {
+    searchCategory,
+    searchCourse,
+    setSearchCategory,
+    setSearchCourse,
+  } = useSearchStore();
+  const handleSearchCourseEnter = (e) => {
+    if (e.key === "Enter" && e.target.value !== '') {
+      e.preventDefault();
+      handleClickSearchBtn();
+    }
+  };
+  const handleClickSearchBtn = () => {
+    setSearchCourse(searchCourseName);
+    router.push("/courses");
+  };
+  const handleChangeSearch = (e) => {
+    setSearchCourseName(e.target.value);
+  };
 
   const mappedOptions = coursesCategories.map((record) => {
     return (
@@ -56,10 +57,11 @@ const Header = () => {
 //   const signupClickHandle = () => {
 //     navigate("/signup");
 //   };
-  // const handleCategorySelect = (e) => {
-  //   dispatch(setCategory(e.target.value));
-  //   router.push("/courses");
-  // };
+  const handleCategorySelect = (e) => {
+    setSearchCategory(e.target.value);
+    console.log('ffffffffffffffffffffffffffffff' ,e.target.value);
+    router.push("/courses");
+  };
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -70,8 +72,8 @@ const Header = () => {
           <Form.Select
             aria-label="Default select example"
             className="select-cat"
-            // value={category}
-            // onChange={(e) => handleCategorySelect(e)}
+            value={searchCategory}
+            onChange={(e) => handleCategorySelect(e)}
           >
             <option>All Categories</option>
             <option>Uncategorized</option>
@@ -84,8 +86,8 @@ const Header = () => {
                 placeholder="Search Here ..."
                 className=""
                 aria-label="Search"
-                // onKeyDown={handleSearchCourseEnter}
-                // onChange={handleChangeSearch}
+                onKeyDown={handleSearchCourseEnter}
+                onChange={handleChangeSearch}
                 value={searchCourseName}
               />
               <Button

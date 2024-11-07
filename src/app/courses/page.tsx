@@ -4,14 +4,18 @@ import CustomFilter from "@/components/common/CustomFilter/CustomFilter";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import CourseCard from "@/components/lms/CourseCard/CourseCard";
 import { courses, coursesCategories } from "@/utils/data";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import "./Courses.css";
+import useSearchStore from "@/store/lms/search/search";
+import { usePathname } from "next/navigation";
 
 const CoursesPage = () => {
+  const { resetSearch, searchCategory } = useSearchStore();
+  const pathname = usePathname();
   const mappedOptions = coursesCategories.map((record) => {
     return (
-      <option key={record.id} value={record.id}>
+      <option key={record.id} value={record.title}>
         {record.title}
       </option>
     );
@@ -23,6 +27,11 @@ const CoursesPage = () => {
       </div>
     );
   });
+  useEffect(()=>{
+    return () => {
+      resetSearch()
+    };
+  },[resetSearch , pathname])
   return (
     <Fragment>
       <PageHeader />
