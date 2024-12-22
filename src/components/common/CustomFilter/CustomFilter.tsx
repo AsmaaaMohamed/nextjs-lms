@@ -1,21 +1,8 @@
-// import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import "./CustomFilter.css";
 import useSearchStore from "@/store/lms/search/search";
-// import { useContext } from "react";
-// import { SearchContext } from "@store/context/searchContext";
 
 const CustomFilter = ({ categoriesOptions }) => {
-  // const[filteredCourses , setFilteredCourses] = useState([]);
-  // useEffect(()=>{
-  //     const courses = [
-  //         {name:'Mon' , age:'29' , prof:'SE'},
-  //         {name:'Vir' , age:'28' , prof:'Bat'},
-  //         {name:'Roh' , age:'32' , prof:'Bat'},
-  //         {name:'Sham' , age:'31' , prof:'Bow'},
-  //         {name:'Bum' , age:'30' , prof:'Bow'},
-  //     ]
-  // },[]);
    const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } = useSearchStore();
    console.log(searchCategory)
   return (

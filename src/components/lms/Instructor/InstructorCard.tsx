@@ -1,7 +1,8 @@
 import Image from "next/image";
 import "./InstructorCard.css";
+import { Instructor } from "@prisma/client";
 
-const InstructorCard = ({ name, position, img }) => {
+const InstructorCard = ({ name, position, img }:Instructor) => {
   return (
     <div className="instructor-item">
       <div className="instructor-inner">

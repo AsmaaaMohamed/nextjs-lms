@@ -1,8 +1,9 @@
 import Image from "next/image";
 import "./CourseCard.css";
 import Link from "next/link";
+import { Course } from "@prisma/client";
 
-const CourseCard = ({ id,title, instructorId, price, img }) => {
+const CourseCard = ({ id,title, instructorId, price, img }:Course) => {
   return (
     <div className="course-item">
       <div className="course-inner">

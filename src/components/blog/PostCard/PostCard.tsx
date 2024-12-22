@@ -1,21 +1,31 @@
 import Image from "next/image";
 import "./PostCard.css";
+import { Post } from "@prisma/client";
 
 const PostCard = ({
   title,
   author,
-  publish_date,
+  createAt,
   post_desc,
   comments_count,
   url,
   img,
-}) => {
+}:Post) => {
+  console.log(title)
+  const customDate = new Date(createAt);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedCustomDate = customDate.toLocaleDateString("en-US", options);
   return (
     <div className="post-item">
       <div className="post-inner">
         <div className="post-thumb">
           <a href={url}>
-            <Image src={img} alt="blog thumb rajibraj91 rajibraj" width={386} height={260}/>
+            <Image
+              src={img}
+              alt="blog thumb rajibraj91 rajibraj"
+              width={386}
+              height={260}
+            />
           </a>
         </div>
         <div className="post-content">
@@ -30,7 +40,7 @@ const PostCard = ({
               </li>
               <li>
                 <i className="icofont-calendar icofont"></i>
-                {publish_date}
+                {formattedCustomDate}
               </li>
             </ul>
           </div>

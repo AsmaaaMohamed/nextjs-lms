@@ -1,3 +1,4 @@
+import { getPosts } from "@/apiCalls/postApiCall";
 import ArchiveWidget from "@/components/blog/ArchiveWidget/ArchiveWidget";
 import GalleryWidget from "@/components/blog/GalleryWidget/GalleryWidget";
 import PostCard from "@/components/blog/PostCard/PostCard";
@@ -6,10 +7,12 @@ import PostPopularWidget from "@/components/blog/PostPopularWidget/PostPopularWi
 import PopularTagWidget from "@/components/blog/Tag/PopularTagWidget";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import SearchWidget from "@/components/common/SearchWidget/SearchWidget";
-import { posts } from "@/utils/data";
+// import { posts } from "@/utils/data";
+import { Post } from "@prisma/client";
 import React, { Fragment } from "react";
 
-const BlogPage = () => {
+const BlogPage = async() => {
+  const posts: Post[] = await getPosts();
   const renderedPosts = posts.slice(0, 8).map((p) => {
     return (
       <div key={p.id} className="col">

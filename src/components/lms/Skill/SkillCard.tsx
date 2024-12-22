@@ -1,7 +1,8 @@
 import Image from "next/image";
 import "./SkillCard.css";
+import { Skill } from "@prisma/client";
 
-const SkillCard = ({ title, desc, icon }) => {
+const SkillCard = ({ title, desc, icon }:Skill) => {
   return (
     <div className="skill-item">
       <div className="skill-inner">

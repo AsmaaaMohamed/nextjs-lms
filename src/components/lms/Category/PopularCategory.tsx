@@ -1,9 +1,9 @@
-import TCategory from "@/components/types/category";
 import "./PopularCategory.css";
 import Image from "next/image";
+import Link from "next/link";
+import { CourseCategory } from "@prisma/client";
 
-type TPopularCategoryProps = TCategory;
-const PopularCategory = ({ title, icon, img }: TPopularCategoryProps) => {
+const PopularCategory = ({ title, icon, img }: CourseCategory) => {
   return (
     <div className="col">
       <div className="category-item text-center">
@@ -15,9 +15,9 @@ const PopularCategory = ({ title, icon, img }: TPopularCategoryProps) => {
             <Image src={icon} alt="category rajibraj91 rajibraj" width={80} height={80}/>
           </div>
           <div className="category-content">
-            <a href="/courses">
+            <Link href="/courses">
               <h6>{title}</h6>
-            </a>
+            </Link>
             <span>24 Course</span>
           </div>
         </div>

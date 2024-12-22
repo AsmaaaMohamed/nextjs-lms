@@ -1,21 +1,13 @@
 "use client";
 
 import PageHeader from "@/components/common/PageHeader/PageHeader";
+import { DOMAIN } from "@/utils/constants";
+import { registerSchema } from "@/utils/validationSchemas";
 import { useFormik } from "formik";
 import { Fragment } from "react";
 import { Button, Form } from "react-bootstrap";
-import * as yup from "yup";
 
 const SignupPage = () => {
-  const loginSchema = yup.object({
-    username: yup.string().required("User Name is required"),
-    email: yup
-      .string()
-      .email("Enter a valid email")
-      .required("Email is required"),
-    password: yup.string().required("Password is required"),
-    confirmPassword: yup.string().required("Please confirm password"),
-  });
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -25,9 +17,17 @@ const SignupPage = () => {
     },
     validateOnChange: true,
     validateOnBlur: true,
-    validationSchema: loginSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    validationSchema: registerSchema,
+    onSubmit: async(values) => {
+      try {
+        await fetch(`${DOMAIN}/api/users/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
   return (
@@ -47,6 +47,7 @@ const SignupPage = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   isValid={!formik.errors.username && formik.touched.username}
+                  isInvalid={formik.errors.username ? true : false}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 {formik.errors.username && formik.touched.username ? (
@@ -64,6 +65,7 @@ const SignupPage = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   isValid={!formik.errors.email && formik.touched.email}
+                  isInvalid={formik.errors.email ? true : false}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 {formik.errors.email && formik.touched.email ? (
@@ -81,6 +83,7 @@ const SignupPage = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   isValid={!formik.errors.password && formik.touched.password}
+                  isInvalid={formik.errors.password ? true : false}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 {formik.errors.password && formik.touched.password ? (
@@ -101,6 +104,7 @@ const SignupPage = () => {
                     !formik.errors.confirmPassword &&
                     formik.touched.confirmPassword
                   }
+                  isInvalid={formik.errors.confirmPassword ? true : false}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 {formik.errors.confirmPassword &&
