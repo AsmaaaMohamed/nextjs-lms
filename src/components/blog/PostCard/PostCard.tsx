@@ -11,7 +11,7 @@ const PostCard = ({
   url,
   img,
 }:Post) => {
-  console.log(title)
+  // console.log(title)
   const customDate = new Date(createAt);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedCustomDate = customDate.toLocaleDateString("en-US", options);

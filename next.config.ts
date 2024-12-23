@@ -11,5 +11,13 @@ const nextConfig: NextConfig = {
 };
 module.exports = {
   reactStrictMode: false, // Disables Strict Mode in React
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
+  },
 };
 export default nextConfig;

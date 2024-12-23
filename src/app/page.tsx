@@ -5,7 +5,8 @@ import PopularCategoriesSection from "@/components/pageParts/HomeParts/PopularCa
 import SkillsSection from "@/components/pageParts/HomeParts/SkillsSection";
 import InstructorsSection from "@/components/pageParts/HomeParts/InstructorsSection";
 
-export default function Home() {
+export default async function Home() {
+  
   return (
     <ClientComponent
       homePickCourse={<HomePickCourse />}

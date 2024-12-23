@@ -3,7 +3,7 @@ import PostCard from "@/components/blog/PostCard/PostCard";
 
 const HomePostsSection = async() => {
     const posts =await getPosts();
-    console.log(posts)
+    // console.log(posts)
   const renderedPosts = posts.slice(0, 3).map((p) => {
     return (
       <div key={p.id} className="col">

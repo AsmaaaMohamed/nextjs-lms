@@ -103,23 +103,29 @@ textarea {
 }
 .social-icons li a {
   border-radius: 50%;
-  height: 36px;
+  height: 50px;
   line-height: 36px;
   transition: all 0.3s ease;
-  width: 36px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-icons li a.google i{
+  font-size: 32px;
 }
 .social-icons li a.facebook {
   background: #3b5998;
 }
-.course-side-detail .csd-content .sidebar-social .ss-content ul li a.twitter,
+/* .course-side-detail .csd-content .sidebar-social .ss-content ul li a.twitter,
 .social-icons li a.twitter {
   background: #55acee;
+} */
+.social-icons li a.google {
+  background: #bd081c;
 }
-.social-icons li a.linkedin {
-  background: #007bb5;
-}
-.social-icons li a.instagram {
-  background: #e4405f;
+.social-icons li a.github {
+  background: #1f1142;
 }
 .social-icons li a.pinterest {
   background: #bd081c;

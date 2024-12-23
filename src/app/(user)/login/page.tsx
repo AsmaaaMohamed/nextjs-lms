@@ -117,28 +117,18 @@ const LoginPage = () => {
               <h5 className="subtitle">Login With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
                 <li>
-                  <a href="#" className="facebook">
+                  <a href="#" className="facebook" title="Facebook">
                     <i className="icofont-facebook icofont"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="twitter">
-                    <i className="icofont-twitter icofont"></i>
+                  <a href="#" className="github" title="Github">
+                    <i className="icofont-github icofont"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="linkedin">
-                    <i className="icofont-linkedin icofont"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="instagram">
-                    <i className="icofont-instagram icofont"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="pinterest">
-                    <i className="icofont-pinterest icofont"></i>
+                  <a href="#" className="google" title="Google">
+                    <i className="icofont-brand-google icofont"></i>
                   </a>
                 </li>
               </ul>
