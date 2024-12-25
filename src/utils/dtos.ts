@@ -1,6 +1,10 @@
 export interface RegisterUserDto{
-    username:string;
+    name:string;
     email:string;
     password:string;
     confirmPassword:string;
+}
+export interface LoginUserDto {
+  email: string;
+  password: string;
 }

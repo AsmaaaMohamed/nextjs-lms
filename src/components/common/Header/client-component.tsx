@@ -17,6 +17,7 @@ import Image from "next/image";
 // import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
 import { coursesCategories } from "@/utils/data";
 import useSearchStore from "@/store/lms/search/search";
+import { logoutClickHandler } from "@/app/_lib/authHandlers";
 const ClientComponent = ({session}) => {
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
@@ -125,6 +126,9 @@ const ClientComponent = ({session}) => {
                   />
                   <span>{session.user.name}</span>
                 </Link>
+                <Button className="signup ms-2" onClick={logoutClickHandler}>
+                  <i className="icofont-logout icofont"></i>Log out
+                </Button>
               </>
             ) : (
               <>

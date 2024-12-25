@@ -17,10 +17,10 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({message:'this user is already registered'},{status:400})
         }
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(body.password, salt);
+        const hashedPassword = body.password ? await bcrypt.hash(body.password, salt) : '';
         const newUser = await prisma.user.create({
             data:{
-                username: body.username,
+                username: body.name,
                 email:body.email,
                 password:hashedPassword,
             },
@@ -40,3 +40,13 @@ export async function POST(request: NextRequest) {
         );
     }
 }
+// export async function createUserLogWithSocial(newUser) {
+//   const { data, error } = await supabase.from("guests").insert([newGuest]);
+
+//   if (error) {
+//     console.error(error);
+//     throw new Error("Guest could not be created");
+//   }
+
+//   return data;
+// }

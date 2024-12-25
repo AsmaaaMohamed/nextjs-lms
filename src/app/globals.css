@@ -101,7 +101,7 @@ textarea {
 .section-bg {
   background: #fff9f1;
 }
-.social-icons li a {
+.social-icons li span {
   border-radius: 50%;
   height: 50px;
   line-height: 36px;
@@ -111,33 +111,31 @@ textarea {
   align-items: center;
   justify-content: center;
 }
-.social-icons li a.google i{
+.social-icons li span.google i{
   font-size: 32px;
 }
-.social-icons li a.facebook {
+.social-icons li span.facebook {
   background: #3b5998;
 }
 /* .course-side-detail .csd-content .sidebar-social .ss-content ul li a.twitter,
 .social-icons li a.twitter {
   background: #55acee;
 } */
-.social-icons li a.google {
+.social-icons li span.google {
   background: #bd081c;
 }
-.social-icons li a.github {
+.social-icons li span.github {
   background: #1f1142;
 }
-.social-icons li a.pinterest {
-  background: #bd081c;
-}
-.social-icons li a {
+
+.social-icons li span {
   text-align: center;
   color: #fff;
 }
 .social-icons li {
     margin-right: 5px;
 }
-.social-icons li a:hover {
+.social-icons li span:hover {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }

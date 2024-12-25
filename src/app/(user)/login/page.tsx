@@ -4,17 +4,12 @@ import PageHeader from '@/components/common/PageHeader/PageHeader';
 import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 import { Button, Form } from 'react-bootstrap';
-import * as yup from "yup";
 import './Login.css';
+import { googleClickHandler } from '@/app/_lib/authHandlers';
+import { loginSchema } from '@/utils/validationSchemas';
+import { DOMAIN } from '@/utils/constants';
 
 const LoginPage = () => {
-  const loginSchema = yup.object({
-    email: yup
-      .string()
-      .email("Enter a valid email")
-      .required("Email is required"),
-    password: yup.string().required("Password is required"),
-  });
    const formik = useFormik({
      initialValues: {
        email: "",
@@ -23,10 +18,19 @@ const LoginPage = () => {
      validateOnChange: true,
      validateOnBlur: true,
      validationSchema: loginSchema,
-     onSubmit: (values) => {
-       console.log(values);
+     onSubmit: async(values) => {
+       try {
+          await fetch(`${DOMAIN}/api/users/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(values),
+          });
+        } catch (error) {
+          console.log(error);
+      }
      },
    });
+   
   return (
     <Fragment>
       <PageHeader />
@@ -117,19 +121,23 @@ const LoginPage = () => {
               <h5 className="subtitle">Login With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
                 <li>
-                  <a href="#" className="facebook" title="Facebook">
+                  <span className="facebook" title="Facebook">
                     <i className="icofont-facebook icofont"></i>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a href="#" className="github" title="Github">
+                  <span className="github" title="Github">
                     <i className="icofont-github icofont"></i>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a href="#" className="google" title="Google">
+                  <span
+                    className="google"
+                    title="Google"
+                    onClick={googleClickHandler}
+                  >
                     <i className="icofont-brand-google icofont"></i>
-                  </a>
+                  </span>
                 </li>
               </ul>
             </div>

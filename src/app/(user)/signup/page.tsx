@@ -10,7 +10,7 @@ import { Button, Form } from "react-bootstrap";
 const SignupPage = () => {
   const formik = useFormik({
     initialValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -41,18 +41,18 @@ const SignupPage = () => {
               <Form.Group className="form-group mb-3">
                 <Form.Control
                   type="text"
-                  name="username"
+                  name="name"
                   placeholder="User Name *"
-                  value={formik.values.username}
+                  value={formik.values.name}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  isValid={!formik.errors.username && formik.touched.username}
-                  isInvalid={formik.errors.username ? true : false}
+                  isValid={!formik.errors.name && formik.touched.name}
+                  isInvalid={formik.errors.name ? true : false}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                {formik.errors.username && formik.touched.username ? (
+                {formik.errors.name && formik.touched.name ? (
                   <Form.Control.Feedback type="invalid" className="d-block">
-                    {formik.errors.username}
+                    {formik.errors.name}
                   </Form.Control.Feedback>
                 ) : null}
               </Form.Group>
