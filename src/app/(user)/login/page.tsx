@@ -5,9 +5,8 @@ import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import './Login.css';
-import { googleClickHandler } from '@/app/_lib/authHandlers';
+import { googleClickHandler, loginSubmit } from '@/app/_lib/authHandlers';
 import { loginSchema } from '@/utils/validationSchemas';
-import { DOMAIN } from '@/utils/constants';
 
 const LoginPage = () => {
    const formik = useFormik({
@@ -18,16 +17,8 @@ const LoginPage = () => {
      validateOnChange: true,
      validateOnBlur: true,
      validationSchema: loginSchema,
-     onSubmit: async(values) => {
-       try {
-          await fetch(`${DOMAIN}/api/users/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(values),
-          });
-        } catch (error) {
-          console.log(error);
-      }
+     onSubmit:(values) => {
+       loginSubmit(values);
      },
    });
    

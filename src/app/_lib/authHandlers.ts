@@ -8,3 +8,7 @@ export async function googleClickHandler(){
 export async function logoutClickHandler() {
   await signOut({ redirectTo: "/" });
 }
+export async function loginSubmit(values){
+  const result= await signIn("credentials", { email:values.email , password:values.password, redirect:false });
+  return result;
+}
