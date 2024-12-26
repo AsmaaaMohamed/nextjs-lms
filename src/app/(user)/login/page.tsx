@@ -18,7 +18,12 @@ const LoginPage = () => {
      validateOnBlur: true,
      validationSchema: loginSchema,
      onSubmit:(values) => {
-       loginSubmit(values);
+       const result = loginSubmit(values);
+       if (!result.ok) {
+         console.log("Invalid email or password");
+       } else {
+         window.location.href = "/dashboard"; // Redirect to a protected route
+       }
      },
    });
    

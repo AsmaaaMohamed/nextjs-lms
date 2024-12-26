@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         if(user){
             return NextResponse.json({message:'this user is already registered'},{status:400})
         }
-        const salt = await bcrypt.genSalt(10);
+        const salt = 10;
         const hashedPassword = body.password ? await bcrypt.hash(body.password, salt) : '';
         const newUser = await prisma.user.create({
             data:{

@@ -9,9 +9,15 @@ const authConfig = {
   providers: [Google, Credentials({
     async authorize(credentials, request) {
        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
-       const isPasswordMatch = await bcrypt.compare(user.password, credentials.password);
-       console.log("ttttttttttttttttttt", credentials);
-       if (user && isPasswordMatch) {
+       if (!user) {
+         console.log("User not found");
+         return null;
+       }
+       const isPasswordMatch = await bcrypt.compare(credentials.password, user.password);
+       const salt = 10;
+       const pass = await bcrypt.hash(user.password, salt);
+       console.log("ttttttttttttttttttt",isPasswordMatch);
+       if (isPasswordMatch) {
          // User authenticated successfully
          return user;
        }
