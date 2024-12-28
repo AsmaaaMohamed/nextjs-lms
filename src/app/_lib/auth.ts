@@ -46,7 +46,6 @@ const authConfig = {
           return false;
         }
       }
-      else
       return true
     },
     async jwt({ token, user }) {
