@@ -32,6 +32,23 @@ const authConfig = {
     }),
   ],
   callbacks: {
+    async signIn({user,account}){
+      if (account.providers == "google" || account.providers == "facebook") {
+        console.log("fffffffffffffffwwwwwwwwwwwwww");
+        try {
+          await fetch(`${DOMAIN}/api/users/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
+          });
+          return true;
+        } catch {
+          return false;
+        }
+      }
+      else
+      return true
+    },
     async jwt({ token, user }) {
       if(user) (token.user = user);
       return token;
