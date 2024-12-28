@@ -7,8 +7,10 @@ import { Button, Form } from 'react-bootstrap';
 import './Login.css';
 import { googleClickHandler, loginSubmit } from '@/app/_lib/authHandlers';
 import { loginSchema } from '@/utils/validationSchemas';
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
+  const router = useRouter();
    const formik = useFormik({
      initialValues: {
        email: "",
@@ -17,12 +19,14 @@ const LoginPage = () => {
      validateOnChange: true,
      validateOnBlur: true,
      validationSchema: loginSchema,
-     onSubmit:(values) => {
-       const result = loginSubmit(values);
-       if (!result.ok) {
+     onSubmit:async(values) => {
+       const result = await loginSubmit(values);
+       console.log('sssssssssssssssssssssssssss', result)
+       if (!!result.error) {
          console.log("Invalid email or password");
        } else {
-         window.location.href = "/dashboard"; // Redirect to a protected route
+        console.log('llllllllllllllll')
+         router.push("/"); // Redirect to a protected route
        }
      },
    });

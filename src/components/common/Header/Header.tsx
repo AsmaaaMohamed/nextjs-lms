@@ -3,7 +3,7 @@ import { auth } from "@/app/_lib/auth";
 
 const Header = async() => {
   const session = await auth();
-  // console.log(session?.user?.image);
+  console.log(session);
   return <ClientComponent session={session}/>;
   
 };

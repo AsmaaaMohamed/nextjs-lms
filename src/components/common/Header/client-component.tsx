@@ -114,16 +114,17 @@ const ClientComponent = ({session}) => {
             </Nav>
           </Navbar.Collapse>
           <Nav className="btns-container d-none d-md-flex">
-            {session?.user?.image ? (
+            {session?.user ? (
               <>
                 <Link href="/account" className="d-flex align-items-center">
-                  <Image
+                {session?.user.image &&
+                  (<Image
                     className="h-8 rounded-circle me-2"
                     src={`${session.user.image}`}
                     alt={session.user.name}
                     width={30}
                     height={30}
-                  />
+                  />)}
                   <span>{session.user.name}</span>
                 </Link>
                 <Button className="signup ms-2" onClick={logoutClickHandler}>
