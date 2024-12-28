@@ -117,15 +117,18 @@ const ClientComponent = ({session}) => {
             {session?.user ? (
               <>
                 <Link href="/account" className="d-flex align-items-center">
-                {session?.user.image &&
-                  (<Image
+                  <Image
                     className="h-8 rounded-circle me-2"
-                    src={`${session.user.image}`}
-                    alt={session.user.name}
+                    src={`${
+                      session.user.image ||
+                      "/assets/images/profile-cute-dp_8.jpg"
+                    }`}
+                    alt={session.user.name || session.user.username}
                     width={30}
                     height={30}
-                  />)}
-                  <span>{session.user.name}</span>
+                  />
+
+                  <span>{session.user.name || session.user.username}</span>
                 </Link>
                 <Button className="signup ms-2" onClick={logoutClickHandler}>
                   <i className="icofont-logout icofont"></i>Log out
