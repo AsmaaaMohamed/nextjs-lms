@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as LoginUserDto;
     const user = await prisma.user.findUnique({ where: { email: body.email } });
-    console.log('ssssssssssssssssss')
+    // console.log('ssssssssssssssssss')
     if (!user) {
       console.log("vvvvvvvvvvvvbbbbbbbb");
       return NextResponse.json(
@@ -21,7 +21,16 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
+    if (user?.provider !== "credentials") {
+      // throw new Error('differentttttttttttt provider')
+      // console.log("myyyyyyyyyyuuuuuuuseer", user);
+      return NextResponse.json(
+        {
+          message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
+        },
+        { status: 400 }
+      );
+    }
     const isPasswordMatch =body.password !=''? await bcrypt.compare(body.password, user.password): null;
     console.log("ssvvvvvvvvvvvvv", isPasswordMatch);
     if (!isPasswordMatch) {

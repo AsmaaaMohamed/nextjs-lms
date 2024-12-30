@@ -13,8 +13,19 @@ export async function POST(request: NextRequest) {
     try {
         const body = (await request.json()) as RegisterUserDto;
         const user = await prisma.user.findUnique({where:{email:body.email}});
+        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhh' , user)
         if(user){
-            return NextResponse.json({message:'this user is already registered'},{status:400})
+            if (user.provider !== body.provider) {
+            //   throw new Error(
+            //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
+            //   );
+              return NextResponse.json({
+                message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
+              },
+            {status:401});
+            }
+            console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+            throw new Error('this user is already registered')
         }
         const salt = 10;
         const hashedPassword = body.password ? await bcrypt.hash(body.password, salt) : '';
@@ -23,6 +34,7 @@ export async function POST(request: NextRequest) {
                 username: body.name,
                 email:body.email,
                 password:hashedPassword,
+                provider:body.provider
             },
             select:{
                 username:true,
@@ -33,11 +45,8 @@ export async function POST(request: NextRequest) {
         const token = null;
         return NextResponse.json({...newUser, token} , {status:201});
     } catch (error) {
-        console.error(error);
-        return NextResponse.json(
-        { message: "internal server error" },
-        { status: 500 }
-        );
+        console.error('///////////////////////////////',error);
+        throw error;
     }
 }
 // export async function createUserLogWithSocial(newUser) {

@@ -4,6 +4,7 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "username" VARCHAR(100) NOT NULL,
     "password" TEXT NOT NULL,
+    "provider" TEXT NOT NULL DEFAULT '',
     "isAdmin" BOOLEAN NOT NULL DEFAULT false,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,

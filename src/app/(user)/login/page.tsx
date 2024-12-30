@@ -5,9 +5,11 @@ import { useFormik } from 'formik';
 import React, { Fragment } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import './Login.css';
-import { googleClickHandler, loginSubmit } from '@/app/_lib/authHandlers';
+import { githubClickHandler, googleClickHandler, loginSubmit } from '@/app/_lib/authHandlers';
 import { loginSchema } from '@/utils/validationSchemas';
 import { useRouter } from 'next/navigation';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"; 
 
 const LoginPage = () => {
   const router = useRouter();
@@ -19,14 +21,18 @@ const LoginPage = () => {
      validateOnChange: true,
      validateOnBlur: true,
      validationSchema: loginSchema,
-     onSubmit:async(values) => {
-       const result = await loginSubmit(values);
-       console.log('sssssssssssssssssssssssssss', result)
-       if (!!result.error) {
-         console.log("Invalid email or password");
-       } else {
-        console.log('llllllllllllllll')
-         router.push("/"); // Redirect to a protected route
+     onSubmit: async (values, { setSubmitting, setFieldError }) => {
+       try {
+         const result = await loginSubmit(values);
+        //  console.log("sssssssssssssssssssssssssss", result);
+        //  console.log(formik.errors);
+        if (result)
+         router.push("/");
+       } catch (error) {
+         toast.error(error.message)
+       } finally {
+         console.log("");
+         setSubmitting(false);
        }
      },
    });
@@ -121,12 +127,17 @@ const LoginPage = () => {
               <h5 className="subtitle">Login With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
                 <li>
-                  <span className="facebook" title="Facebook">
+                  <span className="facebook" title="Facebook" role="button">
                     <i className="icofont-facebook icofont"></i>
                   </span>
                 </li>
                 <li>
-                  <span className="github" title="Github">
+                  <span
+                    className="github"
+                    title="Github"
+                    role="button"
+                    onClick={githubClickHandler}
+                  >
                     <i className="icofont-github icofont"></i>
                   </span>
                 </li>
@@ -134,6 +145,7 @@ const LoginPage = () => {
                   <span
                     className="google"
                     title="Google"
+                    role="button"
                     onClick={googleClickHandler}
                   >
                     <i className="icofont-brand-google icofont"></i>
@@ -144,6 +156,11 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3500}
+        theme="colored"
+      />
     </Fragment>
   );
 }

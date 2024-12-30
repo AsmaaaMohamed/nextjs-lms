@@ -23,7 +23,7 @@ const SignupPage = () => {
         await fetch(`${DOMAIN}/api/users/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
+          body: JSON.stringify({...values, provider:'credentials'}),
         });
       } catch (error) {
         console.log(error);

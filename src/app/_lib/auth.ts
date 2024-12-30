@@ -1,55 +1,78 @@
-import prisma from "@/utils/prismaObject";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
-import bcrypt from "bcryptjs";
+import GitHub from "next-auth/providers/github";
+import Facebook from "next-auth/providers/facebook";
+import { DOMAIN } from "@/utils/constants";
 
 const authConfig = {
   providers: [
     Google,
+    GitHub,
+    Facebook,
     Credentials({
       async authorize(credentials, request) {
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
+        const { email, password } = credentials;
+        // try {
+        const res = await fetch(`${DOMAIN}/api/users/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
         });
-        console.log("cccccccccc", user);
-        if (!user) {
-          console.log("User not found");
-          return null;
+        const user = await res.json();
+
+        if (!res.ok && user) {
+          // console.log('uuuuueeeeeeeeeeeeeeee' , user)
+          return { status: user?.status, error: user?.message };
         }
-        const isPasswordMatch = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-        console.log("ttttttttttttttttttt", isPasswordMatch);
-        if (isPasswordMatch) {
-          // User authenticated successfully
-          console.log("userrrrrrrrrr", user);
-          return { username: user.username, email: user.email, role: user.isAdmin };
-        }
-        return null;
+        return user;
+        // } catch (error) {
+        //   console.error("Error in authorize:", error); // Log for debugging
+        //   throw error; // Rethrow for higher-level handling
+        // }
+        // return null;
       },
     }),
   ],
+  // debug: true,
   callbacks: {
-    async signIn({user,account}){
-      if (account.providers == "google" || account.providers == "facebook") {
+    async signIn({ user, account }) {
+      if (account.provider !== "credentials") {
         console.log("fffffffffffffffwwwwwwwwwwwwww");
         try {
-          await fetch(`${DOMAIN}/api/users/register`, {
+          const res = await fetch(`${DOMAIN}/api/users/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user),
+            body: JSON.stringify({ ...user, provider: account.provider }),
           });
+          //  const userr = await res.json();
+          console.log("dddddddddddddddddddddrrrrrrrrrrrrrrrrrrrrrrr");
+          if (!res.ok) {
+            const errorData = await res.json();
+            console.log('ddddddddddddddddddddd')
+            throw errorData.message;
+          }
+          console.log("tttttttttttttttttttttttttttttttttttttttttttttt", res.ok);
           return true;
-        } catch {
-          return false;
+        } catch (e) {
+          console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
+          throw e
         }
       }
-      return true
+      // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
+      if (user?.error) {
+        console.log("uuuuuuuurrrrrrr", user);
+        throw new Error(user?.error);
+      }
+      return true;
     },
     async jwt({ token, user }) {
-      if(user) (token.user = user);
+      if (user) token.user = user;
       return token;
     },
     async session({ session, token }) {

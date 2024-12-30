@@ -12,6 +12,7 @@ model User {
   email    String    @unique
   username String    @db.VarChar(100)
   password String
+  provider String    @default("")
   isAdmin  Boolean   @default(false)
   createAt DateTime  @default(now())
   updateAt DateTime  @updatedAt
@@ -20,7 +21,7 @@ model User {
 
 model CourseCategory {
   id       Int      @id @default(autoincrement())
-  title     String?   @db.VarChar(200)
+  title    String?  @db.VarChar(200)
   icon     String
   img      String
   createAt DateTime @default(now())
