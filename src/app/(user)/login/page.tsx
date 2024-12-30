@@ -21,7 +21,7 @@ const LoginPage = () => {
      validateOnChange: true,
      validateOnBlur: true,
      validationSchema: loginSchema,
-     onSubmit: async (values, { setSubmitting, setFieldError }) => {
+     onSubmit: async (values, { setSubmitting }) => {
        try {
          const result = await loginSubmit(values);
         //  console.log("sssssssssssssssssssssssssss", result);

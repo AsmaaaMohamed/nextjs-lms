@@ -61,7 +61,7 @@ const authConfig = {
           return true;
         } catch (e) {
           console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-          throw e
+          return false
         }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
@@ -69,6 +69,7 @@ const authConfig = {
         console.log("uuuuuuuurrrrrrr", user);
         throw new Error(user?.error);
       }
+      console.log('hereeeeeeeeeeeeeeeeeeeeee')
       return true;
     },
     async jwt({ token, user }) {
