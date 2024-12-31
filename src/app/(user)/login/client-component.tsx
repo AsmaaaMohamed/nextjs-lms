@@ -33,6 +33,7 @@ const ClientComponent = () => {
         //  console.log(formik.errors);
         if (result) router.push("/");
       } catch (error) {
+        toast.dismiss();
         toast.error(error.message as string);
       } finally {
         console.log("");
@@ -41,24 +42,18 @@ const ClientComponent = () => {
     },
   });
   const handleSocialLogin = (provider:string) => {
-    // try{
-          signIn(provider, { redirect: false }).then((res)=>{
-            // console.log(res)
-            if(res)
-                 router.push("/");
-         })
-         .catch((err)=>{
-            toast.error(err)
-         });
-        
-    // }
-    //   catch(err ) {
-    //    toast.error(err as string);
-    //   };
+    try{
+          signIn(provider, { redirectTo: '/' });        
+    }
+      catch(err ) {
+       toast.error(err as string);
+      };
   };
 useEffect(()=>{
-    if(error)
+    if(error ){
+        toast.dismiss();
         toast.error(error);
+    }
     },[error]);
   return (
     <Fragment>
