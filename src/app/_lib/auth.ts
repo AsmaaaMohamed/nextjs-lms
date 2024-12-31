@@ -42,7 +42,7 @@ const authConfig = {
   // debug: true,
   callbacks: {
     async signIn({ user, account }) {
-      if (account.provider !== "credentials") {
+      if (account && account.provider !== "credentials") {
         console.log("fffffffffffffffwwwwwwwwwwwwww");
         try {
           const res = await fetch(`${DOMAIN}/api/users/register`, {
@@ -61,7 +61,9 @@ const authConfig = {
           return true;
         } catch (e) {
           console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-          return false
+          return `/login?error=${encodeURIComponent(
+            e as string || "Sign-in failed"
+          )}`;
         }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)

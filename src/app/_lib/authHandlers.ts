@@ -6,7 +6,12 @@ export async function googleClickHandler(){
     await signIn('google', {redirectTo:"/account"});
 }
 export async function githubClickHandler() {
-     await signIn("github", { redirectTo: "/account" });
+    try {
+      const res = await signIn("github", { redirect:false });
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res);
+    } catch (error) {
+      console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
+    }
 }
 export async function logoutClickHandler() {
   await signOut({ redirectTo: "/login" });
