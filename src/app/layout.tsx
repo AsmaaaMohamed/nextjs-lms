@@ -6,6 +6,7 @@ import "/node_modules/@icon/icofont/icofont.css";
 import Header from "@/components/common/Header/Header";
 import BootstrapClient from "@/components/BootstrapClient";
 import Footer from "@/components/common/Footer/Footer";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,10 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <SessionProvider>
           <Header />
-            {children}
+          {children}
           <Footer />
-        <BootstrapClient />
+          <BootstrapClient />
+        </SessionProvider>
       </body>
     </html>
   );

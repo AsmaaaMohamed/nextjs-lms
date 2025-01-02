@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: "Authenticated" },
+      { message: "Authenticated",name:user.username },
       {
         status: 200,
       }

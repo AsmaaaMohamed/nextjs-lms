@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import actGetCoursesCategories from "@store/lms/categories/act/actGetCategories";
 // import { SearchContext } from "@store/context/searchContext";
 import { useRouter } from "next/navigation";
@@ -18,11 +18,14 @@ import Image from "next/image";
 import { coursesCategories } from "@/utils/data";
 import useSearchStore from "@/store/lms/search/search";
 import { logoutClickHandler } from "@/app/_lib/authHandlers";
+import { useSession } from "next-auth/react";
 const ClientComponent = ({session}) => {
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
   const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } =
     useSearchStore();
+   const[sessionState , setSessionState] = useState(session);
+   console.log(sessionState)
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
       e.preventDefault();
@@ -57,6 +60,9 @@ const ClientComponent = ({session}) => {
     console.log("ffffffffffffffffffffffffffffff", e.target.value);
     router.push("/courses");
   };
+  useEffect(()=>{
+    setSessionState(session)
+  },[session])
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -114,21 +120,21 @@ const ClientComponent = ({session}) => {
             </Nav>
           </Navbar.Collapse>
           <Nav className="btns-container d-none d-md-flex">
-            {session?.user ? (
+            {sessionState?.user ? (
               <>
                 <Link href="/account" className="d-flex align-items-center">
                   <Image
                     className="h-8 rounded-circle me-2"
                     src={`${
-                      session.user.image ||
+                      sessionState.user.image ||
                       "/assets/images/profile-cute-dp_8.jpg"
                     }`}
-                    alt={session.user.name || session.user.username}
+                    alt={sessionState.user.name || sessionState.user.username}
                     width={30}
                     height={30}
                   />
 
-                  <span>{session.user.name || session.user.username}</span>
+                  <span>{sessionState.user.name || sessionState.user.username}</span>
                 </Link>
                 <Button className="signup ms-2" onClick={logoutClickHandler}>
                   <i className="icofont-logout icofont"></i>Log out

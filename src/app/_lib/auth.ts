@@ -25,9 +25,9 @@ const authConfig = {
           }),
         });
         const user = await res.json();
-
+        console.log("uuuuueeeeeeeeeeeeeeee", user);
         if (!res.ok && user) {
-          // console.log('uuuuueeeeeeeeeeeeeeee' , user)
+          //  console.log('uuuuueeeeeeeeeeeeeeee' , user)
           return { status: user?.status, error: user?.message };
         }
         return user;

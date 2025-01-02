@@ -15,7 +15,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "CourseCategory" (
     "id" SERIAL NOT NULL,
-    "title" VARCHAR(200) NOT NULL,
+    "title" VARCHAR(200),
     "icon" TEXT NOT NULL,
     "img" TEXT NOT NULL,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -32,6 +32,8 @@ CREATE TABLE "Course" (
     "instructorId" INTEGER NOT NULL,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
+    "img" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "Course_pkey" PRIMARY KEY ("id")
 );
