@@ -26,18 +26,22 @@ const ClientComponent = () => {
     validateOnChange: true,
     validateOnBlur: true,
     validationSchema: loginSchema,
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async ( values) => {
+      const formData = new FormData();
+      formData.append("email", values.email);
+      formData.append("password", values.password);
       try {
-        const result = await loginSubmit(values);
-        //  console.log("sssssssssssssssssssssssssss", result);
-        //  console.log(formik.errors);
-        if (result) router.push("/");
+         const result = await loginSubmit(formData);
+         toast.success("Login successful!");
+         router.push('/');
+         router.refresh()
+
       } catch (error) {
         toast.dismiss();
         toast.error(error.message as string);
       } finally {
         console.log("");
-        setSubmitting(false);
+        // setSubmitting(false);
       }
     },
   });
@@ -71,7 +75,7 @@ useEffect(()=>{
               <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
             )} */}
             <h3 className="title">Login</h3>
-            <Form className="account-form" onSubmit={formik.handleSubmit}>
+            <Form className="account-form" onSubmit={formik.handleSubmit} >
               <Form.Group className="form-group mb-3">
                 <Form.Control
                   type="text"
