@@ -6,6 +6,7 @@ import React, { Fragment, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Login.css";
 import {
+  githubClickHandler,
   googleClickHandler,
   loginSubmit,
 } from "@/app/_lib/authHandlers";
@@ -158,7 +159,7 @@ useEffect(()=>{
                     className="github"
                     title="Github"
                     role="button"
-                    onClick={()=>handleSocialLogin('github')}
+                    onClick={githubClickHandler}
                   >
                     <i className="icofont-github icofont"></i>
                   </span>

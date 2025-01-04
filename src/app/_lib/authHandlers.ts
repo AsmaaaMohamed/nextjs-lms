@@ -10,9 +10,9 @@ export async function googleClickHandler(){
 export async function githubClickHandler() {
     try {
       const res = await signIn("github", { redirect:false });
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res);
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res.type);
     } catch (error) {
-      console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
+      console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error.type);
     }
 }
 export async function logoutClickHandler() {

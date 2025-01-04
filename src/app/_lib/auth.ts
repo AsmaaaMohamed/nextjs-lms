@@ -61,9 +61,7 @@ const authConfig = {
           return true;
         } catch (e) {
           console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-          return `/login?error=${encodeURIComponent(
-            e as string || "Sign-in failed"
-          )}`;
+          throw new Error(e as string);
         }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
