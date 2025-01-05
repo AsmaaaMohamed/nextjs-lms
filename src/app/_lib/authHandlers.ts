@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "./auth";
+import * as yup from "yup";
 import { AuthError } from "next-auth";
 
 export async function googleClickHandler(){
@@ -33,7 +34,12 @@ export async function loginSubmit(formData: FormData){
     // return result;
   }
   catch(error: any){
-    console.log("SignIn Error:", error.cause.err);
+    console.log("SignIn Error:", error.type);
+    if (error instanceof yup.ValidationError) {
+      console.log('ggggggggggggggggggggggggggggggggggg')
+      // Return `null` to indicate that the credentials are invalid
+      return null;
+    }
     throw error.cause.err;
   }
   revalidatePath('/')

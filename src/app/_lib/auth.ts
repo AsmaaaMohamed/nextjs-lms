@@ -1,9 +1,12 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthError } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Facebook from "next-auth/providers/facebook";
 import { DOMAIN } from "@/utils/constants";
+import { redirect } from "next/navigation";
+import prisma from "@/utils/prismaObject";
+import bcrypt from "bcryptjs";
 
 const authConfig = {
   providers: [
@@ -14,22 +17,45 @@ const authConfig = {
       async authorize(credentials, request) {
         const { email, password } = credentials;
         // try {
-        const res = await fetch(`${DOMAIN}/api/users/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+        // const res = await fetch(`${DOMAIN}/api/users/login`, {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({
+        //     email,
+        //     password,
+        //   }),
+        // });
+        // const user = await res.json();
+        const user = await prisma.user.findUnique({
+          where: { email },
         });
-        const user = await res.json();
-        console.log("uuuuueeeeeeeeeeeeeeee", user);
-        if (!res.ok && user) {
-          //  console.log('uuuuueeeeeeeeeeeeeeee' , user)
-          return { status: user?.status, error: user?.message };
+        if(!user){
+            // if (user.provider !== "credentials") {
+              //   throw new Error(
+              //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
+              //   );
+              throw new Error("invalid email or password");
+              // return NextResponse.json(
+              //   {
+              //     message: `This email is already registered with credentials. Please use that provider to log in.`,
+              //   },
+              //   { status: 401 }
+              // );
+            // }
+            // console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+            // throw new Error('this user is already registered')
         }
+        const isPasswordMatch =await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+             return null
+            }
+        console.log("uuuuueeeeeeeeeeeeeeee", user);
+        // if (!res.ok && user) {
+        //   //  console.log('uuuuueeeeeeeeeeeeeeee' , user)
+        //   return { status: user?.status, error: user?.message };
+        // }
         return user;
         // } catch (error) {
         //   console.error("Error in authorize:", error); // Log for debugging
@@ -55,13 +81,15 @@ const authConfig = {
           if (!res.ok) {
             const errorData = await res.json();
             console.log('ddddddddddddddddddddd')
-            throw errorData.message;
+            throw errorData;
           }
           console.log("tttttttttttttttttttttttttttttttttttttttttttttt", res.ok);
           return true;
         } catch (e) {
           console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-          throw new Error(e as string);
+          if (e instanceof AuthError) {
+          redirect(`/login?error=${e.type}`);
+        }
         }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)

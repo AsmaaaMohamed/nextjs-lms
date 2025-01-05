@@ -11,13 +11,11 @@ import {
   loginSubmit,
 } from "@/app/_lib/authHandlers";
 import { loginSchema } from "@/utils/validationSchemas";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
-const ClientComponent = () => {
-    const searchParams = useSearchParams();
-    const error = searchParams.get('error');
+const ClientComponent = (props: {searchParams: { callbackUrl: string | undefined }}) => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -37,8 +35,9 @@ const ClientComponent = () => {
          router.push('/');
          router.refresh()
 
-      } catch (error) {
+      } catch (error:any) {
         toast.dismiss();
+        console.log(error)
         toast.error(error.message as string);
       } finally {
         console.log("");
@@ -54,12 +53,12 @@ const ClientComponent = () => {
        toast.error(err as string);
       };
   };
-useEffect(()=>{
-    if(error ){
-        toast.dismiss();
-        toast.error(error);
-    }
-    },[error]);
+useEffect(() => {
+  if (props.searchParams?.callbackUrl) {
+    toast.dismiss();
+    toast.error(props.searchParams?.callbackUrl);
+  }
+}, [props.searchParams?.callbackUrl]);
   return (
     <Fragment>
       <PageHeader />
@@ -76,7 +75,7 @@ useEffect(()=>{
               <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
             )} */}
             <h3 className="title">Login</h3>
-            <Form className="account-form" onSubmit={formik.handleSubmit} >
+            <Form className="account-form" onSubmit={formik.handleSubmit}>
               <Form.Group className="form-group mb-3">
                 <Form.Control
                   type="text"
@@ -159,7 +158,7 @@ useEffect(()=>{
                     className="github"
                     title="Github"
                     role="button"
-                    onClick={githubClickHandler}
+                    onClick={() => handleSocialLogin("github")}
                   >
                     <i className="icofont-github icofont"></i>
                   </span>
