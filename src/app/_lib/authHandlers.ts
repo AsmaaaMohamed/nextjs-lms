@@ -9,12 +9,13 @@ export async function googleClickHandler(){
     await signIn('google', {redirectTo:"/account"});
 }
 export async function githubClickHandler() {
-    try {
-      const res = await signIn("github", { redirect:false });
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res.type);
-    } catch (error) {
-      console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error.type);
-    }
+    // try {
+    console.log('llllllllllllllllllllllllll')
+       const res= await signIn("github", { redirectTo:'/' });
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res);
+    // } catch (error) {
+    //   console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
+    // }
 }
 export async function logoutClickHandler() {
   await signOut({ redirectTo: "/login" });
@@ -35,12 +36,14 @@ export async function loginSubmit(formData: FormData){
   }
   catch(error: any){
     console.log("SignIn Error:", error.type);
-    if (error instanceof yup.ValidationError) {
-      console.log('ggggggggggggggggggggggggggggggggggg')
-      // Return `null` to indicate that the credentials are invalid
-      return null;
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          throw new Error("Invalid email or password");
+        default:
+          throw new Error("Something went wrong.");
+      }
     }
-    throw error.cause.err;
+    throw error;
   }
-  revalidatePath('/')
 }

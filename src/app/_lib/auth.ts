@@ -36,7 +36,7 @@ const authConfig = {
               //   throw new Error(
               //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
               //   );
-              throw new Error("invalid email or password");
+              return null;
               // return NextResponse.json(
               //   {
               //     message: `This email is already registered with credentials. Please use that provider to log in.`,
@@ -70,27 +70,61 @@ const authConfig = {
     async signIn({ user, account }) {
       if (account && account.provider !== "credentials") {
         console.log("fffffffffffffffwwwwwwwwwwwwww");
-        try {
-          const res = await fetch(`${DOMAIN}/api/users/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...user, provider: account.provider }),
-          });
-          //  const userr = await res.json();
-          console.log("dddddddddddddddddddddrrrrrrrrrrrrrrrrrrrrrrr");
-          if (!res.ok) {
-            const errorData = await res.json();
-            console.log('ddddddddddddddddddddd')
-            throw errorData;
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email },
+        });
+        if(existingUser){
+              if (existingUser.provider !== account.provider) {
+                //   throw new Error(
+                //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
+                //   );
+                //   return NextResponse.json({
+                //     message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
+                //   },
+                // {status:401});
+                // throw new Error(
+                //   `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`
+                // )
+                // console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+                const errorMessage =  `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`;
+                return `/login?error=${encodeURIComponent(errorMessage)}`;
+              }
+              return true;
           }
-          console.log("tttttttttttttttttttttttttttttttttttttttttttttt", res.ok);
-          return true;
-        } catch (e) {
-          console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-          if (e instanceof AuthError) {
-          redirect(`/login?error=${e.type}`);
-        }
-        }
+          const newUser = await prisma.user.create({
+            data: {
+              username: user.name,
+              email: user.email,
+              password: '',
+              provider: account.provider,
+            },
+            select: {
+              username: true,
+              email: true,
+              isAdmin: true,
+            },
+          });
+        // try {
+        //   const res = await fetch(`${DOMAIN}/api/users/register`, {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({ ...user, provider: account.provider }),
+        //   });
+        //   //  const userr = await res.json();
+        //   console.log("dddddddddddddddddddddrrrrrrrrrrrrrrrrrrrrrrr");
+        //   if (!res.ok) {
+        //     const errorData = await res.json();
+        //     console.log('ddddddddddddddddddddd')
+        //     throw errorData;
+        //   }
+        //   console.log("tttttttttttttttttttttttttttttttttttttttttttttt", res.ok);
+        //   return true;
+        // } catch (e) {
+        //   console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
+        //   if (e instanceof AuthError) {
+        //   redirect(`/login?error=${e.type}`);
+        // }
+        // }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
       if (user?.error) {

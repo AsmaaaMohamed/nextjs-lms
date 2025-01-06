@@ -11,11 +11,13 @@ import {
   loginSubmit,
 } from "@/app/_lib/authHandlers";
 import { loginSchema } from "@/utils/validationSchemas";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
-const ClientComponent = (props: {searchParams: { callbackUrl: string | undefined }}) => {
+const ClientComponent = () => {
+  const searchParams = useSearchParams();
+  const errorType = searchParams.get("error");
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -36,6 +38,7 @@ const ClientComponent = (props: {searchParams: { callbackUrl: string | undefined
          router.refresh()
 
       } catch (error:any) {
+        console.log('caaaaaaaaaaaaaaaaaaaatttttttttttttttttttttt')
         toast.dismiss();
         console.log(error)
         toast.error(error.message as string);
@@ -46,19 +49,31 @@ const ClientComponent = (props: {searchParams: { callbackUrl: string | undefined
     },
   });
   const handleSocialLogin = (provider:string) => {
-    try{
-          signIn(provider, { redirectTo: '/' });        
-    }
-      catch(err ) {
-       toast.error(err as string);
-      };
+    // try{
+    //       signIn(provider, { redirect: false }); 
+    //       console.log('ddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')       
+    // }
+    //   catch(err ) {
+    //     console.log('errroooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+    //    toast.error(err as string);
+    //   };
+    signIn(provider, { redirect: false }).then((result) => {
+      console.log('ressssssssssssssssssssssssssssuuuuuuuuuuuuuuuuu', result)
+      if (result && result.error) {
+        throw new Error(result.error);
+      }
+    });
   };
-useEffect(() => {
-  if (props.searchParams?.callbackUrl) {
-    toast.dismiss();
-    toast.error(props.searchParams?.callbackUrl);
+  const setErrorMessage=(errorType)=>{
+
   }
-}, [props.searchParams?.callbackUrl]);
+useEffect(() => {
+  if (errorType) {
+    console.log('tyyyyyyyyyyyyyyyyyyyyyyyyyy' , errorType)
+    toast.dismiss();
+    toast.error(errorType);
+  }
+}, [errorType]);
   return (
     <Fragment>
       <PageHeader />
@@ -158,7 +173,7 @@ useEffect(() => {
                     className="github"
                     title="Github"
                     role="button"
-                    onClick={() => handleSocialLogin("github")}
+                    onClick={githubClickHandler}
                   >
                     <i className="icofont-github icofont"></i>
                   </span>
