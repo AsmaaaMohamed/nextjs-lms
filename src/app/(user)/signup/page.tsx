@@ -1,5 +1,6 @@
 "use client";
 
+import { githubClickHandler, googleClickHandler } from "@/app/_lib/authHandlers";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import { DOMAIN } from "@/utils/constants";
 import { registerSchema } from "@/utils/validationSchemas";
@@ -18,12 +19,12 @@ const SignupPage = () => {
     validateOnChange: true,
     validateOnBlur: true,
     validationSchema: registerSchema,
-    onSubmit: async(values) => {
+    onSubmit: async (values) => {
       try {
         await fetch(`${DOMAIN}/api/users/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({...values, provider:'credentials'}),
+          body: JSON.stringify({ ...values, provider: "credentials" }),
         });
       } catch (error) {
         console.log(error);
@@ -134,29 +135,29 @@ const SignupPage = () => {
               <h5 className="subtitle">Register With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
                 <li>
-                  <a href="#" className="facebook">
+                  <span className="facebook" title="Facebook" role="button">
                     <i className="icofont-facebook icofont"></i>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a href="#" className="twitter">
-                    <i className="icofont-twitter icofont"></i>
-                  </a>
+                  <span
+                    className="github"
+                    title="Github"
+                    role="button"
+                    onClick={githubClickHandler}
+                  >
+                    <i className="icofont-github icofont"></i>
+                  </span>
                 </li>
                 <li>
-                  <a href="#" className="linkedin">
-                    <i className="icofont-linkedin icofont"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="instagram">
-                    <i className="icofont-instagram icofont"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="pinterest">
-                    <i className="icofont-pinterest icofont"></i>
-                  </a>
+                  <span
+                    className="google"
+                    title="Google"
+                    role="button"
+                    onClick={googleClickHandler}
+                  >
+                    <i className="icofont-brand-google icofont"></i>
+                  </span>
                 </li>
               </ul>
             </div>
