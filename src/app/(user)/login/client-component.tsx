@@ -9,12 +9,11 @@ import {
   githubClickHandler,
   googleClickHandler,
   loginSubmit,
-} from "@/app/_lib/authHandlers";
+} from "@/app/_lib/actions";
 import { loginSchema } from "@/utils/validationSchemas";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { toast} from "react-toastify";
+
 const ClientComponent = () => {
   const searchParams = useSearchParams();
   const errorType = searchParams.get("error");
@@ -32,7 +31,7 @@ const ClientComponent = () => {
       formData.append("email", values.email);
       formData.append("password", values.password);
       try {
-         const result = await loginSubmit(formData);
+         await loginSubmit(formData);
          toast.success("Login successful!");
          router.push('/');
          router.refresh()
@@ -48,25 +47,25 @@ const ClientComponent = () => {
       }
     },
   });
-  const handleSocialLogin = (provider:string) => {
-    // try{
-    //       signIn(provider, { redirect: false }); 
-    //       console.log('ddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')       
-    // }
-    //   catch(err ) {
-    //     console.log('errroooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-    //    toast.error(err as string);
-    //   };
-    signIn(provider, { redirect: false }).then((result) => {
-      console.log('ressssssssssssssssssssssssssssuuuuuuuuuuuuuuuuu', result)
-      if (result && result.error) {
-        throw new Error(result.error);
-      }
-    });
-  };
-  const setErrorMessage=(errorType)=>{
+  // const handleSocialLogin = (provider:string) => {
+  //   // try{
+  //   //       signIn(provider, { redirect: false }); 
+  //   //       console.log('ddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')       
+  //   // }
+  //   //   catch(err ) {
+  //   //     console.log('errroooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+  //   //    toast.error(err as string);
+  //   //   };
+  //   signIn(provider, { redirect: false }).then((result) => {
+  //     console.log('ressssssssssssssssssssssssssssuuuuuuuuuuuuuuuuu', result)
+  //     if (result && result.error) {
+  //       throw new Error(result.error);
+  //     }
+  //   });
+  // };
+  // const setErrorMessage=(errorType)=>{
 
-  }
+  // }
 useEffect(() => {
   if (errorType) {
     console.log('tyyyyyyyyyyyyyyyyyyyyyyyyyy' , errorType)
@@ -193,11 +192,6 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3500}
-        theme="colored"
-      />
     </Fragment>
   );
 };

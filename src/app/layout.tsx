@@ -7,6 +7,8 @@ import Header from "@/components/common/Header/Header";
 import BootstrapClient from "@/components/BootstrapClient";
 import Footer from "@/components/common/Footer/Footer";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +40,11 @@ export default function RootLayout({
           <Footer />
           <BootstrapClient />
         </SessionProvider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3500}
+          theme="colored"
+        />
       </body>
     </html>
   );

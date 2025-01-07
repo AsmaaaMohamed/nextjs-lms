@@ -14,7 +14,7 @@ const authConfig = {
     GitHub,
     Facebook,
     Credentials({
-      async authorize(credentials, request) {
+      async authorize(credentials) {
         const { email, password } = credentials;
         // try {
         // const res = await fetch(`${DOMAIN}/api/users/login`, {

@@ -3,8 +3,25 @@ import "./Contact.css";
 import { Fragment } from "react";
 import ContactForm from "@/components/forms/ContactForm/ContactForm";
 import Image from "next/image";
+import { useFormik } from "formik";
+import { contactSchema } from "@/utils/validationSchemas";
 
 const ContactPage = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      mobile: "",
+      subject: "",
+      message:""
+    },
+    validateOnChange: true,
+    validateOnBlur: true,
+    validationSchema: contactSchema,
+    onSubmit: async (values) => {
+      
+    },
+  });
   return (
     <Fragment>
       <PageHeader />

@@ -17,7 +17,7 @@ import Image from "next/image";
 // import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
 import { coursesCategories } from "@/utils/data";
 import useSearchStore from "@/store/lms/search/search";
-import { logoutClickHandler } from "@/app/_lib/authHandlers";
+import { logoutClickHandler } from "@/app/_lib/actions";
 import { useSession } from "next-auth/react";
 const ClientComponent = ({session}) => {
   const router = useRouter();

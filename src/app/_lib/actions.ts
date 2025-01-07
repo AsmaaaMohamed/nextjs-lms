@@ -4,7 +4,16 @@ import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "./auth";
 import * as yup from "yup";
 import { AuthError } from "next-auth";
+import prisma from "@/utils/prismaObject";
 
+export async function credentialSignup(formData: FormData){
+  const existingUser = await prisma.user.findUnique({where:{email:formData.get("email")}});
+  if(existingUser){
+    if (existingUser.provider !== account.provider) {
+      
+    }
+  }
+}
 export async function googleClickHandler(){
     await signIn('google', {redirectTo:"/account"});
 }

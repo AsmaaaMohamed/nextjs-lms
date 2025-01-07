@@ -1,14 +1,17 @@
 "use client";
 
-import { githubClickHandler, googleClickHandler } from "@/app/_lib/authHandlers";
+import { githubClickHandler, googleClickHandler } from "@/app/_lib/actions";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import { DOMAIN } from "@/utils/constants";
 import { registerSchema } from "@/utils/validationSchemas";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { Fragment } from "react";
 import { Button, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const SignupPage = () => {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -21,13 +24,22 @@ const SignupPage = () => {
     validationSchema: registerSchema,
     onSubmit: async (values) => {
       try {
-        await fetch(`${DOMAIN}/api/users/register`, {
+        const res =await fetch(`${DOMAIN}/api/auth`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...values, provider: "credentials" }),
         });
+        if(!res.ok){
+        const resData = await res.json();
+        throw resData
+      }
+        console.log('reeeeeeeeeeeeeeesssssssssssssssssssssssss',res)
+        toast.success("Your acount has been created successfully");
+        router.push('/login');
       } catch (error) {
-        console.log(error);
+        // toast.dismiss();
+        console.log('ooooooooooooooooooooooooooooooooooooooooooo',error.message)
+        toast.error(error.message );
       }
     },
   });
