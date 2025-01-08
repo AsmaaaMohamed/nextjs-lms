@@ -1,29 +1,41 @@
 "use client";
 
+import { DOMAIN } from "@/utils/constants";
+import { contactSchema } from "@/utils/validationSchemas";
 import { useFormik } from "formik";
 import { Button, Form } from "react-bootstrap";
-import * as Yup from "yup";
+import { toast } from "react-toastify";
 
-const contactSchema = Yup.object().shape({
-  name: Yup.string().required("Name is Required"),
-  number: Yup.string().required("Mobile Number is Required"),
-  email: Yup.string()
-    .email("Enter a valid Email")
-    .required("Email is Required"),
-  subject: Yup.string().required("Subject is Required"),
-});
 const ContactForm = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
-      number: "",
+      mobile: "",
       email: "",
       subject: "",
       message: "",
     },
     validationSchema: contactSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async(values,{ resetForm }) => {
+      try{
+        const res =await fetch(`${DOMAIN}/api/send`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({...values}),
+                });
+        const data = await res.json();
+        //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
+        if(!res.ok){
+          throw data.error.message
+        }
+        
+        toast.success("Your Message has been sent successfully");
+        resetForm();
+      }
+      catch(error:any){
+        console.log('errrrrrrrooooooooooo', error);
+        toast.error(error)
+      }
     },
   });
   return (
@@ -65,17 +77,17 @@ const ContactForm = () => {
       <Form.Group className="form-group">
         <Form.Control
           type="text"
-          name="number"
+          name="mobile"
           placeholder="Mobile Number *"
-          value={formik.values.number}
+          value={formik.values.mobile}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          isValid={!formik.errors.number && formik.touched.number}
+          isValid={!formik.errors.mobile && formik.touched.mobile}
         />
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        {formik.errors.number && formik.touched.number ? (
+        {formik.errors.mobile && formik.touched.mobile ? (
           <Form.Control.Feedback type="invalid" className="d-block">
-            {formik.errors.number}
+            {formik.errors.mobile}
           </Form.Control.Feedback>
         ) : null}
       </Form.Group>
