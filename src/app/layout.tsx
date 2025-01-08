@@ -9,6 +9,7 @@ import Footer from "@/components/common/Footer/Footer";
 import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTopBtn from "@/components/common/ScrollToTopBtn/ScrollToTopBtn";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SessionProvider>
           <Header />
+          <ScrollToTopBtn/>
           {children}
           <Footer />
           <BootstrapClient />
