@@ -1,8 +1,25 @@
+'use client'
+
 import Link from "next/link";
 import "./CourseSideDetails.css";
 import Image from "next/image";
+import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const CourseSideDetails = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const modalHandler = () => {
+    if (accessToken) {
+      setIsOpen(!isOpen);
+      setError(null);
+    } else {
+      toast({
+        variant: "destructive",
+        description: "You need to login first to add items to place order",
+      });
+    }
+  };
   return (
     <div className="course-side-detail">
       <div className="csd-title">
@@ -75,7 +92,12 @@ const CourseSideDetails = () => {
             <h6>Secure Payment:</h6>
           </div>
           <div className="sp-thumb">
-            <Image src="/assets/images/pyment/01.jpg" alt="CodexCoder" width={260} height={36} />
+            <Image
+              src="/assets/images/pyment/01.jpg"
+              alt="CodexCoder"
+              width={260}
+              height={36}
+            />
           </div>
         </div>
         <div className="sidebar-social">
@@ -103,9 +125,9 @@ const CourseSideDetails = () => {
           </div>
         </div>
         <div className="course-enroll">
-          <Link className="lab-btn" href="/signup">
+          <Button className="lab-btn" onClick={modalHandler}>
             <span>Enrolled Now</span>
-          </Link>
+          </Button>
         </div>
       </div>
     </div>
