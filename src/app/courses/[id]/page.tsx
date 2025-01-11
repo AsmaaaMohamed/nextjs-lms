@@ -7,9 +7,11 @@ import CourseSideCategories from "@/components/lms/CourseSideCategories/CourseSi
 import Comment from "@/components/Comment/Comment";
 import Author from "@/components/common/Author/Author";
 import Link from "next/link";
+import { auth } from "@/app/_lib/auth";
 
 const CourseDetails = async({ params }) => {
-  const {id} = await params
+  const {id} = await params;
+  const session = await auth();
   console.log('id params' , id)
   // const {id} = useParams()
   // console.log(id)
@@ -348,7 +350,7 @@ const CourseDetails = async({ params }) => {
                   </div>
                 </div>
                 <Author />
-                <Comment /> 
+                <Comment session={session}/> 
               </div>
             </div>
             <div className="col-lg-4">

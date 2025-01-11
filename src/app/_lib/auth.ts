@@ -3,8 +3,6 @@ import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Facebook from "next-auth/providers/facebook";
-import { DOMAIN } from "@/utils/constants";
-import { redirect } from "next/navigation";
 import prisma from "@/utils/prismaObject";
 import bcrypt from "bcryptjs";
 

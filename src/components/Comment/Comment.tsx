@@ -3,10 +3,8 @@
 import { Fragment } from "react";
 import "./Comment.css";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
-const Comment = () => {
-  const { data: session } = useSession();
-  console.log('seeeeeeeeessssssssssssssssssssiiiiiiiiiiiiiiiiioooooooo',session)
+
+const Comment = ({session}) => {
   return (
     <Fragment>
       <div className="comments">

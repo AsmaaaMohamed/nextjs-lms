@@ -3,22 +3,23 @@
 import Link from "next/link";
 import "./CourseSideDetails.css";
 import Image from "next/image";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
 const CourseSideDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalHandler = () => {
-    if (accessToken) {
-      setIsOpen(!isOpen);
-      setError(null);
-    } else {
-      toast({
-        variant: "destructive",
-        description: "You need to login first to add items to place order",
-      });
-    }
+    setIsOpen((prev)=>!prev)
+    // if (accessToken) {
+    //   setIsOpen(!isOpen);
+    //   setError(null);
+    // } else {
+    //   toast({
+    //     variant: "destructive",
+    //     description: "You need to login first to add items to place order",
+    //   });
+    // }
   };
   return (
     <div className="course-side-detail">
@@ -128,6 +129,21 @@ const CourseSideDetails = () => {
           <Button className="lab-btn" onClick={modalHandler}>
             <span>Enrolled Now</span>
           </Button>
+
+          <Modal.Dialog show={isOpen.toString()}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal title</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>Modal body text goes here.</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary">Close</Button>
+              <Button variant="primary">Save changes</Button>
+            </Modal.Footer>
+          </Modal.Dialog>
         </div>
       </div>
     </div>
