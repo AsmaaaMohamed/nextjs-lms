@@ -355,7 +355,7 @@ const CourseDetails = async({ params }) => {
             </div>
             <div className="col-lg-4">
               <div className="sidebar-part">
-                <CourseSideDetails />
+                <CourseSideDetails courseId={id} session={session}/>
                 <CourseSideCategories />
               </div>
             </div>

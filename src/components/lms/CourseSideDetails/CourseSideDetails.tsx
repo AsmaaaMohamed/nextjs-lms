@@ -6,8 +6,13 @@ import Image from "next/image";
 import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import prisma from "@/utils/prismaObject";
+import { DOMAIN } from "@/utils/constants";
 
-const CourseSideDetails = () => {
+const CourseSideDetails = ({courseId , session}) => {
+  console.log('sessssssss', courseId)
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const modalHandler = () => {
     setIsOpen((prev)=>!prev)
@@ -21,6 +26,40 @@ const CourseSideDetails = () => {
     //   });
     // }
   };
+  const confirmHandler = async()=>{
+    modalHandler();
+    if (session) {
+      try {
+        const userId = session.user.id;
+        const res = await fetch("/api/enrollCourse", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ courseId, userId }),
+        });
+        if (!res.ok) {
+          throw res.statusText;
+        }
+        // const resData = await res.json();
+        console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
+         toast.success(
+           "You've successfully enrolled course. You'll redirect to the course view page"
+         );
+        // Delay the navigation
+        setTimeout(() => {
+          router.push(`/courses/${courseId}/view`); // Replace with your target route
+        }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+      }
+      catch(err){
+        toast.error(err as string);
+      }
+    } 
+    else {
+      toast.error("You need to login first to enrolled the course");
+    }
+   
+  }
   return (
     <div className="course-side-detail">
       <div className="csd-title">
@@ -129,21 +168,22 @@ const CourseSideDetails = () => {
           <Button className="lab-btn" onClick={modalHandler}>
             <span>Enrolled Now</span>
           </Button>
-
-          <Modal.Dialog show={isOpen.toString()}>
+          <Modal show={isOpen} onHide={modalHandler}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal title</Modal.Title>
+              <Modal.Title>Enrolled Now</Modal.Title>
             </Modal.Header>
-
             <Modal.Body>
-              <p>Modal body text goes here.</p>
+              <p> Are you sure you want to place order with Subtotal:{" "} 89$ ?</p>
             </Modal.Body>
-
             <Modal.Footer>
-              <Button variant="secondary">Close</Button>
-              <Button variant="primary">Save changes</Button>
+              <Button variant="secondary" onClick={modalHandler}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={confirmHandler}>
+                Confirm
+              </Button>
             </Modal.Footer>
-          </Modal.Dialog>
+          </Modal>
         </div>
       </div>
     </div>

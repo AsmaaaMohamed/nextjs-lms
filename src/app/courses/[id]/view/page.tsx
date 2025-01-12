@@ -1,4 +1,5 @@
 'use client';
+
 import { Fragment } from "react";
 import "./CourseView.css";
 import Accordion from "react-bootstrap/Accordion";

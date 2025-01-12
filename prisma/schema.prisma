@@ -8,15 +8,16 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
-  username String    @db.VarChar(100)
+  id       Int            @id @default(autoincrement())
+  email    String         @unique
+  username String         @db.VarChar(100)
   password String
-  provider String    @default("")
-  isAdmin  Boolean   @default(false)
-  createAt DateTime  @default(now())
-  updateAt DateTime  @updatedAt
-  Comment  Comment[]
+  provider String         @default("")
+  isAdmin  Boolean        @default(false)
+  createAt DateTime       @default(now())
+  updateAt DateTime       @updatedAt
+  comment  Comment[]
+  courses  UsersCourses[]
 }
 
 model CourseCategory {
@@ -29,14 +30,24 @@ model CourseCategory {
 }
 
 model Course {
-  id           Int      @id @default(autoincrement())
-  title        String   @db.VarChar(200)
-  category     String   @db.VarChar(200)
+  id           Int            @id @default(autoincrement())
+  title        String         @db.VarChar(200)
+  category     String         @db.VarChar(200)
   instructorId Int
-  createAt     DateTime @default(now())
-  updateAt     DateTime @updatedAt
+  createAt     DateTime       @default(now())
+  updateAt     DateTime       @updatedAt
   img          String
   price        Float
+  users        UsersCourses[]
+}
+
+model UsersCourses {
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int // relation scalar field (used in the `@relation` attribute above)
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int // relation scalar field (used in the `@relation` attribute above)
+
+  @@id([userId, courseId])
 }
 
 model Instructor {
