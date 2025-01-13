@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import "./Comment.css";
 import Image from "next/image";
 
-const Comment = ({session}) => {
+const Comment = ({session,isEnrolled}) => {
   return (
     <Fragment>
       <div className="comments">
@@ -70,7 +70,7 @@ const Comment = ({session}) => {
           </li>
         </ul>
       </div>
-      {session && (
+      {(session && isEnrolled) && (
         <div id="respond" className="comment-respond mb-lg-0">
           <h4 className="title-border">Leave a Comment</h4>
           <div className="add-comment">

@@ -8,10 +8,14 @@ import Comment from "@/components/Comment/Comment";
 import Author from "@/components/common/Author/Author";
 import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
+import { getDashboardCourses } from "@/app/_lib/actions";
 
 const CourseDetails = async({ params }) => {
   const {id} = await params;
   const session = await auth();
+  const userId = +session.user.id; // Ensure it's a number
+  const courses = await getDashboardCourses(userId);
+  const isEnrolled = courses.find((c)=>c.id === id)
   console.log('id params' , id)
   // const {id} = useParams()
   // console.log(id)
@@ -350,12 +354,12 @@ const CourseDetails = async({ params }) => {
                   </div>
                 </div>
                 <Author />
-                <Comment session={session}/> 
+                <Comment session={session} isEnrolled={isEnrolled}/> 
               </div>
             </div>
             <div className="col-lg-4">
               <div className="sidebar-part">
-                <CourseSideDetails courseId={id} session={session}/>
+                <CourseSideDetails courseId={id} session={session} isEnrolled={isEnrolled}/>
                 <CourseSideCategories />
               </div>
             </div>

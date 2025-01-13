@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import prisma from "@/utils/prismaObject";
 import { DOMAIN } from "@/utils/constants";
 
-const CourseSideDetails = ({courseId , session}) => {
+const CourseSideDetails = ({courseId , session, isEnrolled}) => {
   console.log('sessssssss', courseId)
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -72,9 +72,13 @@ const CourseSideDetails = ({courseId , session}) => {
           </h4>
         </div>
         <div className="csdt-right">
-          <p className="mb-0">
-            <i className="icofont-clock-time icofont"></i>Limited time offer
-          </p>
+          {isEnrolled ? (
+            <p className="mb-0">Purchased</p>
+          ) : (
+            <p className="mb-0">
+              <i className="icofont-clock-time icofont"></i>Limited time offer
+            </p>
+          )}
         </div>
       </div>
       <div className="csd-content">
@@ -167,27 +171,41 @@ const CourseSideDetails = ({courseId , session}) => {
             </ul>
           </div>
         </div>
-        <div className="course-enroll">
-          <Button className="lab-btn" onClick={modalHandler}>
-            <span>Enrolled Now</span>
-          </Button>
-          <Modal show={isOpen} onHide={modalHandler}>
-            <Modal.Header closeButton>
-              <Modal.Title>Enrolled Now</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p> Are you sure you want to place order with Subtotal:{" "} 89$ ?</p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={modalHandler}>
-                Close
-              </Button>
-              <Button variant="primary" onClick={confirmHandler}>
-                Confirm
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        {isEnrolled ? (
+          <div className="course-enroll">
+            <Button
+              className="lab-btn"
+              onClick={() => router.push(`/courses/${courseId}/view`)}
+            >
+              <span>View Course</span>
+            </Button>
+          </div>
+        ) : (
+          <div className="course-enroll">
+            <Button className="lab-btn" onClick={modalHandler}>
+              <span>Enrolled Now</span>
+            </Button>
+            <Modal show={isOpen} onHide={modalHandler}>
+              <Modal.Header closeButton>
+                <Modal.Title>Enrolled Now</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>
+                  {" "}
+                  Are you sure you want to place order with Subtotal: 89$ ?
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={modalHandler}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={confirmHandler}>
+                  Confirm
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+        )}
       </div>
     </div>
   );
