@@ -41,11 +41,12 @@ model Course {
 }
 
 model UsersCourses {
-  id       Int    @id @default(autoincrement())
-  userId   Int // relation scalar field (used in the `@relation` attribute above)
-  course   Course @relation(fields: [courseId], references: [id])
-  courseId Int // relation scalar field (used in the `@relation` attribute above)
-
+  id         Int      @id @default(autoincrement())
+  userId     Int // relation scalar field (used in the `@relation` attribute above)
+  course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId   Int // relation scalar field (used in the `@relation` attribute above)
+  enrolledAt DateTime @default(now())
+  @@unique([userId ,courseId])
   @@index([courseId])
 }
 

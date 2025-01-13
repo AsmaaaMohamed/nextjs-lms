@@ -1,19 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "./auth";
-import * as yup from "yup";
 import { AuthError } from "next-auth";
 import prisma from "@/utils/prismaObject";
 
-export async function credentialSignup(formData: FormData){
-  const existingUser = await prisma.user.findUnique({where:{email:formData.get("email")}});
-  if(existingUser){
-    if (existingUser.provider !== account.provider) {
-      
-    }
-  }
-}
 export async function googleClickHandler(){
     await signIn('google', {redirectTo:"/account"});
 }
@@ -54,5 +44,20 @@ export async function loginSubmit(formData: FormData){
       }
     }
     throw error;
+  }
+}
+export const getDashboardCourses = async(userId:number)=>{
+  try {
+    const enrolledCourses = await prisma.usersCourses.findMany({
+      where: { userId },
+      include: {
+        course: true, // Fetch related Course model data
+      },
+    });
+    const courses = enrolledCourses.map((c)=>c.course);
+    return courses;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }

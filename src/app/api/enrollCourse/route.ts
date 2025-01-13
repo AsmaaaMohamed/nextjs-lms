@@ -13,6 +13,20 @@ export async function POST(request: NextRequest) {
     const {userId , courseId} = await request.json();
     console.log('thiiiiiiiiiiiii',userId)
   try {
+    const enrolledCourse = await prisma.usersCourses.findUnique({
+      where: {
+        userId_courseId: {
+          userId: +userId,
+          courseId: +courseId,
+        },
+      },
+    });
+    if(enrolledCourse){
+      return NextResponse.json(
+        { message: "You already enrolled this course" },
+        { status: 400 }
+      );
+    }
      await prisma.usersCourses.create({
        data: {
           userId: +userId , courseId: +courseId 
