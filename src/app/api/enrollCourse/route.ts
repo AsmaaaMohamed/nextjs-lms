@@ -13,9 +13,9 @@ export async function POST(request: NextRequest) {
     const {userId , courseId} = await request.json();
     console.log('thiiiiiiiiiiiii',userId)
   try {
-     await prisma.user.create({
+     await prisma.usersCourses.create({
        data: {
-          courseId, userId 
+          userId: +userId , courseId: +courseId 
        },
      });
 

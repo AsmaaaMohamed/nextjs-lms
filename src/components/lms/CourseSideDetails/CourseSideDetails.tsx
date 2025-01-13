@@ -34,12 +34,15 @@ const CourseSideDetails = ({courseId , session}) => {
         const res = await fetch("/api/enrollCourse", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":"application/json",
           },
-          body: JSON.stringify({ courseId, userId }),
+          body: JSON.stringify({ userId:userId , courseId:courseId}),
         });
         if (!res.ok) {
-          throw res.statusText;
+          
+          const resJson = await res.json()
+          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
+          throw resJson;
         }
         // const resData = await res.json();
         console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
@@ -52,7 +55,7 @@ const CourseSideDetails = ({courseId , session}) => {
         }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
       }
       catch(err){
-        toast.error(err as string);
+        toast.error(err.message as string);
       }
     } 
     else {

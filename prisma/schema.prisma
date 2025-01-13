@@ -8,16 +8,15 @@ datasource db {
 }
 
 model User {
-  id       Int            @id @default(autoincrement())
-  email    String         @unique
-  username String         @db.VarChar(100)
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  username String    @db.VarChar(100)
   password String
-  provider String         @default("")
-  isAdmin  Boolean        @default(false)
-  createAt DateTime       @default(now())
-  updateAt DateTime       @updatedAt
+  provider String    @default("")
+  isAdmin  Boolean   @default(false)
+  createAt DateTime  @default(now())
+  updateAt DateTime  @updatedAt
   comment  Comment[]
-  courses  UsersCourses[]
 }
 
 model CourseCategory {
@@ -42,12 +41,12 @@ model Course {
 }
 
 model UsersCourses {
-  user     User   @relation(fields: [userId], references: [id])
+  id       Int    @id @default(autoincrement())
   userId   Int // relation scalar field (used in the `@relation` attribute above)
   course   Course @relation(fields: [courseId], references: [id])
   courseId Int // relation scalar field (used in the `@relation` attribute above)
 
-  @@id([userId, courseId])
+  @@index([courseId])
 }
 
 model Instructor {
