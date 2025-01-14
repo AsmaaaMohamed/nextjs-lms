@@ -3,28 +3,31 @@ import "./CustomFilter.css";
 import useSearchStore from "@/store/lms/search/search";
 
 const CustomFilter = ({ categoriesOptions }) => {
-   const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } = useSearchStore();
-   console.log(searchCategory)
+  //  const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } = useSearchStore();
+  //  console.log(searchCategory);
+  //  const handleCategorySelect = (e) => {
+  //    setSearchCategory(e.target.value);
+  //    console.log("ffffffffffffffffffffffffffffff", e.target.value);
+  //  };
   return (
     <div className="group-select-section">
       <div className="container">
         <div className="section-wrapper">
           <div className="row align-items-center g-4">
-            <div className="col-md-1">
-              <div className="group-select-left">
+            <div className="col-md-4">
+              <div className="group-select-left" style={{ textAlign: "right" }}>
                 <i className="icofont-abacus-alt icofont"></i>
                 <span>Filters</span>
               </div>
             </div>
-            <div className="col-md-11">
+            <div className="col-md-8">
               <div className="group-select-right">
                 <div className="row g-2 row-cols-lg-4 row-cols-sm-2 row-cols-1">
                   <div className="col">
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        value={ searchCategory }
-                        // onChange={(e) => setSelectedCategory(e.target.value)}
+                        
                       >
                         <option>All Categories</option>
                         <option>Uncategorized</option>
@@ -32,7 +35,7 @@ const CustomFilter = ({ categoriesOptions }) => {
                       </Form.Select>
                     </div>
                   </div>
-                  <div className="col">
+                  {/* <div className="col">
                     <div className="select-item">
                       <Form.Select aria-label="Default select example">
                         <option value="all">All Languages</option>
@@ -41,7 +44,7 @@ const CustomFilter = ({ categoriesOptions }) => {
                         <option value="html">HTML</option>
                       </Form.Select>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col">
                     <div className="select-item">
                       <Form.Select
@@ -56,7 +59,7 @@ const CustomFilter = ({ categoriesOptions }) => {
                       </Form.Select>
                     </div>
                   </div>
-                  <div className="col">
+                  {/* <div className="col">
                     <div className="select-item">
                       <Form.Select aria-label="Default select example">
                         <option value="all">All Skills</option>
@@ -65,7 +68,7 @@ const CustomFilter = ({ categoriesOptions }) => {
                         <option value="html">HTML</option>
                       </Form.Select>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

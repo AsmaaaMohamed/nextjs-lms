@@ -11,7 +11,7 @@ import prisma from "@/utils/prismaObject";
 export async function GET() {
   try {
     const coursesCategories = await prisma.courseCategory.findMany({
-      orderBy: { createAt: "desc" },
+      orderBy: { title: "asc" },
     });
 
     //return Response.json(articles, { status: 200 })

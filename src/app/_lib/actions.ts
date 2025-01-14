@@ -55,6 +55,7 @@ export const getDashboardCourses = async(userId:number)=>{
       },
     });
     const courses = enrolledCourses.map((c)=>c.course);
+    console.log('courrrrrrrrrrrrrrrrr', courses)
     return courses;
   } catch (error) {
     console.log(error);

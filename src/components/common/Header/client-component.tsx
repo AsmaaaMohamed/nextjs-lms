@@ -8,24 +8,29 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 // import actGetCoursesCategories from "@store/lms/categories/act/actGetCategories";
 // import { SearchContext } from "@store/context/searchContext";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-// import { setCategory, setSearchText } from "@/store/lms/search/searchSlice";
-import { coursesCategories } from "@/utils/data";
 import useSearchStore from "@/store/lms/search/search";
 import { logoutClickHandler } from "@/app/_lib/actions";
 import { useSession } from "next-auth/react";
-const ClientComponent = ({session}) => {
+import queryString from "query-string";
+
+const ClientComponent = ({ session, coursesCategories }) => {
+  const pathName = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentCategoryId = searchParams.get('categoryId');
+  const currentTitle = searchParams.get("title");
+  const [searchCourseCategory, setSearchCourseCategory] =
+    useState("All Categories");
+    console.log("gggggggggggggggggdddddddddddddddddddg");
   const [searchCourseName, setSearchCourseName] = useState("");
-  const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } =
-    useSearchStore();
-   const[sessionState , setSessionState] = useState(session);
-   console.log(sessionState)
+  // const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } =
+  //   useSearchStore();
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
       e.preventDefault();
@@ -33,11 +38,11 @@ const ClientComponent = ({session}) => {
     }
   };
   const handleClickSearchBtn = () => {
-    setSearchCourse(searchCourseName);
+    // setSearchCourse(searchCourseName);
     router.push("/courses");
   };
   const handleChangeSearch = (e) => {
-    setSearchCourseName(e.target.value);
+    
   };
 
   const mappedOptions = coursesCategories.map((record) => {
@@ -56,13 +61,21 @@ const ClientComponent = ({session}) => {
   //     navigate("/signup");
   //   };
   const handleCategorySelect = (e) => {
-    setSearchCategory(e.target.value);
-    console.log("ffffffffffffffffffffffffffffff", e.target.value);
-    router.push("/courses");
+    const isSelected = currentCategoryId === e.target.value;
+    setSearchCourseCategory(e.target.value)
+    const url = queryString.stringifyUrl(
+      {
+        url: '/courses',
+        query: {
+          categoty: e.target.value,
+        },
+      },
+      { skipNull: true, skipEmptyString: true }
+    );
+    console.log('rrrrrrrrrrrrrooooooooo' , url)
+    router.push(url);
+    console.log('gggggggggggggggggggggggggggg',searchCourseCategory)
   };
-  useEffect(()=>{
-    setSessionState(session)
-  },[session])
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -73,11 +86,11 @@ const ClientComponent = ({session}) => {
           <Form.Select
             aria-label="Default select example"
             className="select-cat"
-            value={searchCategory}
+            value={searchCourseCategory}
             onChange={(e) => handleCategorySelect(e)}
           >
-            <option>All Categories</option>
-            <option>Uncategorized</option>
+            <option value="All Categories">All Categories</option>
+            <option value="Uncategorized">Uncategorized</option>
             {mappedOptions}
           </Form.Select>
           <Form className="d-flex">
@@ -120,21 +133,23 @@ const ClientComponent = ({session}) => {
             </Nav>
           </Navbar.Collapse>
           <Nav className="btns-container d-none d-md-flex">
-            {sessionState?.user ? (
+            {session?.user ? (
               <>
                 <Link href="/account" className="d-flex align-items-center">
                   <Image
                     className="h-8 rounded-circle me-2"
                     src={`${
-                      sessionState.user.image ||
+                      session.user.image ||
                       "/assets/images/profile-cute-dp_8.jpg"
                     }`}
-                    alt={sessionState.user.name || sessionState.user.username}
+                    alt={session.user.name || session.user.username}
                     width={30}
                     height={30}
                   />
 
-                  <span>{sessionState.user.name || sessionState.user.username}</span>
+                  <span>
+                    {session.user.name || session.user.username}
+                  </span>
                 </Link>
                 <Button className="signup ms-2" onClick={logoutClickHandler}>
                   <i className="icofont-logout icofont"></i>Log out

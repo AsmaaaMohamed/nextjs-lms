@@ -3,7 +3,14 @@ import "./CourseCard.css";
 import Link from "next/link";
 import { Course } from "@prisma/client";
 
-const CourseCard = ({ id,title, instructorId, price, img }:Course) => {
+const CourseCard = ({
+  id,
+  title,
+  instructorId,
+  price,
+  img,
+  isUserCourse,
+}) => {
   return (
     <div className="course-item">
       <div className="course-inner">
@@ -14,7 +21,7 @@ const CourseCard = ({ id,title, instructorId, price, img }:Course) => {
             width={242}
             height={242}
           />
-          <div className="course-price">${price}</div>
+          {!isUserCourse && <div className="course-price">${price}</div>}
         </div>
         <div className="course-content">
           <div className="course-category">
@@ -32,7 +39,7 @@ const CourseCard = ({ id,title, instructorId, price, img }:Course) => {
               <span className="ratting-count">03 reviews</span>
             </div>
           </div>
-          <Link href={`/courses/${id}`}>
+          <Link href={isUserCourse ? `/courses/${id}/view` : `/courses/${id}`}>
             <h4>{title}</h4>
           </Link>
           <div className="course-details">

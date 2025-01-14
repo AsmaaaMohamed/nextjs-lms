@@ -32,7 +32,7 @@ const CoursesClient = ({coursesSection, coursesCategories}:CoursesClientProps) =
   return (
     <Fragment>
       <PageHeader />
-      <CustomFilter categoriesOptions={mappedOptions} />
+      {/* <CustomFilter categoriesOptions={mappedOptions} /> */}
       <div className="course-section padding-tb section-bg">
         <div className="container">
           <div className="section-wrapper">
@@ -41,7 +41,7 @@ const CoursesClient = ({coursesSection, coursesCategories}:CoursesClientProps) =
                 <div className="course-showing-part-left">
                   <p>Showing 1-6 of 10 results</p>
                 </div>
-                <div className="course-showing-part-right d-flex flex-wrap align-items-center">
+                {/* <div className="course-showing-part-right d-flex flex-wrap align-items-center">
                   <span>Sort by :</span>
                   <div className="select-item">
                     <Form.Select
@@ -56,7 +56,7 @@ const CoursesClient = ({coursesSection, coursesCategories}:CoursesClientProps) =
                       <option value="html">HTML</option>
                     </Form.Select>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {coursesSection}

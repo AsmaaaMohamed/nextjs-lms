@@ -15,8 +15,9 @@ const CourseDetails = async({ params }) => {
   const session = await auth();
   const userId = +session.user.id; // Ensure it's a number
   const courses = await getDashboardCourses(userId);
-  const isEnrolled = courses.find((c)=>c.id === id)
-  console.log('id params' , id)
+  console.log('cccccccccccccccccc', courses)
+  const isEnrolled = courses.find((c)=>c.id === +id)
+  console.log('id params' , isEnrolled)
   // const {id} = useParams()
   // console.log(id)
   return (
