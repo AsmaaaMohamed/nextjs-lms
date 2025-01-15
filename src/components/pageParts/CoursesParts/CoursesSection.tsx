@@ -1,7 +1,7 @@
 import CourseCard from '@/components/lms/CourseCard/CourseCard';
 import React from 'react'
 
-const CoursesSection = async({courses, isUserCourse}) => {
+const CoursesSection = ({courses, isUserCourse}) => {
     const renderedCourses = courses.map((c) => {
     return (
         <div key={c.id} className="col">

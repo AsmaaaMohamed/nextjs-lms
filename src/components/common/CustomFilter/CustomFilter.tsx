@@ -1,8 +1,13 @@
 import { Form } from "react-bootstrap";
 import "./CustomFilter.css";
-import useSearchStore from "@/store/lms/search/search";
 
-const CustomFilter = ({ categoriesOptions }) => {
+const CustomFilter = ({
+  categoriesOptions,
+  setCoursePrice,
+  setCategoryName,
+  categoryName,
+  coursePrice,
+}) => {
   //  const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } = useSearchStore();
   //  console.log(searchCategory);
   //  const handleCategorySelect = (e) => {
@@ -27,10 +32,11 @@ const CustomFilter = ({ categoriesOptions }) => {
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        
+                        value={categoryName}
+                        onChange={(e) => setCategoryName(e.target.value)}
                       >
-                        <option>All Categories</option>
-                        <option>Uncategorized</option>
+                        <option value="">All Categories</option>
+                        <option value="Uncategorized">Uncategorized</option>
                         {categoriesOptions}
                       </Form.Select>
                     </div>
@@ -49,10 +55,10 @@ const CustomFilter = ({ categoriesOptions }) => {
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        value={"All prices"}
-                        // onChange={(e) => setSelectedPrice(e.target.value)}
+                        value={coursePrice}
+                        onChange={(e) => setCoursePrice(e.target.value)}
                       >
-                        <option>All Prices</option>
+                        <option value="0">All Prices</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="25">25</option>

@@ -8,43 +8,49 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import { memo, useEffect, useState } from "react";
-// import actGetCoursesCategories from "@store/lms/categories/act/actGetCategories";
-// import { SearchContext } from "@store/context/searchContext";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {  useEffect, useState } from "react";
+import {  usePathname, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import useSearchStore from "@/store/lms/search/search";
 import { logoutClickHandler } from "@/app/_lib/actions";
-import { useSession } from "next-auth/react";
 import queryString from "query-string";
 
 const ClientComponent = ({ session, coursesCategories }) => {
-  const pathName = usePathname();
   const router = useRouter();
+  const pathname = usePathname(); // Get the current path
   const searchParams = useSearchParams();
-  const currentCategoryId = searchParams.get('categoryId');
+  const currentCategory = searchParams.get("category");
   const currentTitle = searchParams.get("title");
   const [searchCourseCategory, setSearchCourseCategory] =
     useState("All Categories");
-    console.log("gggggggggggggggggdddddddddddddddddddg");
+  console.log("gggggggggggggggggdddddddddddddddddddg" , pathname);
   const [searchCourseName, setSearchCourseName] = useState("");
-  // const { searchCategory, searchCourse, setSearchCategory, setSearchCourse } =
-  //   useSearchStore();
   const handleSearchCourseEnter = (e) => {
-    if (e.key === "Enter" && e.target.value !== "") {
+    if (e.key === "Enter") {
       e.preventDefault();
       handleClickSearchBtn();
     }
   };
   const handleClickSearchBtn = () => {
-    // setSearchCourse(searchCourseName);
-    router.push("/courses");
+    if (searchCourseName !== "")
+      handleSearch(currentCategory, searchCourseName);
   };
   const handleChangeSearch = (e) => {
-    
+    setSearchCourseName(e.target.value);
   };
-
+  const handleSearch = (categoryName, courseName) => {
+    const url = queryString.stringifyUrl(
+      {
+        url: "/courses",
+        query: {
+          category: categoryName,
+          title: courseName,
+        },
+      },
+      { skipNull: true, skipEmptyString: true }
+    );
+    router.push(url);
+  };
   const mappedOptions = coursesCategories.map((record) => {
     return (
       <option key={record.id} value={record.title}>
@@ -54,28 +60,18 @@ const ClientComponent = ({ session, coursesCategories }) => {
   });
   const navClass = "";
 
-  //   const loginClickHandle = () => {
-  //     navigate("/login");
-  //   };
-  //   const signupClickHandle = () => {
-  //     navigate("/signup");
-  //   };
   const handleCategorySelect = (e) => {
-    const isSelected = currentCategoryId === e.target.value;
-    setSearchCourseCategory(e.target.value)
-    const url = queryString.stringifyUrl(
-      {
-        url: '/courses',
-        query: {
-          categoty: e.target.value,
-        },
-      },
-      { skipNull: true, skipEmptyString: true }
-    );
-    console.log('rrrrrrrrrrrrrooooooooo' , url)
-    router.push(url);
-    console.log('gggggggggggggggggggggggggggg',searchCourseCategory)
+    setSearchCourseCategory(e.target.value);
+    handleSearch(e.target.value, currentTitle);
+    console.log("gggggggggggggggggggggggggggg", searchCourseCategory);
   };
+  useEffect(() => {
+    // Reset the state whenever the p''ath changes
+    if (pathname !== '/courses') {
+      setSearchCourseName("");
+      setSearchCourseCategory("All Categories");
+    }
+  }, [pathname]);
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -89,7 +85,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
             value={searchCourseCategory}
             onChange={(e) => handleCategorySelect(e)}
           >
-            <option value="All Categories">All Categories</option>
+            <option value="">All Categories</option>
             <option value="Uncategorized">Uncategorized</option>
             {mappedOptions}
           </Form.Select>
@@ -107,7 +103,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
               <Button
                 variant="outline-secondary"
                 id="button-addon1"
-                // onClick={handleClickSearchBtn}
+                onClick={handleClickSearchBtn}
               >
                 <i className="icofont-search icofont"></i>
               </Button>
@@ -147,9 +143,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
                     height={30}
                   />
 
-                  <span>
-                    {session.user.name || session.user.username}
-                  </span>
+                  <span>{session.user.name || session.user.username}</span>
                 </Link>
                 <Button className="signup ms-2" onClick={logoutClickHandler}>
                   <i className="icofont-logout icofont"></i>Log out

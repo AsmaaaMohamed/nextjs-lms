@@ -18,6 +18,7 @@ import InstructorCard from "@/components/lms/Instructor/InstructorCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import queryString from "query-string";
 
 interface ClientComponentProps {
   homePickCourse: JSX.Element;
@@ -36,17 +37,29 @@ export default function ClientComponent({
   const router = useRouter();
   const [searchCourseName, setSearchCourseName] = useState("");
   const handleSearchCourseEnter = (e) => {
-    if (e.key === "Enter" && e.target.value !== "") {
+    if (e.key === "Enter") {
       e.preventDefault();
       handleClickSearchBtn();
     }
   };
-  const handleClickSearchBtn = () => {
-    router.push("/courses");
-  };
+ const handleClickSearchBtn = () => {
+   if (searchCourseName !== "") handleSearch(searchCourseName);
+ };
   const handleChangeSearch = (e) => {
     setSearchCourseName(e.target.value);
   };
+  const handleSearch=(courseName)=>{
+      const url = queryString.stringifyUrl(
+        {
+          url: "/courses",
+          query: {
+            title: courseName
+          },
+        },
+        { skipNull: true, skipEmptyString: true }
+      );
+      router.push(url);
+    }
 
   return (
     <>
