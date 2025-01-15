@@ -183,11 +183,11 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
         ) : (
           <div className="course-enroll">
             <Button className="lab-btn" onClick={modalHandler}>
-              <span>Enrolled Now</span>
+              <span>Enroll For $89</span>
             </Button>
             <Modal show={isOpen} onHide={modalHandler}>
               <Modal.Header closeButton>
-                <Modal.Title>Enrolled Now</Modal.Title>
+                <Modal.Title>Enroll Now</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <p>

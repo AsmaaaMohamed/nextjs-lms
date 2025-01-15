@@ -10,11 +10,10 @@ import prisma from "@/utils/prismaObject";
 
 
 export async function GET(req:any) {
-  const url = new URL(req.url);
-  const searchparams = new URLSearchParams(url.searchParams);
-  const category = searchparams.get('category')?searchparams.get('category') as string : '';
-  const courseName = searchparams.get('title')? searchparams.get('title') as string :'';
-  const coursePrice = searchparams.get('price')? + searchparams.get('price') as number :undefined;
+  const {searchParams} = new URL(req.url);
+  const category = searchParams.get('category')?searchParams.get('category') as string : '';
+  const courseName = searchParams.get('title')? searchParams.get('title') as string :'';
+  const coursePrice = searchParams.get('price')? +searchParams.get('price') as number :undefined;
   console.log('seapppppppppppppppppppppppppp', category)
   try {
     const courses = await prisma.course.findMany({

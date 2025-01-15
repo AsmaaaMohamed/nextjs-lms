@@ -13,7 +13,7 @@ import { getDashboardCourses } from "@/app/_lib/actions";
 const CourseDetails = async({ params }) => {
   const {id} = await params;
   const session = await auth();
-  const userId = +session.user.id; // Ensure it's a number
+  const userId = +session?.user.id; // Ensure it's a number
   const courses = await getDashboardCourses(userId);
   console.log('cccccccccccccccccc', courses)
   const isEnrolled = courses.find((c)=>c.id === +id)
