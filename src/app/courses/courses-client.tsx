@@ -4,7 +4,7 @@ import CustomFilter from "@/components/common/CustomFilter/CustomFilter";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import React, { Fragment } from "react";
 import "./Courses.css";
-import { CourseCategory } from "@prisma/client";
+import { CourseCategory, Instructor } from "@prisma/client";
 import { getCourses } from "@/apiCalls/coursesApiCall";
 
 interface CoursesClientProps {

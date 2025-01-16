@@ -9,15 +9,19 @@ import Author from "@/components/common/Author/Author";
 import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
 import { getDashboardCourses } from "@/app/_lib/actions";
+import { getCourseById } from "@/apiCalls/courseByIdApiCall";
+import { getInstructors } from "@/apiCalls/instructorsApiCalls";
 
 const CourseDetails = async({ params }) => {
   const {id} = await params;
   const session = await auth();
   const userId = +session?.user.id; // Ensure it's a number
-  const courses = await getDashboardCourses(userId);
-  console.log('cccccccccccccccccc', courses)
-  const isEnrolled = courses.find((c)=>c.id === +id)
-  console.log('id params' , isEnrolled)
+  const dashboardCourses = await getDashboardCourses(userId);
+  const thisCourse = await getCourseById(+id);
+  const instructors = await getInstructors();
+  const courseInstructor = instructors.find((instructor)=> instructor.id === thisCourse.instructorId)
+  const isEnrolled = dashboardCourses.find((c)=>c.id === +id)
+  console.log('id params' , thisCourse.comments)
   // const {id} = useParams()
   // console.log(id)
   return (
@@ -55,7 +59,7 @@ const CourseDetails = async({ params }) => {
                   </Link>
                 </div>
                 <h2 className="phs-title">
-                  Advanced Adobe Photoshop For Everyone
+                  {thisCourse.title}
                 </h2>
                 <p className="phs-desc">
                   The most impressive is collection of share me online college
@@ -63,12 +67,12 @@ const CourseDetails = async({ params }) => {
                 </p>
                 <div className="phs-thumb">
                   <Image
-                    src="/assets/images/pageheader/03.jpg"
+                    src={courseInstructor?.img}
                     alt="rajibraj91"
                     width={40}
                     height={40}
                   />
-                  <span>Rajib Raj</span>
+                  <span>{courseInstructor?.name}</span>
                   <div className="course-reiew">
                     <span className="ratting">
                       <i className="icofont-ui-rating icofont"></i>
@@ -354,13 +358,13 @@ const CourseDetails = async({ params }) => {
                     </div>
                   </div>
                 </div>
-                <Author />
-                <Comment session={session} isEnrolled={isEnrolled}/> 
+                <Author instructor={courseInstructor}/>
+                <Comment session={session} isEnrolled={isEnrolled} comments={thisCourse.comments}/> 
               </div>
             </div>
             <div className="col-lg-4">
               <div className="sidebar-part">
-                <CourseSideDetails courseId={id} session={session} isEnrolled={isEnrolled}/>
+                <CourseSideDetails course={thisCourse} session={session} isEnrolled={isEnrolled}/>
                 <CourseSideCategories />
               </div>
             </div>

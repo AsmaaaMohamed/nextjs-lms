@@ -10,7 +10,9 @@ const CourseCard = ({
   price,
   img,
   isUserCourse,
+  instructor
 }) => {
+  console.log('innnnnnnnnnnsssssssssssssssssss',instructor);
   return (
     <div className="course-item">
       <div className="course-inner">
@@ -53,13 +55,13 @@ const CourseCard = ({
           <div className="course-footer">
             <div className="course-author">
               <Image
-                src="/assets/images/course/author/02.jpg"
+                src={instructor?.img}
                 alt="course author rajibraj91 rajibraj"
                 width={40}
                 height={40}
               />
               <a className="ca-name" href="/team-single">
-                {instructorId}
+                {instructor?.name}
               </a>
             </div>
             <div className="course-btn">

@@ -11,6 +11,7 @@ model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   username String    @db.VarChar(100)
+  profileImg String 
   password String
   provider String    @default("")
   isAdmin  Boolean   @default(false)
@@ -38,6 +39,7 @@ model Course {
   img          String
   price        Float
   users        UsersCourses[]
+  comments       Comment[]
 }
 
 model UsersCourses {
@@ -78,16 +80,15 @@ model Post {
   url            String
   createAt       DateTime  @default(now())
   updateAt       DateTime  @updatedAt
-  comments       Comment[]
 }
 
 model Comment {
   id       Int      @id @default(autoincrement())
   text     String
-  postId   Int
+  courseId   Int
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   userId   Int
-  post     Post     @relation(fields: [postId], references: [id])
+  course     Course     @relation(fields: [courseId], references: [id])
   user     User     @relation(fields: [userId], references: [id])
 }

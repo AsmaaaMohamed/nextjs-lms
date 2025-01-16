@@ -17,6 +17,13 @@ export async function GET(req:NextRequest,{params}) {
       where: {
         id: courseId,
       },
+      include: {
+        comments: {
+          include: {
+            user: true,
+          },
+        },
+      },
     });
     console.log("cccccccccccccccccccccccccccccccc", courses);
     //return Response.json(articles, { status: 200 })

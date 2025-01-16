@@ -2,15 +2,15 @@ import Link from "next/link";
 import "./Author.css";
 import Image from "next/image";
 
-const Author = () => {
+const Author = ({instructor}) => {
   return (
     <div className="authors">
       <div className="author-thumb">
-        <Image src="/assets/images/author/01.jpg" alt="rajibraj91" width={150} height={150}/>
+        <Image src={instructor.img} alt="rajibraj91" width={150} height={150}/>
       </div>
       <div className="author-content">
-        <h5>Rajib Raj</h5>
-        <span>Assistant Teacher</span>
+        <h5>{instructor.name}</h5>
+        <span>{instructor.position}</span>
         <p>
           I am an Afro-Latina digital artist originally from Long Island, NY. I
           love to paint design and photo manpulate in Adobe Photoshop while

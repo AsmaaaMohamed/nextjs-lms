@@ -10,8 +10,8 @@ import { useRouter } from "next/navigation";
 import prisma from "@/utils/prismaObject";
 import { DOMAIN } from "@/utils/constants";
 
-const CourseSideDetails = ({courseId , session, isEnrolled}) => {
-  console.log('sessssssss', courseId)
+const CourseSideDetails = ({course , session, isEnrolled}) => {
+  // console.log('sessssssss', courseId)
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const modalHandler = () => {
@@ -36,7 +36,7 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
           headers: {
             "Content-Type":"application/json",
           },
-          body: JSON.stringify({ userId:userId , courseId:courseId}),
+          body: JSON.stringify({ userId:userId , courseId:course.id}),
         });
         if (!res.ok) {
           
@@ -51,7 +51,7 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
          );
         // Delay the navigation
         setTimeout(() => {
-          router.push(`/courses/${courseId}/view`); // Replace with your target route
+          router.push(`/courses/${course.id}/view`); // Replace with your target route
         }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
       }
       catch(err){
@@ -68,7 +68,7 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
       <div className="csd-title">
         <div className="csdt-left">
           <h4 className="mb-0">
-            <sup>$</sup>89
+            <sup>$</sup>{course.price}
           </h4>
         </div>
         <div className="csdt-right">
@@ -175,7 +175,7 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
           <div className="course-enroll">
             <Button
               className="lab-btn"
-              onClick={() => router.push(`/courses/${courseId}/view`)}
+              onClick={() => router.push(`/courses/${course.id}/view`)}
             >
               <span>View Course</span>
             </Button>
@@ -183,7 +183,7 @@ const CourseSideDetails = ({courseId , session, isEnrolled}) => {
         ) : (
           <div className="course-enroll">
             <Button className="lab-btn" onClick={modalHandler}>
-              <span>Enroll For $89</span>
+              <span>Enroll For ${course.price}</span>
             </Button>
             <Modal show={isOpen} onHide={modalHandler}>
               <Modal.Header closeButton>

@@ -3,71 +3,47 @@
 import { Fragment } from "react";
 import "./Comment.css";
 import Image from "next/image";
+import { formatDate } from "@/utils/dateFormat";
 
-const Comment = ({session,isEnrolled}) => {
+const Comment = ({session,isEnrolled , comments}) => {
+  const mappedComments= comments.map((comment)=>{
+    return (
+      <li className="comment" key={comment.id}>
+        <div className="com-thumb">
+          <Image
+            src={`${
+              comment.user.img || "/assets/images/profile-cute-dp_8.jpg"
+            }`}
+            alt={comment.user.username}
+            width={80}
+            height={80}
+          />
+        </div>
+        <div className="com-content">
+          <div className="com-title">
+            <div className="com-title-meta">
+              <h6>{comment.user.username}</h6>
+              <span> {formatDate(comment.createAt)} </span>
+            </div>
+            <span className="ratting">
+              <i className="icofont-ui-rating icofont"></i>
+              <i className="icofont-ui-rating icofont"></i>
+              <i className="icofont-ui-rating icofont"></i>
+              <i className="icofont-ui-rating icofont"></i>
+              <i className="icofont-ui-rating icofont"></i>
+            </span>
+          </div>
+          <p>{comment.text}</p>
+        </div>
+      </li>
+    );
+  })
   return (
     <Fragment>
       <div className="comments">
-        <h4 className="title-border">02 Comment</h4>
+        <h4 className="title-border">{comments.length < 10 ? `0${comments.length}`: comments.length} Comment{comments.length > 1 && 's' }</h4>
         <ul className="comment-list">
-          <li className="comment">
-            <div className="com-thumb">
-              <Image
-                src="/assets/images/author/02.jpg"
-                alt="rajibraj91"
-                width={80}
-                height={80}
-              />
-            </div>
-            <div className="com-content">
-              <div className="com-title">
-                <div className="com-title-meta">
-                  <h6>Linsa Faith</h6>
-                  <span> Jun 5, 2022 at 12:41 pm </span>
-                </div>
-                <span className="ratting">
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                </span>
-              </div>
-              <p>
-                The inner sanctuary, I throw myself down among the tall grass
-                bye the trckli stream and, as I lie close to the earth
-              </p>
-            </div>
-          </li>
-          <li className="comment">
-            <div className="com-thumb">
-              <Image
-                src="/assets/images/author/03.jpg"
-                alt="rajibraj91"
-                width={80}
-                height={80}
-              />
-            </div>
-            <div className="com-content">
-              <div className="com-title">
-                <div className="com-title-meta">
-                  <h6>Mahdi Mahmud</h6>
-                  <span> Jun 5, 2022 at 12:41 pm </span>
-                </div>
-                <span className="ratting">
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                  <i className="icofont-ui-rating icofont"></i>
-                </span>
-              </div>
-              <p>
-                The inner sanctuary, I throw myself down among the tall grass
-                bye the trckli stream and, as I lie close to the earth
-              </p>
-            </div>
-          </li>
+          {mappedComments}
         </ul>
       </div>
       {(session && isEnrolled) && (
