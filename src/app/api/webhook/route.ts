@@ -5,7 +5,9 @@ import { stripe } from "@/app/_lib/stripe";
 import prisma from "@/utils/prismaObject";
 
 export async function POST(req : Request){
+    console.log('reqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq' , req)
     const body = await req.text();
+    console.log('lllllllllllgfffffgfggffgfgfgfgfg' , body)
     const signature = (await headers()).get("Stripe-Signature") as string;
     let event: Stripe.Event;
     try{
@@ -21,8 +23,8 @@ export async function POST(req : Request){
         });
     }
     const session = event.data.object as Stripe.Checkout.Session;
-    const userId = session?.metadata?.userId;
-    const courseId = session?.metadata?.courseId;
+    const userId = +session?.metadata?.userId;
+    const courseId = +session?.metadata?.courseId;
     if(event.type === "checkout.session.completed"){
         if(!userId || !courseId){
             return new NextResponse("Webhook Error: Missing metadat" , { status:400});

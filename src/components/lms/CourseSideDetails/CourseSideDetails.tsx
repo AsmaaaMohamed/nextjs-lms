@@ -31,28 +31,29 @@ const CourseSideDetails = ({course , session, isEnrolled}) => {
     if (session) {
       try {
         const userId = session.user.id;
-        const res = await fetch("/api/enrollCourse", {
-          method: "POST",
-          headers: {
-            "Content-Type":"application/json",
-          },
-          body: JSON.stringify({ userId:userId , courseId:course.id}),
+        const res = await fetch(`/api/courses/${course.id}/checkout`, {
+          method: "POST"
         });
-        if (!res.ok) {
+        // if (!res.ok) {
           
-          const resJson = await res.json()
-          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
-          throw resJson;
-        }
+        //   const resJson = await res.json()
+        //   console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
+        //   throw resJson;
+        // }
         // const resData = await res.json();
-        console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
-         toast.success(
-           "You've successfully enrolled course. You'll redirect to the course view page"
-         );
-        // Delay the navigation
-        setTimeout(() => {
-          router.push(`/courses/${course.id}/view`); // Replace with your target route
-        }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+        // console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
+        if(res.ok){
+          const resData = await res.json();
+          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resData);
+          window.location.assign(resData.url)
+        //  toast.success(
+        //    "You've successfully enrolled course. You'll redirect to the course view page"
+        //  );
+        // // Delay the navigation
+        // setTimeout(() => {
+        //   router.push(`/courses/${course.id}/view`); // Replace with your target route
+        // }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+        }
       }
       catch(err){
         toast.error(err.message as string);

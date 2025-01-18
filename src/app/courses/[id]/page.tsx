@@ -21,7 +21,7 @@ const CourseDetails = async({ params }) => {
   const instructors = await getInstructors();
   const courseInstructor = instructors.find((instructor)=> instructor.id === thisCourse.instructorId)
   const isEnrolled = dashboardCourses.find((c)=>c.id === +id)
-  console.log('id params' , thisCourse.comments)
+  // console.log('id params' , thisCourse.comments)
   // const {id} = useParams()
   // console.log(id)
   return (

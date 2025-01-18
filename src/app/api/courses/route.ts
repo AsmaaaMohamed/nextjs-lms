@@ -14,7 +14,7 @@ export async function GET(req:any) {
   const category = searchParams.get('category')?searchParams.get('category') as string : '';
   const courseName = searchParams.get('title')? searchParams.get('title') as string :'';
   const coursePrice = searchParams.get('price')? +searchParams.get('price') as number :undefined;
-  console.log('seapppppppppppppppppppppppppp', category)
+  // console.log('seapppppppppppppppppppppppppp', category)
   try {
     const courses = await prisma.course.findMany({
       where: {
@@ -24,7 +24,7 @@ export async function GET(req:any) {
       },
       orderBy: { createAt: "asc" },
     });
-    console.log("cccccccccccccccccccccccccccccccc", courses);
+    // console.log("cccccccccccccccccccccccccccccccc", courses);
     //return Response.json(articles, { status: 200 })
     return NextResponse.json(courses, { status: 200 });
   } catch (error) {

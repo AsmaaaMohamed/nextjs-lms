@@ -23,7 +23,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
   const currentTitle = searchParams.get("title");
   const [searchCourseCategory, setSearchCourseCategory] =
     useState("All Categories");
-  console.log("gggggggggggggggggdddddddddddddddddddg" , pathname);
+  // console.log("gggggggggggggggggdddddddddddddddddddg" , pathname);
   const [searchCourseName, setSearchCourseName] = useState("");
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter") {

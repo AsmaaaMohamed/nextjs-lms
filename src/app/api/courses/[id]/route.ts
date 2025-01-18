@@ -10,8 +10,9 @@ import prisma from "@/utils/prismaObject";
 
 
 export async function GET(req:NextRequest,{params}) {
-    const courseId = +params.id;
-  console.log('seapppppppppppppppppppppppppp', courseId)
+    const pageParams = await params;
+    const courseId = +pageParams.id;
+  // console.log('seapppppppppppppppppppppppppp', courseId)
   try {
     const courses = await prisma.course.findUnique({
       where: {
@@ -25,7 +26,7 @@ export async function GET(req:NextRequest,{params}) {
         },
       },
     });
-    console.log("cccccccccccccccccccccccccccccccc", courses);
+    // console.log("cccccccccccccccccccccccccccccccc", courses);
     //return Response.json(articles, { status: 200 })
     return NextResponse.json(courses, { status: 200 });
   } catch (error) {

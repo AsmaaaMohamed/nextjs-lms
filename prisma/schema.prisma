@@ -11,7 +11,7 @@ model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   username String    @db.VarChar(100)
-  profileImg String 
+  profileImg String? 
   password String
   provider String    @default("")
   isAdmin  Boolean   @default(false)
@@ -91,4 +91,11 @@ model Comment {
   userId   Int
   course     Course     @relation(fields: [courseId], references: [id])
   user     User     @relation(fields: [userId], references: [id])
+}
+
+model StripeCustomer{
+  id Int @id @default(autoincrement())
+  userId Int @unique
+  stripeCustomerId String @unique
+  createAt DateTime @default(now())
 }
