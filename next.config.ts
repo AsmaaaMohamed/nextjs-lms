@@ -21,7 +21,14 @@ module.exports = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+        port: '',
+        pathname: '**',
+      },
     ],
+    dangerouslyAllowSVG: true,
   },
 };
 export default nextConfig;

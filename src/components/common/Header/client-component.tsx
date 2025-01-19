@@ -23,7 +23,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
   const currentTitle = searchParams.get("title");
   const [searchCourseCategory, setSearchCourseCategory] =
     useState("All Categories");
-  // console.log("gggggggggggggggggdddddddddddddddddddg" , pathname);
+  console.log(`https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=random`);
   const [searchCourseName, setSearchCourseName] = useState("");
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter") {
@@ -135,10 +135,10 @@ const ClientComponent = ({ session, coursesCategories }) => {
                   <Image
                     className="h-8 rounded-circle me-2"
                     src={`${
-                      session.user.image ||
-                      "/assets/images/profile-cute-dp_8.jpg"
+                      session?.user?.image ||
+                      `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=random`
                     }`}
-                    alt={session.user.name || session.user.username}
+                    alt={session?.user?.name || session?.user?.username}
                     width={30}
                     height={30}
                   />
