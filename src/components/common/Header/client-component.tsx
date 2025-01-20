@@ -23,7 +23,9 @@ const ClientComponent = ({ session, coursesCategories }) => {
   const currentTitle = searchParams.get("title");
   const [searchCourseCategory, setSearchCourseCategory] =
     useState("All Categories");
-  console.log(`https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=random`);
+  console.log(
+    `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=26c976&color=fff`
+  );
   const [searchCourseName, setSearchCourseName] = useState("");
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter") {
@@ -136,7 +138,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
                     className="h-8 rounded-circle me-2"
                     src={`${
                       session?.user?.image ||
-                      `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=random`
+                      `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=26c976&color=fff&font-size=0.7`
                     }`}
                     alt={session?.user?.name || session?.user?.username}
                     width={30}

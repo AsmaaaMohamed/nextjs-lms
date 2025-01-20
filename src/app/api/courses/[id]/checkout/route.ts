@@ -10,7 +10,7 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: number 
         const authSession = await auth();
         const pageParams = await params;
         const courseId = +pageParams.id;
-        console.log("sessssssssssssssssssss", authSession.user.email);
+        console.log("sessssssssssssssssssss", authSession?.user?.email);
         if(!authSession?.user){
             return new NextResponse("Unauthorized", { status: 401 });
         }

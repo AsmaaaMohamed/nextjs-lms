@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/utils/prismaObject";
+import { auth } from "@/app/_lib/auth";
 
 /**
  *  @method  GET
@@ -12,6 +13,7 @@ import prisma from "@/utils/prismaObject";
 export async function GET(req:NextRequest,{params}) {
     const pageParams = await params;
     const courseId = +pageParams.id;
+    const session = await auth();
   // console.log('seapppppppppppppppppppppppppp', courseId)
   try {
     const courses = await prisma.course.findUnique({
@@ -24,6 +26,19 @@ export async function GET(req:NextRequest,{params}) {
             user: true,
           },
         },
+        chapters: {
+          include: {
+            chapterSections: {
+              
+              orderBy: {
+                position: "asc",
+              },
+            },
+          },
+          orderBy: {
+            position: "asc",
+          },
+        }
       },
     });
     // console.log("cccccccccccccccccccccccccccccccc", courses);

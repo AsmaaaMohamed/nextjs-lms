@@ -12,7 +12,8 @@ const Comment = ({session,isEnrolled , comments}) => {
         <div className="com-thumb">
           <Image
             src={`${
-              comment.user.img || "/assets/images/profile-cute-dp_8.jpg"
+              comment.user.img ||
+              `https://ui-avatars.com/api/?name=${comment?.user?.username[0]}&background=26c976&color=fff`
             }`}
             alt={comment.user.username}
             width={80}

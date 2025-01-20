@@ -8,16 +8,16 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
-  username String    @db.VarChar(100)
-  profileImg String? 
-  password String
-  provider String    @default("")
-  isAdmin  Boolean   @default(false)
-  createAt DateTime  @default(now())
-  updateAt DateTime  @updatedAt
-  comment  Comment[]
+  id         Int       @id @default(autoincrement())
+  email      String    @unique
+  username   String    @db.VarChar(100)
+  profileImg String?
+  password   String
+  provider   String    @default("")
+  isAdmin    Boolean   @default(false)
+  createAt   DateTime  @default(now())
+  updateAt   DateTime  @updatedAt
+  comment    Comment[]
 }
 
 model CourseCategory {
@@ -38,8 +38,52 @@ model Course {
   updateAt     DateTime       @updatedAt
   img          String
   price        Float
-  users        UsersCourses[]
-  comments       Comment[]
+  usersCourses        UsersCourses[]
+  comments     Comment[]
+  chapters     Chapter[]
+}
+
+model Chapter {
+  id              Int              @id @default(autoincrement())
+  title           String
+  position        Int
+  courseId        Int
+  course          Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  chapterSections ChapterSection[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([courseId])
+}
+
+model ChapterSection {
+  id           Int            @id @default(autoincrement())
+  title        String
+  videoUrl     String?
+  position     Int
+  isFree       Boolean        @default(false)
+  chapterId    Int
+  chapter      Chapter        @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  userProgress UserProgress[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([chapterId])
+}
+
+model UserProgress {
+  id               String         @id @default(uuid()) @map("_id")
+  userId           Int
+  chapterSectionId Int
+  chapterSection   ChapterSection @relation(fields: [chapterSectionId], references: [id], onDelete: Cascade)
+  isCompleted      Boolean        @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, chapterSectionId])
+  @@index([chapterSectionId])
 }
 
 model UsersCourses {
@@ -48,7 +92,8 @@ model UsersCourses {
   course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   courseId   Int // relation scalar field (used in the `@relation` attribute above)
   enrolledAt DateTime @default(now())
-  @@unique([userId ,courseId])
+
+  @@unique([userId, courseId])
   @@index([courseId])
 }
 
@@ -71,31 +116,31 @@ model Skill {
 }
 
 model Post {
-  id             Int       @id @default(autoincrement())
-  title          String    @db.VarChar(100)
-  author         String    @db.VarChar(100)
+  id             Int      @id @default(autoincrement())
+  title          String   @db.VarChar(100)
+  author         String   @db.VarChar(100)
   post_desc      String
   comments_count Int
   img            String
   url            String
-  createAt       DateTime  @default(now())
-  updateAt       DateTime  @updatedAt
+  createAt       DateTime @default(now())
+  updateAt       DateTime @updatedAt
 }
 
 model Comment {
   id       Int      @id @default(autoincrement())
   text     String
-  courseId   Int
+  courseId Int
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   userId   Int
-  course     Course     @relation(fields: [courseId], references: [id])
+  course   Course   @relation(fields: [courseId], references: [id])
   user     User     @relation(fields: [userId], references: [id])
 }
 
-model StripeCustomer{
-  id Int @id @default(autoincrement())
-  userId Int @unique
-  stripeCustomerId String @unique
-  createAt DateTime @default(now())
+model StripeCustomer {
+  id               Int      @id @default(autoincrement())
+  userId           Int      @unique
+  stripeCustomerId String   @unique
+  createAt         DateTime @default(now())
 }
