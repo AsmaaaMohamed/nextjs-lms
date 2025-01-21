@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { getCourseById } from "@/apiCalls/courseByIdApiCall";
 import ClientComponent from "./client-component";
 

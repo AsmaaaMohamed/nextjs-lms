@@ -176,7 +176,7 @@ const CourseSideDetails = ({course , session, isEnrolled}) => {
           <div className="course-enroll">
             <Button
               className="lab-btn"
-              onClick={() => router.push(`/courses/${course.id}/view`)}
+              onClick={() => router.push(`/courses/${course.id}/chapters`)}
             >
               <span>View Course</span>
             </Button>

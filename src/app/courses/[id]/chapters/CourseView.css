@@ -39,7 +39,13 @@
 }
 .accordion-body {
     flex: 1 1 auto;
-    padding: 1rem;
+    padding: 0 1rem;
+}
+.accordion-body .activeSection{
+    background: #fff2d3;
+}
+.accordion-header {
+    background: #e7e2dd;
 }
 .course-select-area .csa-body ul li  .accordion-body .course-lists {
     border-top: 1px solid #ecf0f3;

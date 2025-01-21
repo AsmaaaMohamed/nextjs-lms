@@ -41,7 +41,7 @@ const CourseCard = ({
               <span className="ratting-count">03 reviews</span>
             </div>
           </div>
-          <Link href={isUserCourse ? `/courses/${id}/view` : `/courses/${id}`}>
+          <Link href={isUserCourse ? `/courses/${id}/chapters` : `/courses/${id}`}>
             <h4>{title}</h4>
           </Link>
           <div className="course-details">
