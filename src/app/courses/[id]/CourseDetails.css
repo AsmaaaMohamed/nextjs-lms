@@ -99,7 +99,7 @@
 .newsletters-section .newsletter-area:after {
     background: #ecf0f3;
 }
-.lab-btn:hover {
+.lab-btn:hover:enabled {
     box-shadow: 0 5px 10px rgba(241,97,38,.5);
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);

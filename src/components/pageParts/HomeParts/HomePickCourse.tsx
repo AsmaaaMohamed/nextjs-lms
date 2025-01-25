@@ -1,15 +1,10 @@
 import { getCourses } from "@/apiCalls/coursesApiCall";
-import CourseCard from "../../lms/CourseCard/CourseCard";
+import CoursesSection from "../CoursesParts/CoursesSection";
+import { getInstructors } from "@/apiCalls/instructorsApiCalls";
 
 const HomePickCourse = async () => {
   const courses = await getCourses();
-  const renderedCourses = courses.slice(0, 6).map((c) => {
-    return (
-      <div key={c.id} className="col">
-        <CourseCard {...c} />
-      </div>
-    );
-  });
+  const instructors = await getInstructors()
   return (
     <div className="course-section padding-tb">
       <div className="container">
@@ -18,9 +13,7 @@ const HomePickCourse = async () => {
           <h2 className="title">Pick A Course To Get Started</h2>
         </div>
         <div className="section-wrapper">
-          <div className="row g-4 justify-content-center row-cols-lg-2 row-cols-1">
-            {renderedCourses}
-          </div>
+          <CoursesSection courses={courses} isUserCourse={false} instructors={instructors}/>
         </div>
       </div>
     </div>

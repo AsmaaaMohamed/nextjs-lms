@@ -497,6 +497,9 @@ textarea {
     padding: 10px 30px;
     border:0
 }
+.lab-btn:disabled{
+  background: #f1a788;
+}
 .modal-dialog .btn-primary{
   background: #f16126;
   border-color: #f16126;
@@ -504,7 +507,7 @@ textarea {
 .modal-dialog .btn-primary:hover{
   background: #d3511e;
 }
-.lab-btn:hover {
+.lab-btn:hover:enabled {
     box-shadow: 0 5px 10px rgba(241,97,38,.5);
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);

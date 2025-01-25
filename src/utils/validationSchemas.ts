@@ -18,7 +18,7 @@ export const loginSchema = yup.object({
     .required("Email is required"),
   password: yup.string().required("Password is required"),
 });
-// Login Schema
+// Contact Schema
 export const contactSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: yup.string()
@@ -30,4 +30,8 @@ export const contactSchema = yup.object({
     .required("Mobile number is required"),
   subject: yup.string().required("subject is required"),
   message: yup.string(),
+});
+// Comment Schema
+export const commentSchema = yup.object({
+  comment: yup.string().required("empty comment"),
 });

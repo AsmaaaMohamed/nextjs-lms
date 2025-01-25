@@ -7,8 +7,6 @@ import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import prisma from "@/utils/prismaObject";
-import { DOMAIN } from "@/utils/constants";
 
 const CourseSideDetails = ({course , session, isEnrolled}) => {
   // console.log('sessssssss', courseId)
@@ -30,33 +28,44 @@ const CourseSideDetails = ({course , session, isEnrolled}) => {
     modalHandler();
     if (session) {
       try {
-        const userId = session.user.id;
-        const res = await fetch(`/api/courses/${course.id}/checkout`, {
-          method: "POST"
+        const res = await fetch(`/api/courses/${course.id}/enrollCourse`, {
+          method: "POST",
         });
         // if (!res.ok) {
-          
+
         //   const resJson = await res.json()
         //   console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
         //   throw resJson;
         // }
         // const resData = await res.json();
         // console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
-        if(res.ok){
-          const resData = await res.json();
-          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resData);
-          window.location.assign(resData.url)
-        //  toast.success(
-        //    "You've successfully enrolled course. You'll redirect to the course view page"
-        //  );
-        // // Delay the navigation
-        // setTimeout(() => {
-        //   router.push(`/courses/${course.id}/view`); // Replace with your target route
-        // }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+        if (!res.ok) {
+          const resJson = await res.json();
+          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
+          throw resJson.message;
         }
+        toast.success(
+          "You've successfully enrolled course. You'll redirect to the course view page"
+        );
+        setTimeout(() => {
+          router.push(`/courses/${course.id}/chapters`); // Replace with your target route
+        }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+        // if(res.ok){
+        //   const resData = await res.json();
+        //   // console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resData);
+        //   window.location.assign(`courses/${course.id}/chapters`);
+        // //  toast.success(
+        // //    "You've successfully enrolled course. You'll redirect to the course view page"
+        // //  );
+        // // // Delay the navigation
+        // // setTimeout(() => {
+        // //   router.push(`/courses/${course.id}/view`); // Replace with your target route
+        // // }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
+        // }
       }
       catch(err){
-        toast.error(err.message as string);
+        console.log('errrrrrrrrrrrrrrrrooooooooooooooooooo', err)
+        toast.error(err as string);
       }
     } 
     else {

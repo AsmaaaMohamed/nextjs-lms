@@ -3,7 +3,6 @@
 import { Fragment } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
-import SectionItem from "./_components/sectionItem";
 import ChapterAcordionItem from "./_components/chapterAcordionItem";
 import { useParams } from "next/navigation";
 
@@ -16,11 +15,16 @@ export default function ClientCourseLayout({
   const params = useParams();
   const urlChapterId = +params?.chapterId;
   const urlChapterSection = +params?.chapterSectionId;
+  // console.log(
+  //   "cooooooouuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrssssssss",
+  //   course?.chapters
+  // );
+  const chapters = course?.chapters;
+  const activeChapterPosition = chapters.find((chapter)=> chapter.id === urlChapterId)?.position
   console.log(
     "cooooooouuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrssssssss",
-    urlChapterId ?? 0
+    activeChapterPosition
   );
-  const chapters = course?.chapters;
   const mappedChapters = chapters.map((chapter) => {
     
     return (
@@ -55,7 +59,7 @@ export default function ClientCourseLayout({
                             <ul className="lab-ul">
                               <li>
                                 <Accordion
-                                  defaultActiveKey={`${urlChapterId ? urlChapterId-1: 0}`}
+                                  defaultActiveKey={`${activeChapterPosition ? activeChapterPosition-1: 0}`}
                                 >
                                   {mappedChapters}
                                 </Accordion>
