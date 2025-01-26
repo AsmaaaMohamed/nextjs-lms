@@ -10,22 +10,9 @@ import { Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { DOMAIN } from "@/utils/constants";
 import { useRouter } from "next/navigation";
-import useSWR from "swr";
 
-const Comment = ({session,isEnrolled , courseId}) => {
+const Comment = ({session,isEnrolled , comments, courseId}) => {
   const router = useRouter();
-  const fetcher = async()=>{
-    const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comment`);
-    console.log('reeeeeeeeeeeeeeesssssssssssssssspppppppppppp' , )
-    const data = await res.json();
-    return data;
-  }
-  const { data: comments,isLoading, error } = useSWR(
-    courseId ? `/api/courses/${courseId}/comment` : null,
-    ()=>fetcher()
-  );
-  console.log('ccccccccccccc' , error)
-  if(error) toast.error(error)
   const formik = useFormik({
       initialValues: {
         comment: "",
