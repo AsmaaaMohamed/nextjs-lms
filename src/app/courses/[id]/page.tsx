@@ -359,7 +359,7 @@ const CourseDetails = async({ params }) => {
                   </div>
                 </div>
                 <Author instructor={courseInstructor}/>
-                <Comment session={session} isEnrolled={isEnrolled} comments={thisCourse.comments}/> 
+                <Comment session={session} isEnrolled={isEnrolled}  courseId={thisCourse.id}/> 
               </div>
             </div>
             <div className="col-lg-4">

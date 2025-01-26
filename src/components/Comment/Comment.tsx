@@ -1,27 +1,64 @@
 'use client'
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import "./Comment.css";
 import Image from "next/image";
 import { formatDate } from "@/utils/dateFormat";
 import { useFormik } from "formik";
 import { commentSchema } from "@/utils/validationSchemas";
 import { Form } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { DOMAIN } from "@/utils/constants";
+import { useRouter } from "next/navigation";
+import useSWR from "swr";
 
-const Comment = ({session,isEnrolled , comments}) => {
+const Comment = ({session,isEnrolled , courseId}) => {
+  const router = useRouter();
+  const fetcher = async()=>{
+    const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comment`);
+    console.log('reeeeeeeeeeeeeeesssssssssssssssspppppppppppp' , )
+    const data = await res.json();
+    return data;
+  }
+  const { data: comments,isLoading, error } = useSWR(
+    courseId ? `/api/courses/${courseId}/comment` : null,
+    ()=>fetcher()
+  );
+  console.log('ccccccccccccc' , error)
+  if(error) toast.error(error)
   const formik = useFormik({
       initialValues: {
         comment: "",
       },
       validationSchema: commentSchema,
       onSubmit: async(values,{ resetForm }) => {
-        
+        console.log('kkkkkkkkkkkkkkkkkkkk', comments)
+        try{
+          const res =await fetch(`${DOMAIN}/api/courses/${courseId}/comment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({...values}),
+          });
+          const data = await res.json();
+          
+          //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
+          if(!res.ok){
+            throw data.error.message
+          }
+          resetForm();
+          // setAsyncComments((prev)=> [...prev , ])
+          router.replace(window.location.pathname);
+        }
+        catch(error){
+          console.log(error)
+          toast.error(error)
+        }
       },
     });
-    console.log(
-      "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-      !formik.values.comment.length
-    );
+    // console.log(
+    //   "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+    //   !formik.values.comment.length
+    // );
   const mappedComments= comments.map((comment)=>{
     return (
       <li className="comment" key={comment.id}>
@@ -69,8 +106,6 @@ const Comment = ({session,isEnrolled , comments}) => {
           <h4 className="title-border">Leave a Comment</h4>
           <div className="add-comment">
             <Form
-              action="#"
-              method="post"
               id="commentform"
               className="comment-form"
               onSubmit={formik.handleSubmit}
