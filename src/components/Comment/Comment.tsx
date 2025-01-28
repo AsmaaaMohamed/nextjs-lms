@@ -1,58 +1,96 @@
 'use client'
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./Comment.css";
 import Image from "next/image";
 import { formatDate } from "@/utils/dateFormat";
 import { useFormik } from "formik";
 import { commentSchema } from "@/utils/validationSchemas";
-import { Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { DOMAIN } from "@/utils/constants";
-import { useRouter } from "next/navigation";
 
-const Comment = ({session,isEnrolled , comments, courseId}) => {
-  const router = useRouter();
+const Comment = ({session,isEnrolled ,comments,  courseId}) => {
+  const [thisComments , setThisComments] = useState(comments);
+  const [isOpen, setIsOpen] = useState(false);
+  const [commentToBeDeleted, setCommentToBeDeleted] = useState(0);
+  const userId = +session?.user?.id;
+  const modalHandler = () => {
+    setIsOpen((prev) => !prev);
+  };
+  // console.log('vvvvvvvvvvvvaaaaaaaaaaaaalllllllllllllluuuuuuuuu',updated)
   const formik = useFormik({
-      initialValues: {
-        comment: "",
-      },
-      validationSchema: commentSchema,
-      onSubmit: async(values,{ resetForm }) => {
-        console.log('kkkkkkkkkkkkkkkkkkkk', comments)
-        try{
-          const res =await fetch(`${DOMAIN}/api/courses/${courseId}/comment`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({...values}),
-          });
-          const data = await res.json();
-          
-          //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
-          if(!res.ok){
-            throw data.error.message
-          }
-          resetForm();
-          // setAsyncComments((prev)=> [...prev , ])
-          router.replace(window.location.pathname);
+    initialValues: {
+      comment: "",
+    },
+    validationSchema: commentSchema,
+
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      // console.log("kkkkkkkkkkkkkkkkkkkk", comments);
+      // const trimmedComment = values.comment.trim();
+      try {
+        const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comments`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...values }),
+        });
+        const data = await res.json();
+
+        //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
+        if (!res.ok) {
+          throw data.error.message;
         }
-        catch(error){
-          console.log(error)
-          toast.error(error)
-        }
-      },
-    });
+        resetForm();
+        setSubmitting(false); // Marks submission as complete
+        // setAsyncComments((prev)=> [...prev , ])
+      } catch (error) {
+        console.log(error);
+        toast.error(error as string);
+      }
+    },
+  });
     // console.log(
     //   "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
     //   !formik.values.comment.length
     // );
-  const mappedComments= comments.map((comment)=>{
+  const handleDeleteComment = async(id)=>{
+    setCommentToBeDeleted(id);
+    modalHandler();
+  }
+  const confirmHandler = async() => {
+    modalHandler();
+    if (session) {
+      try {
+        const res = await fetch(
+          `/api/courses/${courseId}/comments/${commentToBeDeleted}`,
+          {
+            method: "DELETE",
+          }
+        );
+        if (!res.ok) {
+          const resJson = await res.json();
+          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
+          throw resJson.message;
+        }
+        toast.success(
+          "Comment deleted successfully"
+        );
+        setThisComments((prev) => prev.filter((comment) => comment.id !== commentToBeDeleted));
+      } catch (err) {
+        console.log("errrrrrrrrrrrrrrrrooooooooooooooooooo", err);
+        toast.error(err as string);
+      }
+    } else {
+      toast.error("You need to login first to enrolled the course");
+    }
+  };
+  const mappedComments= thisComments?.map((comment)=>{
     return (
       <li className="comment" key={comment.id}>
         <div className="com-thumb">
           <Image
             src={`${
-              comment.user.img ||
+              comment.user?.img ||
               `https://ui-avatars.com/api/?name=${comment?.user?.username[0]}&background=26c976&color=fff`
             }`}
             alt={comment.user.username}
@@ -66,27 +104,63 @@ const Comment = ({session,isEnrolled , comments, courseId}) => {
               <h6>{comment.user.username}</h6>
               <span> {formatDate(comment.createAt)} </span>
             </div>
-            <span className="ratting">
-              <i className="icofont-ui-rating icofont"></i>
-              <i className="icofont-ui-rating icofont"></i>
-              <i className="icofont-ui-rating icofont"></i>
-              <i className="icofont-ui-rating icofont"></i>
-              <i className="icofont-ui-rating icofont"></i>
-            </span>
+            <div className="d-flex flex-column align-items-end">
+              <div>
+                <span className="ratting">
+                  <i className="icofont-ui-rating icofont"></i>
+                  <i className="icofont-ui-rating icofont"></i>
+                  <i className="icofont-ui-rating icofont"></i>
+                  <i className="icofont-ui-rating icofont"></i>
+                  <i className="icofont-ui-rating icofont"></i>
+                </span>
+              </div>
+              <div className="delete-div">
+                {userId && userId === comment.userId && (
+                  <span className="delete d-none" onClick={()=>handleDeleteComment(comment.id)}>
+                    <i className="icofont-ui-delete icofont text-danger"></i>
+                  </span>
+                )}
+                
+              </div>
+            </div>
           </div>
           <p>{comment.text}</p>
         </div>
       </li>
     );
-  })
+  });
+  useEffect(()=>{
+    const fetchComments = async()=>{
+      const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comments`);
+      const fetchedComments = await res.json();
+      console.log(fetchedComments)
+      setThisComments(fetchedComments);
+    }
+    if (!formik.isSubmitting) fetchComments();
+  },[formik.isSubmitting]);
   return (
     <Fragment>
       <div className="comments">
         <h4 className="title-border">
-          {comments.length < 10 ? `0${comments.length}` : comments.length}{" "}
-          Comment{comments.length > 1 && "s"}
+          {thisComments.length < 10
+            ? `0${thisComments.length}`
+            : thisComments.length}{" "}
+          Comment{thisComments.length > 1 && "s"}
         </h4>
         <ul className="comment-list">{mappedComments}</ul>
+        <Modal show={isOpen} onHide={modalHandler}>
+          <Modal.Body>
+            <p> Are you sure you want to delete comment ?</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={modalHandler}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={confirmHandler}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
       {session && isEnrolled && (
         <div id="respond" className="comment-respond mb-lg-0">
@@ -97,7 +171,7 @@ const Comment = ({session,isEnrolled , comments, courseId}) => {
               className="comment-form"
               onSubmit={formik.handleSubmit}
             >
-              <Form.Group className="form-group w-100">
+              <Form.Group className="form-group w-100 mb-3">
                 <Form.Control
                   rows={7}
                   as="textarea"
@@ -106,9 +180,20 @@ const Comment = ({session,isEnrolled , comments, courseId}) => {
                   placeholder="Your comment"
                   value={formik.values.comment}
                   onChange={formik.handleChange}
-                ></Form.Control>
+                  isInvalid={formik.errors.comment ? true : false}
+                  className="mb-1"
+                />
+                {formik.errors.comment ? (
+                  <Form.Control.Feedback type="invalid" className="d-block">
+                    {formik.errors.comment}
+                  </Form.Control.Feedback>
+                ) : null}
               </Form.Group>
-              <button type="submit" className="lab-btn" disabled={!formik.values.comment.length}>
+              <button
+                type="submit"
+                className="lab-btn"
+                disabled={!formik.values.comment.length}
+              >
                 <span>Add comment</span>
               </button>
             </Form>

@@ -33,5 +33,8 @@ export const contactSchema = yup.object({
 });
 // Comment Schema
 export const commentSchema = yup.object({
-  comment: yup.string().required("empty comment"),
+  comment: yup
+    .string()
+    .trim()
+    .required("empty comment"),
 });

@@ -88,6 +88,15 @@
 .comments .comment-list .comment .com-content .com-title .reply .comment-reply-link:hover{
     color: #f16126;
 }
+.comments .comment-list .comment .com-content .com-title .delete-div{
+    height: 25px;
+}
+.comments .comment-list .comment:hover .com-content .com-title .delete{
+    display: block !important;
+}
+.comments .comment-list .comment:hover .com-content .com-title .delete .icofont{
+    cursor: pointer;
+}
 @media (min-width: 768px){
     .comments .comment-list .comment .com-thumb {
         height: 80px;

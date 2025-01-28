@@ -4,7 +4,7 @@ import { auth } from "@/app/_lib/auth";
 
 /**
  *  @method  POST
- *  @route   ~/api/courses/courseId/comment
+ *  @route   ~/api/courses/courseId/comments
  *  @desc    POST comment to enrolled course
  *  @access  public
  */
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest, { params }) {
 }
 /**
  *  @method  GET
- *  @route   ~/api/courses/courseId/comment
+ *  @route   ~/api/courses/courseId/comments
  *  @desc    GET comments of course
  *  @access  public
  */
@@ -64,6 +64,9 @@ export async function GET(request: NextRequest, { params }) {
     const comments = await prisma.comment.findMany({
       where: {
           courseId: courseId,
+        },
+        include:{
+          user:true
         },
         orderBy:{id:"asc"}
     });
