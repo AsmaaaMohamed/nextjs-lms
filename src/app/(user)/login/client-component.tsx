@@ -6,6 +6,7 @@ import React, { Fragment, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Login.css";
 import {
+  facebookClickHandler,
   githubClickHandler,
   googleClickHandler,
   loginSubmit,
@@ -162,11 +163,16 @@ useEffect(() => {
               </span>
               <h5 className="subtitle">Login With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
-                <li>
-                  <span className="facebook" title="Facebook" role="button">
+                {/* <li>
+                  <span
+                    className="facebook"
+                    title="Facebook"
+                    role="button"
+                    onClick={facebookClickHandler}
+                  >
                     <i className="icofont-facebook icofont"></i>
                   </span>
-                </li>
+                </li> */}
                 <li>
                   <span
                     className="github"
