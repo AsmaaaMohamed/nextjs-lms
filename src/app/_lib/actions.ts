@@ -16,6 +16,15 @@ export async function githubClickHandler() {
     //   console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
     // }
 }
+export async function facebookClickHandler() {
+  // try {
+  console.log("llllllllllllllllllllllllll");
+  const res = await signIn("facebook", { redirectTo: "/" });
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res);
+  // } catch (error) {
+  //   console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
+  // }
+}
 export async function logoutClickHandler() {
   await signOut({ redirectTo: "/login" });
 }
