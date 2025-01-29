@@ -10,7 +10,7 @@ import { InputGroup } from "react-bootstrap";
 import "./Header.css";
 import {  useEffect, useState } from "react";
 import {  usePathname, useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import Link from "@/components/link";
 import Image from "next/image";
 import { logoutClickHandler } from "@/app/_lib/actions";
 import queryString from "query-string";
