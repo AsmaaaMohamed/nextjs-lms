@@ -7,7 +7,7 @@ import Image from "next/image";
 const ContactPage = () => {
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Contact"/>
       <div className="map-address-section padding-tb section-bg">
         <div className="container">
           <div className="section-header text-center">

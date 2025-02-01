@@ -119,10 +119,10 @@ export default function ClientComponent({
               <div className="col-xxl-7 col-xl-6">
                 <div className="thumb-part">
                   <div className="banner-thumb text-center">
-                    <Image src={BannerImg} alt="img" />
+                    <Image src={BannerImg} alt="img" loading="eager" priority/>
                   </div>
                   <div className="abs-thumb d-none d-xxl-block">
-                    <Image src={BannerImg2} alt="img" />
+                    <Image src={BannerImg2} alt="img" loading="eager" priority/>
                   </div>
                 </div>
               </div>
@@ -305,10 +305,10 @@ export default function ClientComponent({
           </div>
         </div>
       </div>
-      
+
       {instructorsSection}
       {skillsSection}
-            
+
       <div
         className="achievement-section padding-tb"
         style={{

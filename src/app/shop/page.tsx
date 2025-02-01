@@ -10,7 +10,7 @@ import ProductCard from "@/components/ecommerce/Product/ProductCard/ProductCard"
 const ShopPage = () => {
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Shop"/>
       <div className="shop-page padding-tb">
         <div className="container">
           <div className="row justify-content-center">

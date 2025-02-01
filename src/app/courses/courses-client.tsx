@@ -32,7 +32,7 @@ const CoursesClient = ({
   });
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Courses"/>
       <CustomFilter
         categoriesOptions={mappedOptions}
         setCategoryName={setCategoryName}

@@ -78,7 +78,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Navbar.Brand as={Link} href="/">
-          <Image src={Logo} height="52" alt="image" />
+          <Image src={Logo} height="52" alt="image" loading="eager" priority/>
         </Navbar.Brand>
         <Nav className="left-nav d-none d-xxl-flex">
           <Form.Select

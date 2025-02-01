@@ -39,7 +39,7 @@ export default function ClientCourseLayout({
   });
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle={course.title}/>
       <div className="course-view-section padding-tb section-bg">
         <div className="container">
           <div className="row">

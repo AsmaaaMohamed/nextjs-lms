@@ -45,7 +45,7 @@ const SignupPage = () => {
   });
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="SignUp"/>
       <div className="login-section padding-tb section-bg">
         <div className="container">
           <div className="account-wrapper">

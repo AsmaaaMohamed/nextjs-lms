@@ -22,7 +22,7 @@ const BlogPage = async() => {
   });
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Blog"/>
       <div className="blog-section padding-tb section-bg">
         <div className="container">
           <div className="row justify-content-center">

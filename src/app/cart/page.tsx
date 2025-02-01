@@ -6,7 +6,7 @@ import CartItem from "@/components/ecommerce/Cart/CartItem/CartItem";
 const CartPage = () => {
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Cart/>
       <div className="shop-cart padding-tb">
         <div className="container">
           <div className="section-wrapper">

@@ -76,7 +76,7 @@ useEffect(() => {
 }, [errorType]);
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="Login"/>
 
       <div className="login-section padding-tb section-bg">
         <div className="container">

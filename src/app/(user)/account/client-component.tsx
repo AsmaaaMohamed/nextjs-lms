@@ -14,7 +14,7 @@ const ClientComponent = ({
 }: ClientComponentProps) => {
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeader pageTitle="My Account"/>
       <div className="course-section padding-tb section-bg">
         <div className="container">
           <div className="section-wrapper">
