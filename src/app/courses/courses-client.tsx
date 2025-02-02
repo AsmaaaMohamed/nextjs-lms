@@ -2,26 +2,20 @@
 
 import CustomFilter from "@/components/common/CustomFilter/CustomFilter";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Courses.css";
 import { CourseCategory, Instructor } from "@prisma/client";
 import { getCourses } from "@/apiCalls/coursesApiCall";
+import useSearchStore from "@/store/lms/search/search";
+import CoursesSection from "@/components/pageParts/CoursesParts/CoursesSection";
 
 interface CoursesClientProps {
-  coursesSection: JSX.Element;
+  instructors: Instructor[];
   coursesCategories: CourseCategory[];
-  setCategoryName: React.SetStateAction<string>;
-  setCoursePrice: React.SetStateAction<number>;
-  coursePrice: number;
-  categoryName:string;
 }
 const CoursesClient = ({
-  coursesSection,
+  instructors,
   coursesCategories,
-  setCategoryName,
-  categoryName,
-  setCoursePrice,
-  coursePrice,
 }: CoursesClientProps) => {
   const mappedOptions = coursesCategories.map((record) => {
     return (
@@ -30,16 +24,39 @@ const CoursesClient = ({
       </option>
     );
   });
+    // const searchParams = useSearchParams();
+    // const currentCategory = searchParams.get("category")
+    //   ? searchParams.get("category")
+    //   : "";
+    // const currentTitle = searchParams.get("title");
+    const { searchCategory, searchPrice, searchCourse } = useSearchStore();
+    // const [categoryName, setCategoryName] = useState(currentCategory);
+    // const [coursePrice, setCoursePrice] = useState(0);
+    const [courses, setCourses] = useState([]);
+    // const [instructors, setInstructors] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    useEffect(() => {
+      const fetchCourses = async () => {
+        const result = await getCourses(
+          searchCategory,
+          searchCourse,
+          searchPrice
+        );
+        setCourses(result);
+        // const coursesCategories = await getCachedCoursesCategories();
+        // console.log("vvvvvvvvcccccccccccccccc", coursesCategories);
+        // setCategories(coursesCategories);
+        // const coursesInstructors = await getInstructors();
+
+        // setInstructors(coursesInstructors);
+      };
+
+      fetchCourses();
+    }, [searchCategory, searchCourse, searchPrice]);
   return (
     <Fragment>
-      <PageHeader pageTitle="Courses"/>
-      <CustomFilter
-        categoriesOptions={mappedOptions}
-        setCategoryName={setCategoryName}
-        setCoursePrice={setCoursePrice}
-        categoryName={categoryName}
-        coursePrice={coursePrice}
-      />
+      <PageHeader pageTitle="Courses" />
+      <CustomFilter categoriesOptions={mappedOptions} />
       <div className="course-section padding-tb section-bg">
         <div className="container">
           <div className="section-wrapper">
@@ -50,7 +67,7 @@ const CoursesClient = ({
                 </div>
               </div>
             </div>
-            {coursesSection}
+            <CoursesSection instructors={instructors} isUserCourse={false} courses={courses}/>
           </div>
         </div>
       </div>

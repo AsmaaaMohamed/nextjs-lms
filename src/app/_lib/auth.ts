@@ -2,7 +2,6 @@ import NextAuth, { AuthError } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
-import Facebook from "next-auth/providers/facebook";
 import prisma from "@/utils/prismaObject";
 import bcrypt from "bcryptjs";
 
@@ -10,7 +9,6 @@ const authConfig = {
   providers: [
     Google,
     GitHub,
-    Facebook,
     Credentials({
       async authorize(credentials) {
         const { email, password } = credentials;

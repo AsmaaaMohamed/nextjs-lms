@@ -16,15 +16,6 @@ export async function githubClickHandler() {
     //   console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
     // }
 }
-export async function facebookClickHandler() {
-  // try {
-  console.log("llllllllllllllllllllllllll");
-  const res = await signIn("facebook", { redirectTo: "/" });
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res);
-  // } catch (error) {
-  //   console.log("kkkkkkkkkkkkkkkkkkkkkkkkk", error);
-  // }
-}
 export async function logoutClickHandler() {
   await signOut({ redirectTo: "/login" });
 }
@@ -53,21 +44,5 @@ export async function loginSubmit(formData: FormData){
       }
     }
     throw error;
-  }
-}
-export const getDashboardCourses = async(userId:number)=>{
-  try {
-    const enrolledCourses = await prisma.usersCourses.findMany({
-      where: { userId },
-      include: {
-        course: true, // Fetch related Course model data
-      },
-    });
-    const courses = enrolledCourses.map((c)=>c.course);
-    // console.log('courrrrrrrrrrrrrrrrr', courses)
-    return courses;
-  } catch (error) {
-    console.log(error);
-    return [];
   }
 }

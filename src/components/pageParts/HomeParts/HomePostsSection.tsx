@@ -1,8 +1,8 @@
-import { getPosts } from "@/apiCalls/postApiCall";
 import PostCard from "@/components/blog/PostCard/PostCard";
+import { getCachedPosts } from "@/server/db/cached";
 
 const HomePostsSection = async() => {
-    const posts =await getPosts();
+    const posts =await getCachedPosts();
     // console.log(posts)
   const renderedPosts = posts.slice(0, 3).map((p) => {
     return (

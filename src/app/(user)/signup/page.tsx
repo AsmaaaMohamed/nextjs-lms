@@ -146,11 +146,6 @@ const SignupPage = () => {
               </span>
               <h5 className="subtitle">Register With Social Media</h5>
               <ul className="lab-ul social-icons justify-content-center">
-                {/* <li>
-                  <span className="facebook" title="Facebook" role="button">
-                    <i className="icofont-facebook icofont"></i>
-                  </span>
-                </li> */}
                 <li>
                   <span
                     className="github"

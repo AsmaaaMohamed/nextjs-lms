@@ -1,4 +1,3 @@
-
 import { Fragment } from "react";
 import "./CourseDetails.css";
 import Image from "next/image";
@@ -8,19 +7,21 @@ import Comment from "@/components/Comment/Comment";
 import Author from "@/components/common/Author/Author";
 import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
-import { getDashboardCourses } from "@/app/_lib/actions";
+import { getDashboardCourses } from "@/server/db/courses";
 import { getCourseById } from "@/apiCalls/courseByIdApiCall";
-import { getInstructors } from "@/apiCalls/instructorsApiCalls";
+import { getCachedInstructors } from "@/server/db/cached";
 
-const CourseDetails = async({ params }) => {
-  const {id} = await params;
+const CourseDetails = async ({ params }) => {
+  const { id } = await params;
   const session = await auth();
   const userId = +session?.user.id; // Ensure it's a number
   const dashboardCourses = await getDashboardCourses(userId);
   const thisCourse = await getCourseById(+id);
-  const instructors = await getInstructors();
-  const courseInstructor = instructors.find((instructor)=> instructor.id === thisCourse.instructorId)
-  const isEnrolled = dashboardCourses.find((c)=>c.id === +id)
+  const instructors = await getCachedInstructors();
+  const courseInstructor = instructors.find(
+    (instructor) => instructor.id === thisCourse.instructorId
+  );
+  const isEnrolled = dashboardCourses.find((c) => c.id === +id);
   // console.log('id params' , thisCourse.comments)
   // const {id} = useParams()
   // console.log(id)
@@ -58,9 +59,7 @@ const CourseDetails = async({ params }) => {
                     30% Off
                   </Link>
                 </div>
-                <h2 className="phs-title">
-                  {thisCourse.title}
-                </h2>
+                <h2 className="phs-title">{thisCourse.title}</h2>
                 <p className="phs-desc">
                   The most impressive is collection of share me online college
                   courses
@@ -358,13 +357,22 @@ const CourseDetails = async({ params }) => {
                     </div>
                   </div>
                 </div>
-                <Author instructor={courseInstructor}/>
-                <Comment session={session} isEnrolled={isEnrolled} comments={thisCourse.comments} courseId={thisCourse.id}/> 
+                <Author instructor={courseInstructor} />
+                <Comment
+                  session={session}
+                  isEnrolled={isEnrolled}
+                  comments={thisCourse.comments}
+                  courseId={thisCourse.id}
+                />
               </div>
             </div>
             <div className="col-lg-4">
               <div className="sidebar-part">
-                <CourseSideDetails course={thisCourse} session={session} isEnrolled={isEnrolled}/>
+                <CourseSideDetails
+                  course={thisCourse}
+                  session={session}
+                  isEnrolled={isEnrolled}
+                />
                 <CourseSideCategories />
               </div>
             </div>

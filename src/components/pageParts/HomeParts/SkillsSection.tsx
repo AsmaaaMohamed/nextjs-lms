@@ -1,10 +1,10 @@
-import { getSkills } from "@/apiCalls/skillsApiCall";
 import SkillCard from "@/components/lms/Skill/SkillCard";
+import { getCachedSkills } from "@/server/db/cached";
 import Link from "next/link";
 
 
 const SkillsSection = async() => {
-    const skills = await getSkills();
+    const skills = await getCachedSkills();
     const renderedSkills = skills.map((s) => {
     return (
         <div key={s.id} className="col">

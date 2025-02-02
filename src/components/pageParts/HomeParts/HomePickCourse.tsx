@@ -1,10 +1,9 @@
-import { getCourses } from "@/apiCalls/coursesApiCall";
 import CoursesSection from "../CoursesParts/CoursesSection";
-import { getInstructors } from "@/apiCalls/instructorsApiCalls";
+import { getCachedCourses, getCachedInstructors } from "@/server/db/cached";
 
 const HomePickCourse = async () => {
-  const courses = await getCourses();
-  const instructors = await getInstructors()
+  const courses = await getCachedCourses();
+  const instructors = await getCachedInstructors()
   return (
     <div className="course-section padding-tb">
       <div className="container">

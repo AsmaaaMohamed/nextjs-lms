@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 const initialState = {
-  searchCategory: "All Categories",
-  searchPrice: "All Prices",
+  searchCategory: "",
+  searchPrice: "",
   searchCourse: "",
 };
 const useSearchStore = create((set) => ({

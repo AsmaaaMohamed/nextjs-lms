@@ -1,9 +1,9 @@
-import { getInstructors } from "@/apiCalls/instructorsApiCalls";
 import InstructorCard from "@/components/lms/Instructor/InstructorCard";
+import { getCachedInstructors } from "@/server/db/cached";
 
 
 const InstructorsSection = async() => {
-    const instructors = await getInstructors();
+    const instructors = await getCachedInstructors();
     const renderedInstructors = instructors.map((i) => {
     return (
         <div key={i.id} className="col">

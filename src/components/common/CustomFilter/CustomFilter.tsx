@@ -1,19 +1,11 @@
 import { Form } from "react-bootstrap";
 import "./CustomFilter.css";
+import useSearchStore from "@/store/lms/search/search";
 
 const CustomFilter = ({
   categoriesOptions,
-  setCoursePrice,
-  setCategoryName,
-  categoryName,
-  coursePrice,
 }) => {
-  //  const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } = useSearchStore();
-  //  console.log(searchCategory);
-  //  const handleCategorySelect = (e) => {
-  //    setSearchCategory(e.target.value);
-  //    console.log("ffffffffffffffffffffffffffffff", e.target.value);
-  //  };
+   const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } = useSearchStore();
   return (
     <div className="group-select-section">
       <div className="container">
@@ -32,8 +24,8 @@ const CustomFilter = ({
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        value={categoryName}
-                        onChange={(e) => setCategoryName(e.target.value)}
+                        value={searchCategory}
+                        onChange={(e) => setSearchCategory(e.target.value)}
                       >
                         <option value="">All Categories</option>
                         <option value="Uncategorized">Uncategorized</option>
@@ -41,22 +33,12 @@ const CustomFilter = ({
                       </Form.Select>
                     </div>
                   </div>
-                  {/* <div className="col">
-                    <div className="select-item">
-                      <Form.Select aria-label="Default select example">
-                        <option value="all">All Languages</option>
-                        <option value="java">Java</option>
-                        <option value="php">PHP</option>
-                        <option value="html">HTML</option>
-                      </Form.Select>
-                    </div>
-                  </div> */}
                   <div className="col">
                     <div className="select-item">
                       <Form.Select
                         aria-label="Default select example"
-                        value={coursePrice}
-                        onChange={(e) => setCoursePrice(e.target.value)}
+                        value={searchPrice}
+                        onChange={(e) => setSearchPrice(e.target.value)}
                       >
                         <option value="0">All Prices</option>
                         <option value="10">10</option>
@@ -65,16 +47,6 @@ const CustomFilter = ({
                       </Form.Select>
                     </div>
                   </div>
-                  {/* <div className="col">
-                    <div className="select-item">
-                      <Form.Select aria-label="Default select example">
-                        <option value="all">All Skills</option>
-                        <option value="css">CSS</option>
-                        <option value="php">PHP</option>
-                        <option value="html">HTML</option>
-                      </Form.Select>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

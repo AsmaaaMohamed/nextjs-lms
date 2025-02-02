@@ -12,7 +12,7 @@ const CourseCard = ({
   isUserCourse,
   instructor
 }) => {
-  console.log('innnnnnnnnnnsssssssssssssssssss',instructor);
+  // console.log('innnnnnnnnnnsssssssssssssssssss',instructor);
   return (
     <div className="course-item">
       <div className="course-inner">
