@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import queryString from "query-string";
+import useSearchStore from "@/store/lms/search/search";
 
 interface ClientComponentProps {
   homePickCourse: JSX.Element;
@@ -31,7 +32,7 @@ export default function ClientComponent({
   instructorsSection
 }: ClientComponentProps) {
   const router = useRouter();
-  const [searchCourseName, setSearchCourseName] = useState("");
+  const { searchCourse, setSearchCourse} = useSearchStore();
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -39,10 +40,10 @@ export default function ClientComponent({
     }
   };
  const handleClickSearchBtn = () => {
-   if (searchCourseName !== "") handleSearch(searchCourseName);
+   if (searchCourse !== "") handleSearch(searchCourse);
  };
   const handleChangeSearch = (e) => {
-    setSearchCourseName(e.target.value);
+    setSearchCourse(e.target.value);
   };
   const handleSearch=(courseName)=>{
       const url = queryString.stringifyUrl(
@@ -87,7 +88,7 @@ export default function ClientComponent({
                       aria-label="Search"
                       onKeyDown={handleSearchCourseEnter}
                       onChange={handleChangeSearch}
-                      value={searchCourseName}
+                      value={searchCourse}
                     />
                     <Button onClick={handleClickSearchBtn}>
                       Search Course

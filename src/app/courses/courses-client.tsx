@@ -52,7 +52,7 @@ const CoursesClient = ({
 
         // setInstructors(coursesInstructors);
       };
-      if(searchCategory | searchCourse | searchPrice){
+      if(searchCategory || searchCourse || searchPrice){
         fetchCourses();
       }
     }, [searchCategory, searchCourse, searchPrice]);
