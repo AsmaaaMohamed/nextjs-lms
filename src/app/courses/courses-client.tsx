@@ -4,7 +4,7 @@ import CustomFilter from "@/components/common/CustomFilter/CustomFilter";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import React, { Fragment, useEffect, useState } from "react";
 import "./Courses.css";
-import { CourseCategory, Instructor } from "@prisma/client";
+import { Course, CourseCategory, Instructor } from "@prisma/client";
 import { getCourses } from "@/apiCalls/coursesApiCall";
 import useSearchStore from "@/store/lms/search/search";
 import CoursesSection from "@/components/pageParts/CoursesParts/CoursesSection";
@@ -12,10 +12,12 @@ import CoursesSection from "@/components/pageParts/CoursesParts/CoursesSection";
 interface CoursesClientProps {
   instructors: Instructor[];
   coursesCategories: CourseCategory[];
+  allCourses: Course[];
 }
 const CoursesClient = ({
   instructors,
   coursesCategories,
+  allCourses
 }: CoursesClientProps) => {
   const mappedOptions = coursesCategories.map((record) => {
     return (
@@ -32,7 +34,7 @@ const CoursesClient = ({
     const { searchCategory, searchPrice, searchCourse } = useSearchStore();
     // const [categoryName, setCategoryName] = useState(currentCategory);
     // const [coursePrice, setCoursePrice] = useState(0);
-    const [courses, setCourses] = useState([]);
+    const [courses, setCourses] = useState(allCourses);
     // const [instructors, setInstructors] = useState([]);
     // const [categories, setCategories] = useState([]);
     useEffect(() => {
@@ -50,8 +52,9 @@ const CoursesClient = ({
 
         // setInstructors(coursesInstructors);
       };
-
-      fetchCourses();
+      if(searchCategory | searchCourse | searchPrice){
+        fetchCourses();
+      }
     }, [searchCategory, searchCourse, searchPrice]);
   return (
     <Fragment>

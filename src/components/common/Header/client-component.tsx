@@ -8,25 +8,32 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import {  useEffect, useState } from "react";
-import {  usePathname, useRouter, useSearchParams } from "next/navigation";
+import {  useEffect} from "react";
+import {  usePathname, useRouter} from "next/navigation";
 import Link from "@/components/link";
 import Image from "next/image";
 import { logoutClickHandler } from "@/app/_lib/actions";
 import queryString from "query-string";
+import useSearchStore from "@/store/lms/search/search";
 
 const ClientComponent = ({ session, coursesCategories }) => {
   const router = useRouter();
   const pathname = usePathname(); // Get the current path
-  const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("category");
-  const currentTitle = searchParams.get("title");
-  const [searchCourseCategory, setSearchCourseCategory] =
-    useState("All Categories");
-  console.log(
-    `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=26c976&color=fff`
-  );
-  const [searchCourseName, setSearchCourseName] = useState("");
+  // const searchParams = useSearchParams();
+  // const currentCategory = searchParams.get("category");
+  // const currentTitle = searchParams.get("title");
+  // const [searchCourseCategory, setSearchCourseCategory] = useState("All Categories");
+  // // console.log(
+  // //   `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=26c976&color=fff`
+  // // );
+  // const [searchCourseName, setSearchCourseName] = useState("");
+  const {
+    searchCategory,
+    setSearchCategory,
+    searchCourse,
+    setSearchCourse,
+    setSearchPrice
+  } = useSearchStore();
   const handleSearchCourseEnter = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -34,11 +41,11 @@ const ClientComponent = ({ session, coursesCategories }) => {
     }
   };
   const handleClickSearchBtn = () => {
-    if (searchCourseName !== "")
-      handleSearch(currentCategory, searchCourseName);
+    if (searchCourse !== "")
+      handleSearch(searchCategory, searchCourse);
   };
   const handleChangeSearch = (e) => {
-    setSearchCourseName(e.target.value);
+    setSearchCourse(e.target.value);
   };
   const handleSearch = (categoryName, courseName) => {
     const url = queryString.stringifyUrl(
@@ -63,28 +70,36 @@ const ClientComponent = ({ session, coursesCategories }) => {
   const navClass = "";
 
   const handleCategorySelect = (e) => {
-    setSearchCourseCategory(e.target.value);
-    handleSearch(e.target.value, currentTitle);
-    console.log("gggggggggggggggggggggggggggg", searchCourseCategory);
+    setSearchCategory(e.target.value);
+    handleSearch(e.target.value, searchCourse);
+    console.log("gggggggggggggggggggggggggggg", searchCategory);
   };
   useEffect(() => {
     // Reset the state whenever the p''ath changes
     if (pathname !== '/courses') {
-      setSearchCourseName("");
-      setSearchCourseCategory("All Categories");
+      setSearchCourse("");
+      setSearchCategory("");
+      setSearchPrice(0)
     }
   }, [pathname]);
   return (
     <header className={navClass}>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Navbar.Brand as={Link} href="/">
-          <Image src={Logo} height="52" alt="image" loading="eager" priority/>
+          <Image
+            src={Logo}
+            height="52"
+            alt="image"
+            loading="eager"
+            placeholder="blur"
+            blurDataURL={`${Logo}`}
+          />
         </Navbar.Brand>
         <Nav className="left-nav d-none d-xxl-flex">
           <Form.Select
             aria-label="Default select example"
             className="select-cat"
-            value={searchCourseCategory}
+            value={searchCategory}
             onChange={(e) => handleCategorySelect(e)}
           >
             <option value="">All Categories</option>
@@ -100,7 +115,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
                 aria-label="Search"
                 onKeyDown={handleSearchCourseEnter}
                 onChange={handleChangeSearch}
-                value={searchCourseName}
+                value={searchCourse}
               />
               <Button
                 variant="outline-secondary"

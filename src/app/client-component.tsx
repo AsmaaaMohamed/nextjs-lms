@@ -8,13 +8,9 @@ import Icon2 from "/public/assets/images/about/icon/02.jpg";
 import StudentFeedbackLeftImg from "/public/assets/images/feedback/01.jpg";
 import StudentFeedbackRightImg1 from "/public/assets/images/feedback/student/01.jpg";
 import StudentFeedbackRightImg2 from "/public/assets/images/feedback/student/02.jpg";
-// import AchieveGoalsBg from "../../public/assets/images/media/02.ba699cd616f691881513.png";
 import Image from "next/image";
 import { Button, Form } from "react-bootstrap";
 import "./page.css";
-import { instructors, skills } from "@/utils/data";
-import SkillCard from "@/components/lms/Skill/SkillCard";
-import InstructorCard from "@/components/lms/Instructor/InstructorCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -119,10 +115,16 @@ export default function ClientComponent({
               <div className="col-xxl-7 col-xl-6">
                 <div className="thumb-part">
                   <div className="banner-thumb text-center">
-                    <Image src={BannerImg} alt="img" loading="eager" priority/>
+                    <Image
+                      src={BannerImg}
+                      alt="img"
+                    />
                   </div>
                   <div className="abs-thumb d-none d-xxl-block">
-                    <Image src={BannerImg2} alt="img" loading="eager" priority/>
+                    <Image
+                      src={BannerImg2}
+                      alt="img"
+                    />
                   </div>
                 </div>
               </div>
