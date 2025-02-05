@@ -1,4 +1,4 @@
-import { Post, Comment, User } from "@prisma/client";
+import { Post, Comment, User, Prisma } from "@prisma/client";
 
 export type JWTPayload = {
   id: number;
@@ -9,3 +9,21 @@ export type JWTPayload = {
 export type CommentWithUser = Comment & { user: User };
 
 export type SinglePost = Post & { comments: CommentWithUser[] };
+export type CourseWithRelations = Prisma.CourseGetPayload<{
+  include: {
+    comments:{
+      include:{
+        user:true
+      }
+    },
+    chapters:{
+      include:{
+        chapterSections: {
+          include: {
+            userProgress:true
+          },
+        }
+      }
+    }
+  };
+}>;
