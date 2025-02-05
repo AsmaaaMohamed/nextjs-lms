@@ -63,6 +63,9 @@ const authConfig = {
   ],
   // debug: true,
   callbacks: {
+    authorized({auth, request}){
+      return !! auth?.user
+    },
     async signIn({ user, account }) {
       if (account && account.provider !== "credentials") {
         console.log("fffffffffffffffwwwwwwwwwwwwww");
@@ -142,9 +145,9 @@ const authConfig = {
 
     // سيناريو ان لو اليوزر حاول يكتب الايميل والباسورد وهو مسجل بلسوشيال
   },
-  // pages:{
-  //   signIn:'/login'
-  // }
+  pages:{
+    signIn:'/login'
+  }
 };
 export const{
     auth,
