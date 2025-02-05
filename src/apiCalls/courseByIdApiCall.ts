@@ -3,7 +3,7 @@ import { DOMAIN } from "@/utils/constants";
 
 
 // Get courses 
-export async function getCourseById(courseId): Promise<Course[]> {
+export async function getCourseById(courseId:number): Promise<Course> {
   const response = await fetch(
     `${DOMAIN}/api/courses/${courseId}`,
     { cache: "no-store" }

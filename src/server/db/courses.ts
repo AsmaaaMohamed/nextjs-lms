@@ -1,6 +1,7 @@
 import prisma from "@/utils/prismaObject";
+import { Course } from "@prisma/client";
 
-export const getDashboardCourses = async (userId: number) => {
+export const getDashboardCourses = async (userId: number): Promise<Course[]> => {
   try {
     const enrolledCourses = await prisma.usersCourses.findMany({
       where: { userId },

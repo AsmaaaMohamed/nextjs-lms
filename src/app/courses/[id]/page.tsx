@@ -14,14 +14,18 @@ import { getCachedInstructors } from "@/server/db/cached";
 const CourseDetails = async ({ params }) => {
   const { id } = await params;
   const session = await auth();
-  const userId = +session?.user.id; // Ensure it's a number
-  const dashboardCourses = await getDashboardCourses(userId);
-  const thisCourse = await getCourseById(+id);
-  const instructors = await getCachedInstructors();
+  const userId = session?.user?.id ? parseInt(session?.user?.id) : null; // Ensure it's a number
+  // Fetch data in parallel for better performance
+  const [thisCourse, instructors] = await Promise.all([
+    getCourseById(parseInt(id)),
+    getCachedInstructors(),
+  ]);
+  // Call getDashboardCourses only if userId is valid
+  const dashboardCourses = userId ? await getDashboardCourses(userId) : [];
   const courseInstructor = instructors.find(
     (instructor) => instructor.id === thisCourse.instructorId
   );
-  const isEnrolled = dashboardCourses.find((c) => c.id === +id);
+  const isEnrolled = dashboardCourses?.find((c) => c.id === parseInt(id));
   // console.log('id params' , thisCourse.comments)
   // const {id} = useParams()
   // console.log(id)
@@ -66,7 +70,7 @@ const CourseDetails = async ({ params }) => {
                 </p>
                 <div className="phs-thumb">
                   <Image
-                    src={courseInstructor?.img}
+                    src={courseInstructor?.img as string}
                     alt="rajibraj91"
                     width={40}
                     height={40}
