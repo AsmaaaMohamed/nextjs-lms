@@ -11,7 +11,13 @@ import { getDashboardCourses } from "@/server/db/courses";
 import { getCourseById } from "@/apiCalls/courseByIdApiCall";
 import { getCachedInstructors } from "@/server/db/cached";
 
-const CourseDetails = async ({ params }) => {
+const CourseDetails = async ({
+  params,
+}: {
+  params: Promise<{
+    id: string; // Assuming `id` is a string. Change to `number` if it's a number.
+  }>;
+}) => {
   const { id } = await params;
   const session = await auth();
   const userId = session?.user?.id ? parseInt(session?.user?.id) : null; // Ensure it's a number
