@@ -7,22 +7,20 @@ import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Course } from "@prisma/client";
+import { Session } from "next-auth";
 
-const CourseSideDetails = ({course , session, isEnrolled}) => {
+interface CourseSideDetailsProps{
+  course:Course;
+  session:Session | null;
+  isEnrolled:boolean;
+}
+const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps) => {
   // console.log('sessssssss', courseId)
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const modalHandler = () => {
     setIsOpen((prev)=>!prev)
-    // if (accessToken) {
-    //   setIsOpen(!isOpen);
-    //   setError(null);
-    // } else {
-    //   toast({
-    //     variant: "destructive",
-    //     description: "You need to login first to add items to place order",
-    //   });
-    // }
   };
   const confirmHandler = async()=>{
     modalHandler();
@@ -31,14 +29,7 @@ const CourseSideDetails = ({course , session, isEnrolled}) => {
         const res = await fetch(`/api/courses/${course.id}/enrollCourse`, {
           method: "POST",
         });
-        // if (!res.ok) {
-
-        //   const resJson = await res.json()
-        //   console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
-        //   throw resJson;
-        // }
-        // const resData = await res.json();
-        // console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", res);
+      
         if (!res.ok) {
           const resJson = await res.json();
           console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
@@ -50,18 +41,6 @@ const CourseSideDetails = ({course , session, isEnrolled}) => {
         setTimeout(() => {
           router.push(`/courses/${course.id}/chapters`); // Replace with your target route
         }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
-        // if(res.ok){
-        //   const resData = await res.json();
-        //   // console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resData);
-        //   window.location.assign(`courses/${course.id}/chapters`);
-        // //  toast.success(
-        // //    "You've successfully enrolled course. You'll redirect to the course view page"
-        // //  );
-        // // // Delay the navigation
-        // // setTimeout(() => {
-        // //   router.push(`/courses/${course.id}/view`); // Replace with your target route
-        // // }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
-        // }
       }
       catch(err){
         console.log('errrrrrrrrrrrrrrrrooooooooooooooooooo', err)

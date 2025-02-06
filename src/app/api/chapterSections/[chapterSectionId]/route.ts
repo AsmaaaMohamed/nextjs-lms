@@ -5,11 +5,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
-  { params  }
+  { params }: { params: Promise<{ chapterSectionId: string }> }
 ) {
   try {
     const session = await auth();
-    const userId = +session?.user?.id;
+    const userId = session?.user?.id ? +session?.user?.id : null;
     const pageParams = await params;
 
     if (!userId) {
@@ -23,14 +23,14 @@ export async function POST(
         },
       },
     });
-    if(alreadyCompleted){
-        return;
+    if (alreadyCompleted) {
+      return;
     }
     const userProgress = await prisma.userProgress.create({
       data: {
         userId,
         chapterSectionId: +pageParams?.chapterSectionId,
-        isCompleted:true,
+        isCompleted: true,
       },
     });
 

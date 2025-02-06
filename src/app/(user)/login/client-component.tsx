@@ -47,25 +47,7 @@ const ClientComponent = () => {
       }
     },
   });
-  // const handleSocialLogin = (provider:string) => {
-  //   // try{
-  //   //       signIn(provider, { redirect: false }); 
-  //   //       console.log('ddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')       
-  //   // }
-  //   //   catch(err ) {
-  //   //     console.log('errroooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-  //   //    toast.error(err as string);
-  //   //   };
-  //   signIn(provider, { redirect: false }).then((result) => {
-  //     console.log('ressssssssssssssssssssssssssssuuuuuuuuuuuuuuuuu', result)
-  //     if (result && result.error) {
-  //       throw new Error(result.error);
-  //     }
-  //   });
-  // };
-  // const setErrorMessage=(errorType)=>{
 
-  // }
 useEffect(() => {
   if (errorType) {
     console.log('tyyyyyyyyyyyyyyyyyyyyyyyyyy' , errorType)
@@ -80,14 +62,6 @@ useEffect(() => {
       <div className="login-section padding-tb section-bg">
         <div className="container">
           <div className="account-wrapper">
-            {/* {searchParams.get("message") && (
-              <Alert variant="success">
-                Your account successfully created, please login
-              </Alert>
-            )}
-            {error && (
-              <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
-            )} */}
             <h3 className="title">Login</h3>
             <Form className="account-form" onSubmit={formik.handleSubmit}>
               <Form.Group className="form-group mb-3">
@@ -138,17 +112,7 @@ useEffect(() => {
                   type="submit"
                   className="lab-btn d-block"
                 >
-                  {/* <>
-                    {loading === "pending" ? (
-                      <Spinner
-                        animation="border"
-                        size="sm"
-                        style={{ marginRight: "4px" }}
-                      ></Spinner>
-                    ) : (
-                      ""
-                    )}
-                  </> */}
+                 
                   Submit Now
                 </Button>
               </Form.Group>

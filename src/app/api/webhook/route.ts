@@ -23,8 +23,8 @@ export async function POST(req : Request){
         });
     }
     const session = event.data.object as Stripe.Checkout.Session;
-    const userId = +session?.metadata?.userId;
-    const courseId = +session?.metadata?.courseId;
+    const userId = session?.metadata?.userId ? +session?.metadata?.userId : null;
+    const courseId = session?.metadata?.courseId ? +session?.metadata?.courseId : null;
     if(event.type === "checkout.session.completed"){
         if(!userId || !courseId){
             return new NextResponse("Webhook Error: Missing metadat" , { status:400});

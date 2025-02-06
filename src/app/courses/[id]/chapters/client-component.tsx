@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const ClientComponent = ({course}) => {
+const ClientComponent = () => {
   return (
     <div className="video-part mb-4 mb-lg-0">
       <div className="vp-title mb-4">

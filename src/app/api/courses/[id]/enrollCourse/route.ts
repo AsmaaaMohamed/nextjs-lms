@@ -9,33 +9,37 @@ import { auth } from "@/app/_lib/auth";
  *  @access  public
  */
 
-export async function POST(request: NextRequest, { params }) {
-  console.log('ddddddddddddddddddddddddddddddddddddddddd')
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  console.log("ddddddddddddddddddddddddddddddddddddddddd");
   const session = await auth();
-  const courseId = +(await params)?.id
-  const userId = +session?.user?.id;
+  const courseId = +(await params)?.id;
+  const userId = session?.user?.id ? +session?.user?.id : null;
   console.log("thiiiiiiiiiiiii", userId);
   try {
-    const enrolledCourse = await prisma.usersCourses.findUnique({
+    const enrolledCourse = userId && (await prisma.usersCourses.findUnique({
       where: {
         userId_courseId: {
           userId: userId,
           courseId: courseId,
         },
       },
-    });
+    }));
     if (enrolledCourse) {
       return NextResponse.json(
         { message: "You already enrolled this course" },
         { status: 400 }
       );
     }
-    await prisma.usersCourses.create({
-      data: {
-        userId: userId,
-        courseId: courseId,
-      },
-    });
+    if(userId)
+      await prisma.usersCourses.create({
+        data: {
+          userId: userId,
+          courseId: courseId,
+        },
+      });
 
     //return Response.json(articles, { status: 200 })
     return NextResponse.json("success", { status: 200 });

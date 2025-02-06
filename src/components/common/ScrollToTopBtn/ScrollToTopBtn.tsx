@@ -6,7 +6,7 @@ const ScrollToTopBtn = () => {
     const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => {
-      window.scrollY > 100 ? setIsVisible(true) : setIsVisible(false);
+      setIsVisible(window.scrollY > 100);
     };
     function scrollToTop() {
       if (!isBrowser()) return;

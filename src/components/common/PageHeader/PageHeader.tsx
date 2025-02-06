@@ -3,9 +3,9 @@
 import Link from "next/link";
 import "./PageHeader.css";
 import { usePathname } from "next/navigation";
-import { Fragment, useState } from "react";
+import { Fragment} from "react";
 
-const PageHeader = ({pageTitle}) => {
+const PageHeader = ({pageTitle}:{pageTitle:string}) => {
   const paths = usePathname();
   const pathNames = paths.split("/").filter((path) => path);
   return (

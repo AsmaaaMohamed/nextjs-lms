@@ -1,6 +1,6 @@
 "use client"
 import { DOMAIN } from "@/utils/constants";
-import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface SectionItemProps {
   sectionId: number;

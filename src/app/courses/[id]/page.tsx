@@ -3,13 +3,13 @@ import "./CourseDetails.css";
 import Image from "next/image";
 import CourseSideDetails from "@/components/lms/CourseSideDetails/CourseSideDetails";
 import CourseSideCategories from "@/components/lms/CourseSideCategories/CourseSideCategories";
-import Comment from "@/components/Comment/Comment";
 import Author from "@/components/common/Author/Author";
 import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
 import { getDashboardCourses } from "@/server/db/courses";
 import { getCourseById } from "@/apiCalls/courseByIdApiCall";
 import { getCachedInstructors } from "@/server/db/cached";
+import CommentComponent from "@/components/Comment/Comment";
 
 const CourseDetails = async ({
   params,
@@ -31,7 +31,7 @@ const CourseDetails = async ({
   const courseInstructor = instructors.find(
     (instructor) => instructor.id === thisCourse.instructorId
   );
-  const isEnrolled = dashboardCourses?.find((c) => c.id === parseInt(id));
+  const isEnrolled = dashboardCourses?.find((c) => c.id === parseInt(id)) ? true : false;
   // console.log('id params' , thisCourse.comments)
   // const {id} = useParams()
   // console.log(id)
@@ -368,7 +368,7 @@ const CourseDetails = async ({
                   </div>
                 </div>
                 <Author instructor={courseInstructor} />
-                <Comment
+                <CommentComponent
                   session={session}
                   isEnrolled={isEnrolled}
                   comments={thisCourse.comments}

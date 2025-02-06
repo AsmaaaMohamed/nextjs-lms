@@ -1,4 +1,3 @@
-import { auth } from "@/app/_lib/auth";
 import prisma from "@/utils/prismaObject";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,18 +7,18 @@ import { NextRequest, NextResponse } from "next/server";
  *  @desc    DELETE comment of course
  *  @access  public
  */
-export async function DELETE(request: NextRequest, { params }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ commentId: string }> }
+) {
   console.log("ddddddddddddddddddddddddddddddddddddddddd");
-  const session = await auth();
-  const pageParams =  await params;
-  const commentId = parseInt(pageParams?.commentId)
-  const userId = +session?.user?.id;
-  console.log("thiiiiiiiiiiiii", userId);
+  const pageParams = await params;
+  const commentId = parseInt(pageParams?.commentId);
   try {
     const comment = await prisma.comment.findUnique({
       where: {
         id: commentId,
-      }
+      },
     });
     if (!comment) {
       return NextResponse.json(

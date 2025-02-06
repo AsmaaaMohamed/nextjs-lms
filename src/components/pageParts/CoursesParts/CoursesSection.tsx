@@ -1,6 +1,11 @@
 import CourseCard from '@/components/lms/CourseCard/CourseCard';
+import { Course } from '@prisma/client';
 import React from 'react'
 
+interface CoursesSectionProps {
+  courses: Course[];
+  isUserCourse:boolean;
+}
 const CoursesSection = ({courses, isUserCourse,instructors}) => {
     const renderedCourses = courses.map((c) => {
       

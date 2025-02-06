@@ -1,4 +1,4 @@
-export const formatDate = (date:string)=>{
+export const formatDate = (date:Date)=>{
     const originalDate = new Date(date);
     const options = {
       month: "short",

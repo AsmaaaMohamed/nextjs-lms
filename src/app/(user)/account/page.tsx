@@ -6,13 +6,12 @@ import { getCachedInstructors } from "@/server/db/cached";
 
 const AccountPage = async () => {
   const session = await auth();
-  const userId = +session?.user?.id;
-  const userCourses = await getDashboardCourses(userId);
+  const userId = session?.user?.id ? parseInt(session?.user?.id) : null; // Ensure it's a number;
   const instructors = await getCachedInstructors();
-
+  // Call getDashboardCourses only if userId is valid
+  const userCourses = userId ? await getDashboardCourses(userId) : [];
   return (
     <ClientComponent
-      userCourses={userCourses}
       coursesSection={
         <CoursesSection
           courses={userCourses}

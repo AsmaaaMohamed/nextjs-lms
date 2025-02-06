@@ -13,7 +13,6 @@ import { Button, Form } from "react-bootstrap";
 import "./page.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import queryString from "query-string";
 import useSearchStore from "@/store/lms/search/search";
 
@@ -33,7 +32,7 @@ export default function ClientComponent({
 }: ClientComponentProps) {
   const router = useRouter();
   const { searchCourse, setSearchCourse} = useSearchStore();
-  const handleSearchCourseEnter = (e) => {
+  const handleSearchCourseEnter = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleClickSearchBtn();
@@ -42,10 +41,10 @@ export default function ClientComponent({
  const handleClickSearchBtn = () => {
    if (searchCourse !== "") handleSearch(searchCourse);
  };
-  const handleChangeSearch = (e) => {
+  const handleChangeSearch = (e: any) => {
     setSearchCourse(e.target.value);
   };
-  const handleSearch=(courseName)=>{
+  const handleSearch=(courseName:string)=>{
       const url = queryString.stringifyUrl(
         {
           url: "/courses",

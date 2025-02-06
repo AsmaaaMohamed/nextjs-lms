@@ -36,7 +36,7 @@ const SignupPage = () => {
         console.log('reeeeeeeeeeeeeeesssssssssssssssssssssssss',res)
         toast.success("Your acount has been created successfully");
         router.push('/login');
-      } catch (error) {
+      } catch (error: any) {
         // toast.dismiss();
         console.log('ooooooooooooooooooooooooooooooooooooooooooo',error.message)
         toast.error(error.message );

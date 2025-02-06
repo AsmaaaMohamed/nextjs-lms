@@ -2,15 +2,12 @@
 
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import React, { Fragment} from "react";
-import { Course } from "@prisma/client";
 
 interface ClientComponentProps {
-  userCourses: Course[];
   coursesSection: JSX.Element;
 }
 const ClientComponent = ({
   coursesSection,
-  userCourses,
 }: ClientComponentProps) => {
   return (
     <Fragment>

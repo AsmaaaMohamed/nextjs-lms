@@ -5,11 +5,11 @@ import prisma from "@/utils/prismaObject";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export async function POST(req:Request ,{params}:{params : Promise<{ id: number }>}){
+export async function POST(req:Request ,{params}:{params : Promise<{ id: string }>}){
     try {
         const authSession = await auth();
         const pageParams = await params;
-        const courseId = +pageParams.id;
+        const courseId = parseInt(pageParams?.id);
         console.log("sessssssssssssssssssss", authSession?.user?.email);
         if(!authSession?.user){
             return new NextResponse("Unauthorized", { status: 401 });
@@ -42,13 +42,13 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: number 
                 }
             }
         ];
-        let stripeCustomer = await prisma.stripeCustomer.findUnique({
-            where:{
-                userId: +authSession?.user?.id
-            },
-            select:{
-                stripeCustomerId: true
-            }
+        let stripeCustomer = authSession?.user?.id && await prisma.stripeCustomer.findUnique({
+          where: {
+            userId: parseInt(authSession?.user?.id),
+          },
+          select: {
+            stripeCustomerId: true,
+          },
         });
         if(!stripeCustomer){
             const customer = await stripe.customers.create({
@@ -61,19 +61,21 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: number 
                 }
             });
         }
-        const session = await stripe.checkout.sessions.create({
-          customer: stripeCustomer.stripeCustomerId,
-          line_items,
-          mode: "payment",
-          success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
-          cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
-          metadata:{
-            courseId: course.id,
-            userId: +authSession.user.id
-          }
-        });
+        const session =
+          authSession?.user?.id &&
+          (await stripe.checkout.sessions.create({
+            customer: stripeCustomer.stripeCustomerId,
+            line_items,
+            mode: "payment",
+            success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
+            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
+            metadata: {
+              courseId: course.id,
+              userId: +authSession.user.id,
+            },
+          }));
         console.log("seeeeeeeeeeeeeeeeewwwwwwwwwwwwwwwwwwwww", session)
-        return NextResponse.json({url: session.url})
+        return NextResponse.json({url: session?.url})
     } catch (error) {
         console.log('errrrrrrrrrrrrrrrrrrrrrrrrrrrr',error)
         return new NextResponse("Internal serve errorrrrr",{status:500})

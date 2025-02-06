@@ -9,37 +9,41 @@ import { auth } from "@/app/_lib/auth";
  *  @access  public
  */
 
-export async function POST(request: NextRequest, { params }) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   console.log("ddddddddddddddddddddddddddddddddddddddddd");
-   const body = await request.json();
+  const body = await request.json();
   const session = await auth();
   const courseId = +(await params)?.id;
-  const userId = +session?.user?.id;
+  const userId = session?.user?.id ? +session?.user?.id : null;
   console.log("thiiiiiiiiiiiii", userId);
   try {
-    const enrolledCourse = await prisma.usersCourses.findUnique({
-      where: {
-        userId_courseId: {
-          userId: userId,
-          courseId: courseId,
-        },
-      },
-    });
-    if (enrolledCourse) {
-        await prisma.comment.create({
-          data: {
+    const enrolledCourse =
+      userId &&
+      (await prisma.usersCourses.findUnique({
+        where: {
+          userId_courseId: {
             userId: userId,
             courseId: courseId,
-            text: body.comment
           },
-        });
+        },
+      }));
+    if (enrolledCourse) {
+      await prisma.comment.create({
+        data: {
+          userId: userId,
+          courseId: courseId,
+          text: body.comment,
+        },
+      });
       return NextResponse.json("success", { status: 200 });
     }
     return NextResponse.json(
       { message: `You don't authorize to comment on this course` },
       { status: 500 }
     );
-
   } catch (error) {
     console.error(error);
     return NextResponse.json(
@@ -54,21 +58,21 @@ export async function POST(request: NextRequest, { params }) {
  *  @desc    GET comments of course
  *  @access  public
  */
-export async function GET(request: NextRequest, { params }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   console.log("ddddddddddddddddddddddddddddddddddddddddd");
-  const session = await auth();
   const courseId = +(await params)?.id;
-  const userId = +session?.user?.id;
-  console.log("thiiiiiiiiiiiii", userId);
   try {
     const comments = await prisma.comment.findMany({
       where: {
-          courseId: courseId,
-        },
-        include:{
-          user:true
-        },
-        orderBy:{id:"asc"}
+        courseId: courseId,
+      },
+      include: {
+        user: true,
+      },
+      orderBy: { id: "asc" },
     });
     return NextResponse.json(comments, { status: 200 });
   } catch (error) {

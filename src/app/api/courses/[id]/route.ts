@@ -9,9 +9,12 @@ import prisma from "@/utils/prismaObject";
  */
 
 
-export async function GET(req:NextRequest,{params}) {
-    const pageParams = await params;
-    const courseId = +pageParams.id;
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const pageParams = await params;
+  const courseId = parseInt(pageParams.id);
   // console.log('seapppppppppppppppppppppppppp', courseId)
   try {
     const courses = await prisma.course.findUnique({
@@ -28,7 +31,7 @@ export async function GET(req:NextRequest,{params}) {
           include: {
             chapterSections: {
               include: {
-                userProgress:true
+                userProgress: true,
               },
               orderBy: {
                 position: "asc",
