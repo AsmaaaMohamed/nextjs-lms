@@ -1,11 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthConfig} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import prisma from "@/utils/prismaObject";
 import bcrypt from "bcryptjs";
 
-const authConfig = {
+const authConfig: NextAuthConfig = {
   providers: [
     Google,
     GitHub,
@@ -15,13 +15,13 @@ const authConfig = {
         const user = await prisma.user.findUnique({
           where: { email },
         });
-        if(!user){
-              return null;
+        if (!user) {
+          return null;
         }
-        const isPasswordMatch =await bcrypt.compare(password, user.password);
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
-             return null
-            }
+          return null;
+        }
         console.log("uuuuueeeeeeeeeeeeeeee", user);
         return user;
       },
@@ -29,8 +29,8 @@ const authConfig = {
   ],
   // debug: true,
   callbacks: {
-    authorized({auth, request}){
-      return !! auth?.user
+    authorized({ auth }) {
+      return !!auth?.user;
     },
     async signIn({ user, account }) {
       if (account && account.provider !== "credentials") {
@@ -38,37 +38,37 @@ const authConfig = {
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email },
         });
-        if(existingUser){
-              if (existingUser.provider !== account.provider) {
-                //   throw new Error(
-                //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
-                //   );
-                //   return NextResponse.json({
-                //     message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
-                //   },
-                // {status:401});
-                // throw new Error(
-                //   `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`
-                // )
-                // console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-                const errorMessage =  `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`;
-                return `/login?error=${encodeURIComponent(errorMessage)}`;
-              }
-              return true;
+        if (existingUser) {
+          if (existingUser.provider !== account.provider) {
+            //   throw new Error(
+            //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
+            //   );
+            //   return NextResponse.json({
+            //     message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
+            //   },
+            // {status:401});
+            // throw new Error(
+            //   `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`
+            // )
+            // console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+            const errorMessage = `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`;
+            return `/login?error=${encodeURIComponent(errorMessage)}`;
           }
-          const newUser = await prisma.user.create({
-            data: {
-              username: user.name,
-              email: user.email,
-              password: '',
-              provider: account.provider,
-            },
-            select: {
-              username: true,
-              email: true,
-              isAdmin: true,
-            },
-          });
+          return true;
+        }
+        const newUser = await prisma.user.create({
+          data: {
+            username: user.name,
+            email: user.email,
+            password: "",
+            provider: account.provider,
+          },
+          select: {
+            username: true,
+            email: true,
+            isAdmin: true,
+          },
+        });
         // try {
         //   const res = await fetch(`${DOMAIN}/api/users/register`, {
         //     method: "POST",
@@ -96,7 +96,7 @@ const authConfig = {
         console.log("uuuuuuuurrrrrrr", user);
         throw new Error(user?.error);
       }
-      console.log('hereeeeeeeeeeeeeeeeeeeeee')
+      console.log("hereeeeeeeeeeeeeeeeeeeeee");
       return true;
     },
     async jwt({ token, user }) {
@@ -111,9 +111,9 @@ const authConfig = {
 
     // سيناريو ان لو اليوزر حاول يكتب الايميل والباسورد وهو مسجل بلسوشيال
   },
-  pages:{
-    signIn:'/login'
-  }
+  pages: {
+    signIn: "/login",
+  },
 };
 export const{
     auth,
