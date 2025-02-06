@@ -1,17 +1,20 @@
 import Image from "next/image";
 import "./CourseCard.css";
 import Link from "next/link";
-import { Course } from "@prisma/client";
+import { Course, Instructor } from "@prisma/client";
 
+type CourseCardProps = Course & {
+  isUserCourse:boolean;
+  instructor:Instructor;
+};
 const CourseCard = ({
   id,
   title,
-  instructorId,
   price,
   img,
   isUserCourse,
   instructor
-}) => {
+}:CourseCardProps) => {
   // console.log('innnnnnnnnnnsssssssssssssssssss',instructor);
   return (
     <div className="course-item">

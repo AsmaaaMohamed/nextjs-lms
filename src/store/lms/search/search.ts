@@ -4,20 +4,20 @@ import { create } from "zustand";
 type SearchStore = {
   searchCourse: string; // The state
   setSearchCourse: (value: string) => void; // The updater function
-  searchPrice: string; // The state
-  setSearchPrice: (value: string) => void; // The updater function
+  searchPrice: number; // The state
+  setSearchPrice: (value: number) => void; // The updater function
   searchCategory: string; // The state
   setSearchCategory: (value: string) => void; // The updater function
 };
 const initialState = {
   searchCategory: "",
-  searchPrice: "",
+  searchPrice: 0,
   searchCourse: "",
 };
 const useSearchStore = create<SearchStore>((set) => ({
   ...initialState,
   setSearchCategory: (category: string) => set({ searchCategory: category }),
-  setSearchPrice: (price: string) => set({ searchPrice: price }),
+  setSearchPrice: (price: number) => set({ searchPrice: price }),
   setSearchCourse: (course: string) => set({ searchCourse: course }),
   resetSearch: () =>
     set(initialState),

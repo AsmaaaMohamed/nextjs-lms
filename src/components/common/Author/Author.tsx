@@ -1,8 +1,9 @@
 import Link from "next/link";
 import "./Author.css";
 import Image from "next/image";
+import { Instructor } from "@prisma/client";
 
-const Author = ({instructor}) => {
+const Author = ({instructor}:{instructor:Instructor}) => {
   return (
     <div className="authors">
       <div className="author-thumb">

@@ -1,15 +1,16 @@
 import CourseCard from '@/components/lms/CourseCard/CourseCard';
-import { Course } from '@prisma/client';
+import { Course, Instructor } from '@prisma/client';
 import React from 'react'
 
 interface CoursesSectionProps {
   courses: Course[];
   isUserCourse:boolean;
+  instructors:Instructor[]
 }
-const CoursesSection = ({courses, isUserCourse,instructors}) => {
+const CoursesSection = ({courses, isUserCourse,instructors}:CoursesSectionProps) => {
     const renderedCourses = courses.map((c) => {
       
-      const courseInstructor = instructors.find((instructor)=>instructor.id === c.instructorId)
+      const courseInstructor = instructors.find((instructor)=>instructor.id === c.instructorId)!
       // console.log(
       //   "cccccccccccccccccccccttttttttttttttttttttttttt",
       //   instructors

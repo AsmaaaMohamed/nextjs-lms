@@ -5,16 +5,22 @@ import Accordion from "react-bootstrap/Accordion";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import ChapterAcordionItem from "./_components/chapterAcordionItem";
 import { useParams } from "next/navigation";
+import { CourseWithRelations } from "@/utils/types";
 
+interface ClientCourseLayoutProps {
+  children: JSX.Element[];
+  course: CourseWithRelations;
+  isEnrolledCourse:boolean;
+}
 export default function ClientCourseLayout({
   children,
   course,
   isEnrolledCourse,
-}) {
+}:ClientCourseLayoutProps) {
   
   const params = useParams();
-  const urlChapterId = +params?.chapterId;
-  const urlChapterSection = +params?.chapterSectionId;
+  const urlChapterId = params?.chapterId ? +params?.chapterId : null;
+  const urlChapterSection = params?.chapterSectionId ? +params?.chapterSectionId : null;
   // console.log(
   //   "cooooooouuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrssssssss",
   //   course?.chapters

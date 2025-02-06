@@ -1,12 +1,22 @@
 import Accordion from "react-bootstrap/Accordion";
 import SectionItem from "./sectionItem";
+import { Chapter, ChapterSection, UserProgress } from "@prisma/client";
 
+type ChapterWithChapterSection = Chapter & {
+  chapterSections:  (ChapterSection & { userProgress: UserProgress[] })[]
+  };
+interface ChapterAcordionItemProps {
+  chapter: ChapterWithChapterSection;
+  isEnrolledCourse: boolean;
+  courseId: number;
+  urlChapterSection:number | null;
+}
 const ChapterAcordionItem = ({
   chapter,
   isEnrolledCourse,
   courseId,
   urlChapterSection,
-}) => {
+}:ChapterAcordionItemProps) => {
   const mappedChapterSections = chapter.chapterSections.map((section) => {
      const isActive = urlChapterSection === section.id;
     return (
@@ -15,7 +25,7 @@ const ChapterAcordionItem = ({
         sectionId={section.id}
         courseId={courseId}
         sectionTitle={section.title}
-        isCompleted={!!section.userProgress?.[0]?.isCompleted}
+        isCompleted={!!section?.userProgress?.[0]?.isCompleted}
         isLocked={!section.isFree && !isEnrolledCourse}
         chapterPosition={chapter.position}
         sectionPosition={section.position}

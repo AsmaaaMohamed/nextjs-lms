@@ -2,10 +2,9 @@ import { Form } from "react-bootstrap";
 import "./CustomFilter.css";
 import useSearchStore from "@/store/lms/search/search";
 
-const CustomFilter = ({
-  categoriesOptions,
-}) => {
-   const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } = useSearchStore();
+const CustomFilter = ({ categoriesOptions }: { categoriesOptions :JSX.Element[]}) => {
+  const { searchCategory, searchPrice, setSearchCategory, setSearchPrice } =
+    useSearchStore();
   return (
     <div className="group-select-section">
       <div className="container">
@@ -38,7 +37,7 @@ const CustomFilter = ({
                       <Form.Select
                         aria-label="Default select example"
                         value={searchPrice}
-                        onChange={(e) => setSearchPrice(e.target.value)}
+                        onChange={(e) => setSearchPrice(+e.target.value)}
                       >
                         <option value="0">All Prices</option>
                         <option value="10">10</option>

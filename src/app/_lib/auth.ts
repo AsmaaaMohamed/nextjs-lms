@@ -1,4 +1,4 @@
-import NextAuth, { AuthError } from "next-auth";
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
@@ -12,52 +12,18 @@ const authConfig = {
     Credentials({
       async authorize(credentials) {
         const { email, password } = credentials;
-        // try {
-        // const res = await fetch(`${DOMAIN}/api/users/login`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     email,
-        //     password,
-        //   }),
-        // });
-        // const user = await res.json();
         const user = await prisma.user.findUnique({
           where: { email },
         });
         if(!user){
-            // if (user.provider !== "credentials") {
-              //   throw new Error(
-              //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
-              //   );
               return null;
-              // return NextResponse.json(
-              //   {
-              //     message: `This email is already registered with credentials. Please use that provider to log in.`,
-              //   },
-              //   { status: 401 }
-              // );
-            // }
-            // console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
-            // throw new Error('this user is already registered')
         }
         const isPasswordMatch =await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
              return null
             }
         console.log("uuuuueeeeeeeeeeeeeeee", user);
-        // if (!res.ok && user) {
-        //   //  console.log('uuuuueeeeeeeeeeeeeeee' , user)
-        //   return { status: user?.status, error: user?.message };
-        // }
         return user;
-        // } catch (error) {
-        //   console.error("Error in authorize:", error); // Log for debugging
-        //   throw error; // Rethrow for higher-level handling
-        // }
-        // return null;
       },
     }),
   ],

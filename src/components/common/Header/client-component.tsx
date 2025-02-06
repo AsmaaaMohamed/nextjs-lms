@@ -15,18 +15,16 @@ import Image from "next/image";
 import { logoutClickHandler } from "@/app/_lib/actions";
 import queryString from "query-string";
 import useSearchStore from "@/store/lms/search/search";
+import { Session } from "next-auth";
+import { CourseCategory } from "@prisma/client";
 
-const ClientComponent = ({ session, coursesCategories }) => {
+interface ClientComponentProps {
+  session: Session | null;
+  coursesCategories:CourseCategory[];
+}
+const ClientComponent = ({ session, coursesCategories }:ClientComponentProps) => {
   const router = useRouter();
   const pathname = usePathname(); // Get the current path
-  // const searchParams = useSearchParams();
-  // const currentCategory = searchParams.get("category");
-  // const currentTitle = searchParams.get("title");
-  // const [searchCourseCategory, setSearchCourseCategory] = useState("All Categories");
-  // // console.log(
-  // //   `https://ui-avatars.com/api/?name=${session?.user?.username[0]}&background=26c976&color=fff`
-  // // );
-  // const [searchCourseName, setSearchCourseName] = useState("");
   const {
     searchCategory,
     setSearchCategory,
@@ -34,7 +32,7 @@ const ClientComponent = ({ session, coursesCategories }) => {
     setSearchCourse,
     setSearchPrice
   } = useSearchStore();
-  const handleSearchCourseEnter = (e) => {
+  const handleSearchCourseEnter = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleClickSearchBtn();
@@ -44,10 +42,10 @@ const ClientComponent = ({ session, coursesCategories }) => {
     if (searchCourse !== "")
       handleSearch(searchCategory, searchCourse);
   };
-  const handleChangeSearch = (e) => {
+  const handleChangeSearch = (e: any) => {
     setSearchCourse(e.target.value);
   };
-  const handleSearch = (categoryName, courseName) => {
+  const handleSearch = (categoryName:string, courseName:string) => {
     const url = queryString.stringifyUrl(
       {
         url: "/courses",
@@ -62,14 +60,14 @@ const ClientComponent = ({ session, coursesCategories }) => {
   };
   const mappedOptions = coursesCategories.map((record) => {
     return (
-      <option key={record.id} value={record.title}>
+      <option key={record.id} value={record.title!}>
         {record.title}
       </option>
     );
   });
   const navClass = "";
 
-  const handleCategorySelect = (e) => {
+  const handleCategorySelect = (e:any) => {
     setSearchCategory(e.target.value);
     handleSearch(e.target.value, searchCourse);
     console.log("gggggggggggggggggggggggggggg", searchCategory);
