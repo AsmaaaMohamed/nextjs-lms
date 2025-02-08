@@ -1,4 +1,5 @@
-import NextAuth, { NextAuthConfig} from "next-auth";
+/* eslint-disable */
+import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
@@ -11,7 +12,7 @@ const authConfig: NextAuthConfig = {
     GitHub,
     Credentials({
       async authorize(credentials) {
-        const { email, password } = credentials;
+        const { email, password } = credentials as { email: string; password: string };
         const user = await prisma.user.findUnique({
           where: { email },
         });
@@ -40,17 +41,6 @@ const authConfig: NextAuthConfig = {
         });
         if (existingUser) {
           if (existingUser.provider !== account.provider) {
-            //   throw new Error(
-            //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
-            //   );
-            //   return NextResponse.json({
-            //     message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
-            //   },
-            // {status:401});
-            // throw new Error(
-            //   `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`
-            // )
-            // console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             const errorMessage = `This email is already registered with ${existingUser.provider}. Please use that provider to log in.`;
             return `/login?error=${encodeURIComponent(errorMessage)}`;
           }
@@ -69,27 +59,6 @@ const authConfig: NextAuthConfig = {
             isAdmin: true,
           },
         });
-        // try {
-        //   const res = await fetch(`${DOMAIN}/api/users/register`, {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({ ...user, provider: account.provider }),
-        //   });
-        //   //  const userr = await res.json();
-        //   console.log("dddddddddddddddddddddrrrrrrrrrrrrrrrrrrrrrrr");
-        //   if (!res.ok) {
-        //     const errorData = await res.json();
-        //     console.log('ddddddddddddddddddddd')
-        //     throw errorData;
-        //   }
-        //   console.log("tttttttttttttttttttttttttttttttttttttttttttttt", res.ok);
-        //   return true;
-        // } catch (e) {
-        //   console.log("ffffffffffffffffffffffffffffffffffffffffff", e);
-        //   if (e instanceof AuthError) {
-        //   redirect(`/login?error=${e.type}`);
-        // }
-        // }
       }
       // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
       if (user?.error) {
@@ -115,9 +84,9 @@ const authConfig: NextAuthConfig = {
     signIn: "/login",
   },
 };
-export const{
-    auth,
-    signIn,
-    signOut,
-    handlers:{GET , POST}
+export const {
+  auth,
+  signIn,
+  signOut,
+  handlers: { GET, POST },
 } = NextAuth(authConfig);
