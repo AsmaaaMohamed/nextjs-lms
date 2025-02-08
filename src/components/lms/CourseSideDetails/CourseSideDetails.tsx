@@ -57,7 +57,8 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
       <div className="csd-title">
         <div className="csdt-left">
           <h4 className="mb-0">
-            <sup>$</sup>{course.price}
+            <sup>$</sup>
+            {course.price}
           </h4>
         </div>
         <div className="csdt-right">
@@ -172,7 +173,9 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
         ) : (
           <div className="course-enroll">
             <Button className="lab-btn" onClick={modalHandler}>
-              <span>Enroll For ${course.price}</span>
+              <span>
+                Enroll For {course.price === 0 ? "Free" : `$ ${course.price}`}
+              </span>
             </Button>
             <Modal show={isOpen} onHide={modalHandler}>
               <Modal.Header closeButton>
@@ -181,7 +184,8 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
               <Modal.Body>
                 <p>
                   {" "}
-                  Are you sure you want to place order with Subtotal: ${course.price} ?
+                  Are you sure you want to place order with Subtotal:{" "}
+                  {course.price === 0 ? "Free" : `$ ${course.price}`}
                 </p>
               </Modal.Body>
               <Modal.Footer>
