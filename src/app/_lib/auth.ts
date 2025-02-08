@@ -56,7 +56,7 @@ const authConfig: NextAuthConfig = {
           }
           return true;
         }
-        const newUser = await prisma.user.create({
+        await prisma.user.create({
           data: {
             username: user.name,
             email: user.email,

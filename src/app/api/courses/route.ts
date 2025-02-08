@@ -8,12 +8,12 @@ import prisma from "@/utils/prismaObject";
  *  @access  public
  */
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(req:any) {
   const {searchParams} = new URL(req.url);
   const category = searchParams.get('category')?searchParams.get('category') as string : '';
   const courseName = searchParams.get('title')? searchParams.get('title') as string :'';
-  const coursePrice = searchParams.get('price')? +searchParams.get('price') as number :undefined;
+  const coursePrice = searchParams?.get('price')? +searchParams.get('price') as number :undefined;
   // console.log('seapppppppppppppppppppppppppp', category)
   try {
     const courses = await prisma.course.findMany({
