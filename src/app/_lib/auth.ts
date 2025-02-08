@@ -83,7 +83,7 @@ const authConfig: NextAuthConfig = {
     // سيناريو ان لو اليوزر حاول يكتب الايميل والباسورد وهو مسجل بلسوشيال
   },
   pages: {
-    // signIn: "/login",
+    signIn: "/login",
   },
 };
 export const {
