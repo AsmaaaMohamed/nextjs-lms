@@ -93,12 +93,13 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
     }
   };
   const mappedComments = thisComments?.map((comment) => {
+    
     return (
       <li className="comment" key={comment.id}>
         <div className="com-thumb">
           <Image
             src={`${
-              comment.user?.img ||
+              comment?.user?.profileImg ||
               `https://ui-avatars.com/api/?name=${comment?.user?.username[0]}&background=26c976&color=fff`
             }`}
             alt={comment.user.username}
@@ -147,7 +148,7 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
       setThisComments(fetchedComments);
     };
     if (!formik.isSubmitting) fetchComments();
-  }, [formik.isSubmitting]);
+  }, [formik.isSubmitting, courseId]);
   return (
     <Fragment>
       <div className="comments">

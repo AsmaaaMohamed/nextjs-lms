@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 //* eslint-disable react/prop-types */
