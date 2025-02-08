@@ -30,8 +30,9 @@ const ClientComponent = ({ session, coursesCategories }:ClientComponentProps) =>
     setSearchCategory,
     searchCourse,
     setSearchCourse,
-    setSearchPrice
+    setSearchPrice,
   } = useSearchStore();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSearchCourseEnter = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -39,13 +40,13 @@ const ClientComponent = ({ session, coursesCategories }:ClientComponentProps) =>
     }
   };
   const handleClickSearchBtn = () => {
-    if (searchCourse !== "")
-      handleSearch(searchCategory, searchCourse);
+    if (searchCourse !== "") handleSearch(searchCategory, searchCourse);
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChangeSearch = (e: any) => {
     setSearchCourse(e.target.value);
   };
-  const handleSearch = (categoryName:string, courseName:string) => {
+  const handleSearch = (categoryName: string, courseName: string) => {
     const url = queryString.stringifyUrl(
       {
         url: "/courses",
@@ -66,18 +67,18 @@ const ClientComponent = ({ session, coursesCategories }:ClientComponentProps) =>
     );
   });
   const navClass = "";
-
-  const handleCategorySelect = (e:any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleCategorySelect = (e: any) => {
     setSearchCategory(e.target.value);
     handleSearch(e.target.value, searchCourse);
     console.log("gggggggggggggggggggggggggggg", searchCategory);
   };
   useEffect(() => {
     // Reset the state whenever the p''ath changes
-    if (pathname !== '/courses') {
+    if (pathname !== "/courses") {
       setSearchCourse("");
       setSearchCategory("");
-      setSearchPrice(0)
+      setSearchPrice(0);
     }
   }, [pathname]);
   return (

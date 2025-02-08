@@ -31,31 +31,33 @@ export default function ClientComponent({
   instructorsSection
 }: ClientComponentProps) {
   const router = useRouter();
-  const { searchCourse, setSearchCourse} = useSearchStore();
+  const { searchCourse, setSearchCourse } = useSearchStore();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSearchCourseEnter = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleClickSearchBtn();
     }
   };
- const handleClickSearchBtn = () => {
-   if (searchCourse !== "") handleSearch(searchCourse);
- };
+  const handleClickSearchBtn = () => {
+    if (searchCourse !== "") handleSearch(searchCourse);
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChangeSearch = (e: any) => {
     setSearchCourse(e.target.value);
   };
-  const handleSearch=(courseName:string)=>{
-      const url = queryString.stringifyUrl(
-        {
-          url: "/courses",
-          query: {
-            title: courseName
-          },
+  const handleSearch = (courseName: string) => {
+    const url = queryString.stringifyUrl(
+      {
+        url: "/courses",
+        query: {
+          title: courseName,
         },
-        { skipNull: true, skipEmptyString: true }
-      );
-      router.push(url);
-    }
+      },
+      { skipNull: true, skipEmptyString: true }
+    );
+    router.push(url);
+  };
 
   return (
     <>
@@ -115,16 +117,10 @@ export default function ClientComponent({
               <div className="col-xxl-7 col-xl-6">
                 <div className="thumb-part">
                   <div className="banner-thumb text-center">
-                    <Image
-                      src={BannerImg}
-                      alt="img"
-                    />
+                    <Image src={BannerImg} alt="img" />
                   </div>
                   <div className="abs-thumb d-none d-xxl-block">
-                    <Image
-                      src={BannerImg2}
-                      alt="img"
-                    />
+                    <Image src={BannerImg2} alt="img" />
                   </div>
                 </div>
               </div>

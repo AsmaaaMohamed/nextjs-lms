@@ -32,6 +32,7 @@ const ContactForm = () => {
         toast.success("Your Message has been sent successfully");
         resetForm();
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       catch(error:any){
         console.log('errrrrrrrooooooooooo', error);
         toast.error(error)
