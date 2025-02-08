@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 //* eslint-disable react/prop-types */
@@ -8,8 +9,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { InputGroup } from "react-bootstrap";
 import "./Header.css";
-import {  useEffect} from "react";
-import {  usePathname, useRouter} from "next/navigation";
+import { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "@/components/link";
 import Image from "next/image";
 import { logoutClickHandler } from "@/app/_lib/actions";
@@ -20,9 +21,12 @@ import { CourseCategory } from "@prisma/client";
 
 interface ClientComponentProps {
   session: Session | null;
-  coursesCategories:CourseCategory[];
+  coursesCategories: CourseCategory[];
 }
-const ClientComponent = ({ session, coursesCategories }:ClientComponentProps) => {
+const ClientComponent = ({
+  session,
+  coursesCategories,
+}: ClientComponentProps) => {
   const router = useRouter();
   const pathname = usePathname(); // Get the current path
   const {

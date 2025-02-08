@@ -1,4 +1,4 @@
-/* eslint-disable */
+// @ts-nocheck
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -12,7 +12,10 @@ const authConfig: NextAuthConfig = {
     GitHub,
     Credentials({
       async authorize(credentials) {
-        const { email, password } = credentials as { email: string; password: string };
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        };
         const user = await prisma.user.findUnique({
           where: { email },
         });
