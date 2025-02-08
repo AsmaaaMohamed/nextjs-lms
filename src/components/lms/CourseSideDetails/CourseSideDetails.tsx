@@ -181,7 +181,7 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
               <Modal.Body>
                 <p>
                   {" "}
-                  Are you sure you want to place order with Subtotal: 89$ ?
+                  Are you sure you want to place order with Subtotal: ${course.price} ?
                 </p>
               </Modal.Body>
               <Modal.Footer>
