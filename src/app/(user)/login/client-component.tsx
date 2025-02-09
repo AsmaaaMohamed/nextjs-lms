@@ -100,14 +100,14 @@ useEffect(() => {
                   </Form.Control.Feedback>
                 ) : null}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
                   type="checkbox"
                   label="Remamber Me"
                   className="checkgroup"
                 />
                 <a href="/forgetpass">Forget Password?</a>
-              </Form.Group>
+              </Form.Group> */}
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Button
                   variant="primary"
