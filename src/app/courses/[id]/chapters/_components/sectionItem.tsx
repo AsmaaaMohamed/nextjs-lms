@@ -40,8 +40,9 @@ const SectionItem = ({
   const handleSectionClick = async() => {
     if(!isLocked){
       await fetch(`${DOMAIN}/api/chapterSections/${sectionId}`, {
-                method: "POST",
-              });
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
       router.push(`/courses/${courseId}/chapters/${chapterId}/chapterSections/${sectionId}`);
       router.refresh();
     }
