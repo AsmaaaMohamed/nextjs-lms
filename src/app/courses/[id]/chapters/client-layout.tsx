@@ -10,12 +10,10 @@ import { CourseWithRelations } from "@/utils/types";
 interface ClientCourseLayoutProps {
   children: JSX.Element[];
   course: CourseWithRelations;
-  isEnrolledCourse:boolean;
 }
 export default function ClientCourseLayout({
   children,
   course,
-  isEnrolledCourse,
 }:ClientCourseLayoutProps) {
   
   const params = useParams();
@@ -37,7 +35,6 @@ export default function ClientCourseLayout({
       <ChapterAcordionItem
         key={chapter.id}
         chapter={chapter}
-        isEnrolledCourse={isEnrolledCourse}
         courseId={course.id}
         urlChapterSection={urlChapterSection}
       />

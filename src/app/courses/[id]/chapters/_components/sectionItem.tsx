@@ -7,7 +7,6 @@ interface SectionItemProps {
   sectionTitle: string;
   isCompleted: boolean;
   courseId: number;
-  isLocked: boolean;
   chapterPosition:number;
   sectionPosition:number;
   chapterId:number;
@@ -18,7 +17,6 @@ const SectionItem = ({
   sectionTitle,
   isCompleted,
   courseId,
-  isLocked,
   chapterPosition,
   sectionPosition,
   chapterId,
@@ -26,26 +24,22 @@ const SectionItem = ({
 }: SectionItemProps) => {
   const router = useRouter();
  
-  console.log(
-    "sseeeeeeeeerrrrrrrrrrrPPPPaaaaaaaaa",
-    isActive
-  );
-    const icon = isLocked
-      ? (<i className="icofont-ui-lock icofont"></i>)
-      : isCompleted
+    const icon =
+      // ? (<i className="icofont-ui-lock icofont"></i>)
+    isCompleted
       ? (<i className="icofont-checked complite icofont"></i>)
     //   : isActive
     //   ? (<i className="icofont-pause icofont"></i>)
       : (<i className="icofont-square icofont"></i>);
   const handleSectionClick = async() => {
-    if(!isLocked){
+
       await fetch(`${DOMAIN}/api/chapterSections/${sectionId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
       router.push(`/courses/${courseId}/chapters/${chapterId}/chapterSections/${sectionId}`);
       router.refresh();
-    }
+    
   };
   return (
     <div

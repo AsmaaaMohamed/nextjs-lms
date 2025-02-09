@@ -7,13 +7,11 @@ type ChapterWithChapterSection = Chapter & {
   };
 interface ChapterAcordionItemProps {
   chapter: ChapterWithChapterSection;
-  isEnrolledCourse: boolean;
   courseId: number;
   urlChapterSection:number | null;
 }
 const ChapterAcordionItem = ({
   chapter,
-  isEnrolledCourse,
   courseId,
   urlChapterSection,
 }:ChapterAcordionItemProps) => {
@@ -26,7 +24,6 @@ const ChapterAcordionItem = ({
         courseId={courseId}
         sectionTitle={section.title}
         isCompleted={!!section?.userProgress?.[0]?.isCompleted}
-        isLocked={!section.isFree && !isEnrolledCourse}
         chapterPosition={chapter.position}
         sectionPosition={section.position}
         chapterId={chapter.id}
