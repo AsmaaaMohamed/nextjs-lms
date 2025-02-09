@@ -9,7 +9,7 @@ const ChapterSectionPage = () => {
       <div className="vp-video mb-4">
         <video controls>
           <source
-            src="http://demos.codexcoder.com/anthem/wp-content/uploads/2017/07/Ghum-by-Habib-Wahid-Ft.-Mithila.mp4"
+            src="https://demos.codexcoder.com/anthem/wp-content/uploads/2017/07/Ghum-by-Habib-Wahid-Ft.-Mithila.mp4"
             type="video/mp4"
           />
         </video>
