@@ -4,6 +4,8 @@ import { auth } from "./app/_lib/auth";
 
 export default auth(
    async function middleware(request: NextRequest) {
+     const origin = request.headers.get("origin");
+     console.log("oooooooooorrrrrrrrrrrrrrrriiiiiiiiiigggggggggg" , origin)
      const { pathname } = request.nextUrl;
      // Check if the user is authenticated using `auth`
      const isAuth = await auth();
