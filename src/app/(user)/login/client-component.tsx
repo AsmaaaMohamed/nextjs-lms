@@ -39,9 +39,7 @@ const ClientComponent = () => {
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       catch (error:any) {
-        console.log('caaaaaaaaaaaaaaaaaaaatttttttttttttttttttttt')
         toast.dismiss();
-        console.log(error)
         toast.error(error.message as string);
       } finally {
         console.log("");
@@ -52,7 +50,6 @@ const ClientComponent = () => {
 
 useEffect(() => {
   if (errorType) {
-    console.log('tyyyyyyyyyyyyyyyyyyyyyyyyyy' , errorType)
     toast.dismiss();
     toast.error(errorType);
   }

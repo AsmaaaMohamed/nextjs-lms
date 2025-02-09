@@ -13,18 +13,13 @@ export async function POST(request: NextRequest) {
     try {
         const body = (await request.json()) as RegisterUserDto;
         const user = await prisma.user.findUnique({where:{email:body.email}});
-        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhh' , user)
         if(user){
             if (user.provider !== body.provider) {
-            //   throw new Error(
-            //     `This email is already registered with ${user.provider}. Please use that provider to log in.`
-            //   );
               return NextResponse.json({
                 message: `This email is already registered with ${user.provider}. Please use that provider to log in.`,
               },
             {status:401});
             }
-            console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
             if(body.provider === "credentials"){
                 // throw new Error('this user is already registered');
                 return NextResponse.json({
@@ -54,17 +49,6 @@ export async function POST(request: NextRequest) {
         const token = null;
         return NextResponse.json({...newUser, token} , {status:201});
     } catch (error) {
-        console.error('///////////////////////////////',error);
         throw error;
     }
 }
-// export async function createUserLogWithSocial(newUser) {
-//   const { data, error } = await supabase.from("guests").insert([newGuest]);
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Guest could not be created");
-//   }
-
-//   return data;
-// }

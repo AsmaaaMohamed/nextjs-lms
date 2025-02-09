@@ -18,7 +18,6 @@ export async function getCourses(category?:string , courseName?:string, coursePr
     queryParams.append("price", coursePrice.toString());
   }
   const queryString = queryParams.toString(); // e.g., "category=math&title=algebra"
-  console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',`${DOMAIN}/api/courses${queryString ? `?${queryString}` : ""}`);
   const response = await fetch(
     `${DOMAIN}/api/courses${queryString ? `?${queryString}` : ""}`,
     { cache: "no-store" }

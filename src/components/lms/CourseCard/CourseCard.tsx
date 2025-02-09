@@ -15,7 +15,6 @@ const CourseCard = ({
   isUserCourse,
   instructor
 }:CourseCardProps) => {
-  // console.log('innnnnnnnnnnsssssssssssssssssss',instructor);
   return (
     <div className="course-item">
       <div className="course-inner">

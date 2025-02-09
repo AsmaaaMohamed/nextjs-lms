@@ -74,7 +74,6 @@ const ClientComponent = ({
   const handleCategorySelect = (e: any) => {
     setSearchCategory(e.target.value);
     handleSearch(e.target.value, searchCourse);
-    console.log("gggggggggggggggggggggggggggg", searchCategory);
   };
   useEffect(() => {
     // Reset the state whenever the p''ath changes

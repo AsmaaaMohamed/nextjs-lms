@@ -10,12 +10,10 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: string 
         const authSession = await auth();
         const pageParams = await params;
         const courseId = parseInt(pageParams?.id);
-        console.log("sessssssssssssssssssss", authSession?.user?.email);
         if(!authSession?.user){
             return new NextResponse("Unauthorized", { status: 401 });
         }
         const course = await getCourseById(courseId);
-        // console.log('thisccccccccoooooooooooouuuuuuu' , course)
         const existingEnrolledCourse = await prisma.usersCourses.findUnique({
             where:{
                 userId_courseId:{
@@ -24,7 +22,6 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: string 
                 }
             }
         });
-        // console.log("thiseeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxccoouu", course);
         if(existingEnrolledCourse){
             return new NextResponse("You Already Enrolled this course", {
               status: 400,
@@ -74,10 +71,8 @@ export async function POST(req:Request ,{params}:{params : Promise<{ id: string 
               userId: +authSession.user.id,
             },
           }));
-        console.log("seeeeeeeeeeeeeeeeewwwwwwwwwwwwwwwwwwwww", session)
         return NextResponse.json({url: session?.url})
     } catch (error) {
-        console.log('errrrrrrrrrrrrrrrrrrrrrrrrrrrr',error)
         return new NextResponse("Internal serve errorrrrr",{status:500})
     }
 }

@@ -22,7 +22,6 @@ export async function loginSubmit(formData: FormData){
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   catch(error: any){
-    console.log("SignIn Error:", error.type);
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":

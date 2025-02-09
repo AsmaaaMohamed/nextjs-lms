@@ -15,7 +15,6 @@ export async function GET(
 ) {
   const pageParams = await params;
   const courseId = parseInt(pageParams.id);
-  // console.log('seapppppppppppppppppppppppppp', courseId)
   try {
     const courses = await prisma.course.findUnique({
       where: {
@@ -44,8 +43,6 @@ export async function GET(
         },
       },
     });
-    // console.log("cccccccccccccccccccccccccccccccc", courses);
-    //return Response.json(articles, { status: 200 })
     return NextResponse.json(courses, { status: 200 });
   } catch (error) {
     console.error(error);

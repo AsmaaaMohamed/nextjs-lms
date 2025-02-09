@@ -5,9 +5,7 @@ import { stripe } from "@/app/_lib/stripe";
 import prisma from "@/utils/prismaObject";
 
 export async function POST(req : Request){
-    console.log('reqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq' , req)
     const body = await req.text();
-    console.log('lllllllllllgfffffgfggffgfgfgfgfg' , body)
     const signature = (await headers()).get("Stripe-Signature") as string;
     let event: Stripe.Event;
     try{

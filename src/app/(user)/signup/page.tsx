@@ -33,14 +33,12 @@ const SignupPage = () => {
         const resData = await res.json();
         throw resData
       }
-        console.log('reeeeeeeeeeeeeeesssssssssssssssssssssssss',res)
         toast.success("Your acount has been created successfully");
         router.push('/login');
       } 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       catch (error: any) {
         // toast.dismiss();
-        console.log('ooooooooooooooooooooooooooooooooooooooooooo',error.message)
         toast.error(error.message );
       }
     },

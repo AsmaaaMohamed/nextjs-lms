@@ -3,7 +3,6 @@ import { getCachedPosts } from "@/server/db/cached";
 
 const HomePostsSection = async() => {
     const posts =await getCachedPosts();
-    // console.log(posts)
   const renderedPosts = posts.slice(0, 3).map((p) => {
     return (
       <div key={p.id} className="col">

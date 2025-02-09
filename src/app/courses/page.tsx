@@ -5,7 +5,6 @@ const CoursesPage = async() => {
   const categories = await getCachedCoursesCategories();
   const instructors = await getCachedInstructors();
   const allCourses = await getCachedCourses();
-  console.log("gggggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", instructors);
   return (
     <CoursesClient
       coursesCategories={categories}

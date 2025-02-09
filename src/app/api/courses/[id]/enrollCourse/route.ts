@@ -13,11 +13,9 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  console.log("ddddddddddddddddddddddddddddddddddddddddd");
   const session = await auth();
   const courseId = +(await params)?.id;
   const userId = session?.user?.id ? +session?.user?.id : null;
-  console.log("thiiiiiiiiiiiii", userId);
   try {
     const enrolledCourse = userId && (await prisma.usersCourses.findUnique({
       where: {
@@ -44,7 +42,6 @@ export async function POST(
     //return Response.json(articles, { status: 200 })
     return NextResponse.json("success", { status: 200 });
   } catch (error) {
-    console.error(error);
     return NextResponse.json(
       { message: `internal server errrrrrrrrrrrror ${courseId}` },
       { status: 500 }

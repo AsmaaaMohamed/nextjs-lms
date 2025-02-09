@@ -19,16 +19,8 @@ export default function ClientCourseLayout({
   const params = useParams();
   const urlChapterId = params?.chapterId ? +params?.chapterId : null;
   const urlChapterSection = params?.chapterSectionId ? +params?.chapterSectionId : null;
-  // console.log(
-  //   "cooooooouuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrssssssss",
-  //   course?.chapters
-  // );
   const chapters = course?.chapters;
   const activeChapterPosition = chapters.find((chapter)=> chapter.id === urlChapterId)?.position
-  console.log(
-    "cooooooouuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrssssssss",
-    activeChapterPosition
-  );
   const mappedChapters = chapters.map((chapter) => {
     
     return (

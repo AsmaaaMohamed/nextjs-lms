@@ -26,17 +26,8 @@ const CoursesClient = ({
       </option>
     );
   });
-    // const searchParams = useSearchParams();
-    // const currentCategory = searchParams.get("category")
-    //   ? searchParams.get("category")
-    //   : "";
-    // const currentTitle = searchParams.get("title");
     const { searchCategory, searchPrice, searchCourse } = useSearchStore();
-    // const [categoryName, setCategoryName] = useState(currentCategory);
-    // const [coursePrice, setCoursePrice] = useState(0);
     const [courses, setCourses] = useState(allCourses);
-    // const [instructors, setInstructors] = useState([]);
-    // const [categories, setCategories] = useState([]);
     useEffect(() => {
       const fetchCourses = async () => {
         const result = await getCourses(
@@ -45,12 +36,6 @@ const CoursesClient = ({
           searchPrice
         );
         setCourses(result);
-        // const coursesCategories = await getCachedCoursesCategories();
-        // console.log("vvvvvvvvcccccccccccccccc", coursesCategories);
-        // setCategories(coursesCategories);
-        // const coursesInstructors = await getInstructors();
-
-        // setInstructors(coursesInstructors);
       };
       if(searchCategory || searchCourse || searchPrice){
         fetchCourses();

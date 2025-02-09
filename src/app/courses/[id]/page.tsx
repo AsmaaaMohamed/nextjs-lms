@@ -32,9 +32,6 @@ const CourseDetails = async ({
     (instructor) => instructor.id === thisCourse.instructorId
   );
   const isEnrolled = dashboardCourses?.find((c) => c.id === parseInt(id)) ? true : false;
-  // console.log('id params' , thisCourse.comments)
-  // const {id} = useParams()
-  // console.log(id)
   return (
     <Fragment>
       <div className="pageheader-section style-2">

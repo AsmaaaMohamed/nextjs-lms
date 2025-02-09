@@ -11,10 +11,6 @@ const CoursesSection = ({courses, isUserCourse,instructors}:CoursesSectionProps)
     const renderedCourses = courses.map((c) => {
       
       const courseInstructor = instructors.find((instructor)=>instructor.id === c.instructorId)!
-      // console.log(
-      //   "cccccccccccccccccccccttttttttttttttttttttttttt",
-      //   instructors
-      // );
       return (
           <div key={c.id} className="col">
           <CourseCard {...c} isUserCourse={isUserCourse} instructor={courseInstructor}/>

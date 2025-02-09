@@ -21,13 +21,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-        console.log('eeeeeeeeeeeeeerrrrrrrrrrrrr1111111111111', error)
       return Response.json({ error }, { status: 500 });
     }
 
     return Response.json(data);
   } catch (error) {
-    console.log("eeeeeeeeeeeeeerrrrrrrrrrrrr222222222222222", error);
     return Response.json({ error }, { status: 500 });
   }
 }

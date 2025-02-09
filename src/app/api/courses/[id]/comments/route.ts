@@ -13,12 +13,10 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  console.log("ddddddddddddddddddddddddddddddddddddddddd");
   const body = await request.json();
   const session = await auth();
   const courseId = +(await params)?.id;
   const userId = session?.user?.id ? +session?.user?.id : null;
-  console.log("thiiiiiiiiiiiii", userId);
   try {
     const enrolledCourse =
       userId &&
@@ -62,7 +60,6 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  console.log("ddddddddddddddddddddddddddddddddddddddddd");
   const courseId = +(await params)?.id;
   try {
     const comments = await prisma.comment.findMany({

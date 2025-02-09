@@ -25,7 +25,6 @@ const authConfig: NextAuthConfig = {
         if (!isPasswordMatch) {
           return null;
         }
-        console.log("uuuuueeeeeeeeeeeeeeee", user);
         return user;
       },
     }),
@@ -37,7 +36,6 @@ const authConfig: NextAuthConfig = {
     },
     async signIn({ user, account }) {
       if (account && account.provider !== "credentials") {
-        console.log("fffffffffffffffwwwwwwwwwwwwww");
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email },
         });
@@ -62,12 +60,9 @@ const authConfig: NextAuthConfig = {
           },
         });
       }
-      // console.log('yyyyyyyyyyyyyyyyyy', user?.error)
       if (user?.error) {
-        console.log("uuuuuuuurrrrrrr", user);
         throw new Error(user?.error);
       }
-      console.log("hereeeeeeeeeeeeeeeeeeeeee");
       return true;
     },
     async jwt({ token, user }) {

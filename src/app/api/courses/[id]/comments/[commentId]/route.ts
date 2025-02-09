@@ -11,7 +11,6 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ commentId: string }> }
 ) {
-  console.log("ddddddddddddddddddddddddddddddddddddddddd");
   const pageParams = await params;
   const commentId = parseInt(pageParams?.commentId);
   try {

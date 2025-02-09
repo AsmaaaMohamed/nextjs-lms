@@ -26,7 +26,6 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
   const modalHandler = () => {
     setIsOpen((prev) => !prev);
   };
-  // console.log('vvvvvvvvvvvvaaaaaaaaaaaaalllllllllllllluuuuuuuuu',updated)
   const formik = useFormik({
     initialValues: {
       comment: "",
@@ -34,8 +33,6 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
     validationSchema: commentSchema,
 
     onSubmit: async (values, { resetForm, setSubmitting }) => {
-      // console.log("kkkkkkkkkkkkkkkkkkkk", comments);
-      // const trimmedComment = values.comment.trim();
       try {
         const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comments`, {
           method: "POST",
@@ -43,24 +40,16 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
           body: JSON.stringify({ ...values }),
         });
         const data = await res.json();
-
-        //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
         if (!res.ok) {
           throw data.error.message;
         }
         resetForm();
         setSubmitting(false); // Marks submission as complete
-        // setAsyncComments((prev)=> [...prev , ])
       } catch (error) {
-        console.log(error);
         toast.error(error as string);
       }
     },
   });
-  // console.log(
-  //   "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-  //   !formik.values.comment.length
-  // );
   const handleDeleteComment = async (id:number) => {
     setCommentToBeDeleted(id);
     modalHandler();
@@ -77,7 +66,6 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
         );
         if (!res.ok) {
           const resJson = await res.json();
-          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
           throw resJson.message;
         }
         toast.success("Comment deleted successfully");
@@ -85,7 +73,6 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
           prev.filter((comment) => comment.id !== commentToBeDeleted)
         );
       } catch (err) {
-        console.log("errrrrrrrrrrrrrrrrooooooooooooooooooo", err);
         toast.error(err as string);
       }
     } else {
@@ -144,7 +131,6 @@ const CommentComponent = ({session,isEnrolled ,comments,  courseId}:CommentProps
     const fetchComments = async () => {
       const res = await fetch(`${DOMAIN}/api/courses/${courseId}/comments`);
       const fetchedComments = await res.json();
-      console.log(fetchedComments);
       setThisComments(fetchedComments);
     };
     if (!formik.isSubmitting) fetchComments();

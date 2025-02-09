@@ -16,7 +16,6 @@ interface CourseSideDetailsProps{
   isEnrolled:boolean;
 }
 const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps) => {
-  // console.log('sessssssss', courseId)
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const modalHandler = () => {
@@ -32,7 +31,6 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
       
         if (!res.ok) {
           const resJson = await res.json();
-          console.log("reeeeeeeeeeeeeeesssssssssssssssssssssssss", resJson);
           throw resJson.message;
         }
         toast.success(
@@ -43,7 +41,6 @@ const CourseSideDetails = ({course , session, isEnrolled}:CourseSideDetailsProps
         }, 3500); // Delay in milliseconds (e.g., 3000ms = 3 seconds)
       }
       catch(err){
-        console.log('errrrrrrrrrrrrrrrrooooooooooooooooooo', err)
         toast.error(err as string);
       }
     } 

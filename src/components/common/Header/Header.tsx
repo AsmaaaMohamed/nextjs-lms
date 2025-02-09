@@ -5,7 +5,6 @@ import { getCachedCoursesCategories } from "@/server/db/cached";
 const Header = async() => {
   const session = await auth();
   const coursesCategories = await getCachedCoursesCategories();
-  console.log(session);
   return <ClientComponent session={session} coursesCategories={coursesCategories}/>;
   
 };

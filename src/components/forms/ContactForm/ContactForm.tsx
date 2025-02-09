@@ -24,7 +24,6 @@ const ContactForm = () => {
                   body: JSON.stringify({...values}),
                 });
         const data = await res.json();
-        //console.log('rrrrrrrrrrrrrrrrrreeeeeeeeeeeeeeeeesssssss' , data.error.message);
         if(!res.ok){
           throw data.error.message
         }
@@ -34,7 +33,6 @@ const ContactForm = () => {
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       catch(error:any){
-        console.log('errrrrrrrooooooooooo', error);
         toast.error(error)
       }
     },
