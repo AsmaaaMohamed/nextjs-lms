@@ -12,7 +12,7 @@ const HomePickCourse = async () => {
           <h2 className="title">Pick A Course To Get Started</h2>
         </div>
         <div className="section-wrapper">
-          <CoursesSection courses={courses} isUserCourse={false} instructors={instructors}/>
+          <CoursesSection courses={courses.slice(0,6)} isUserCourse={false} instructors={instructors}/>
         </div>
       </div>
     </div>
