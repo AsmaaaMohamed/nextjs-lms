@@ -139,7 +139,7 @@ const SignupPage = () => {
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <a href="/signup">Sign Up</a>
+                Already Have Account? <a href="/login">Log in</a>
               </span>
               <span className="or">
                 <span>or</span>

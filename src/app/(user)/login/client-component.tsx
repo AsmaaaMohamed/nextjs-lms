@@ -119,7 +119,7 @@ useEffect(() => {
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <Button type="button" className="" onClick={()=> router.push('/signup')}>Sign Up</Button>
+                Don’t Have any Account? <Link href="/signup" className="" onMouseDown={(e)=> e.preventDefault()}>Sign Up</Link>
               </span>
               <span className="or">
                 <span>or</span>
