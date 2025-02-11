@@ -5,6 +5,7 @@ import PageHeader from "@/components/common/PageHeader/PageHeader";
 import { DOMAIN } from "@/utils/constants";
 import { registerSchema } from "@/utils/validationSchemas";
 import { useFormik } from "formik";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -45,7 +46,7 @@ const SignupPage = () => {
   });
   return (
     <Fragment>
-      <PageHeader pageTitle="SignUp"/>
+      <PageHeader pageTitle="SignUp" />
       <div className="login-section padding-tb section-bg">
         <div className="container">
           <div className="account-wrapper">
@@ -139,7 +140,10 @@ const SignupPage = () => {
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Already Have Account? <a href="/login">Log in</a>
+                Already Have Account?{" "}
+                <Link href="/login" onMouseDown={(e) => e.preventDefault()}>
+                  Log in
+                </Link>
               </span>
               <span className="or">
                 <span>or</span>
@@ -151,7 +155,7 @@ const SignupPage = () => {
                     className="github"
                     title="Github"
                     role="button"
-                    onClick={githubClickHandler}
+                    onMouseDown={(e) =>{ e.preventDefault();githubClickHandler();}}
                   >
                     <i className="icofont-github icofont"></i>
                   </span>
@@ -161,7 +165,7 @@ const SignupPage = () => {
                     className="google"
                     title="Google"
                     role="button"
-                    onClick={googleClickHandler}
+                    onMouseDown={(e) =>{ e.preventDefault();googleClickHandler();}}
                   >
                     <i className="icofont-brand-google icofont"></i>
                   </span>

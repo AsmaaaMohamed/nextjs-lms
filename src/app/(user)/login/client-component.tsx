@@ -57,7 +57,7 @@ useEffect(() => {
 }, [errorType]);
   return (
     <Fragment>
-      <PageHeader pageTitle="Login"/>
+      <PageHeader pageTitle="Login" />
 
       <div className="login-section padding-tb section-bg">
         <div className="container">
@@ -112,14 +112,20 @@ useEffect(() => {
                   type="submit"
                   className="lab-btn d-block"
                 >
-                 
                   Submit Now
                 </Button>
               </Form.Group>
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <Link href="/signup" className="" onMouseDown={(e)=> e.preventDefault()}>Sign Up</Link>
+                Don’t Have any Account?{" "}
+                <Link
+                  href="/signup"
+                  className=""
+                  onMouseDown={(e) => e.preventDefault()}
+                >
+                  Sign Up
+                </Link>
               </span>
               <span className="or">
                 <span>or</span>
@@ -131,7 +137,7 @@ useEffect(() => {
                     className="github"
                     title="Github"
                     role="button"
-                    onClick={githubClickHandler}
+                    onMouseDown={(e) =>{ e.preventDefault();githubClickHandler();}}
                   >
                     <i className="icofont-github icofont"></i>
                   </span>
@@ -141,7 +147,7 @@ useEffect(() => {
                     className="google"
                     title="Google"
                     role="button"
-                    onClick={googleClickHandler}
+                    onMouseDown={(e) =>{ e.preventDefault();googleClickHandler();}}
                   >
                     <i className="icofont-brand-google icofont"></i>
                   </span>
