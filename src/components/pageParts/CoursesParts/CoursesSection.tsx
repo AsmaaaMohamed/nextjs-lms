@@ -8,7 +8,7 @@ interface CoursesSectionProps {
   instructors:Instructor[]
 }
 const CoursesSection = ({courses, isUserCourse,instructors}:CoursesSectionProps) => {
-    const renderedCourses = courses.map((c) => {
+    const renderedCourses = courses.slice(0,6).map((c) => {
       
       const courseInstructor = instructors.find((instructor)=>instructor.id === c.instructorId)!
       return (
