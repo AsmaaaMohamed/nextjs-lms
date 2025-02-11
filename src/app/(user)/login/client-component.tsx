@@ -13,6 +13,7 @@ import {
 import { loginSchema } from "@/utils/validationSchemas";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast} from "react-toastify";
+import Link from "next/link";
 
 const ClientComponent = () => {
   const searchParams = useSearchParams();
@@ -118,7 +119,7 @@ useEffect(() => {
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <a href="/signup">Sign Up</a>
+                Don’t Have any Account? <Link href="/signup" onClick={(e)=> e.stopPropagation()}>Sign Up</Link>
               </span>
               <span className="or">
                 <span>or</span>
