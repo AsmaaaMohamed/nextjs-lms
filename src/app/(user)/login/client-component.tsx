@@ -119,7 +119,7 @@ useEffect(() => {
             </Form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <Link href="/signup" onClick={(e)=> e.stopPropagation()}>Sign Up</Link>
+                Don’t Have any Account? <Link href="/signup" className="" onClick={(e)=> e.stopPropagation()}>Sign Up</Link>
               </span>
               <span className="or">
                 <span>or</span>
